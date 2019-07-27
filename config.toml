@@ -1,0 +1,7 @@
+baseURL = "/"
+languageCode = "en-us"
+title = "Cole Lawrence"
+publishDir = "public"
+theme = "blank"
+PygmentsCodeFences = true
+pygmentsuseclasses = true

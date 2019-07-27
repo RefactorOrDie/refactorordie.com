@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default "en-us" }}" style="background-color: #37000e;">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="{{ .Site.BaseURL }}style/background.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#1b0b0b">
+	<link rel="icon" href="/favicon.ico">
+	<link rel="shortcut icon" href="/favicon.svg">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i|Playfair+Display:400,900">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>{{ .Title }}</title>
+	{{ with .Site.Params.description }}
+	<meta name="description" content="{{ . }}">{{ end }}
+	{{ with .Site.Params.author }}
+	<meta name="author" content="{{ . }}">{{ end }}
+	{{ $baseCSS := resources.Get "style/paper/base.css" }}
+	{{ $secureCSS := $baseCSS | resources.Minify | resources.Fingerprint "md5" }}
+	<link rel="stylesheet" href="{{ $secureCSS.Permalink }}" type="text/css">
+	{{ if .RSSLink -}}
+	<link href="{{ .RSSLink }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}">{{- end }}
+	{{ .Hugo.Generator }}
+	<script>
+		(function(f, a, t, h, o, m){
+			a[h]=a[h]||function(){
+				(a[h].q=a[h].q||[]).push(arguments)
+			};
+			o=f.createElement('script'),
+			m=f.getElementsByTagName('script')[0];
+			o.async=1; o.src=t; o.id='fathom-script';
+			m.parentNode.insertBefore(o,m)
+		})(document, window, 'https://count.colelawrence.com/tracker.js', 'fathom');
+		fathom('set', 'siteId', 'PXXQU');
+		fathom('trackPageview');
+	</script>
+</head>
+<style>body { opacity: 0 }</style>
+<noscript><style>body { opacity: 1 }</style></noscript>
+<body style="transition: .4s ease opacity;">
+	<div id="page">
+		<main>

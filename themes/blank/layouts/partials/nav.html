@@ -1,0 +1,64 @@
+<header>
+  <nav id="scroll-heading">
+    <div>
+      <a class="btn home-btn" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+      <a href="#" class="not-a mini-title">{{ .Title }}</a>
+      <a class="btn" href="#menu" style="float: right;">
+        Menu<svg width="20" height="24" viewBox="0 0 20 24" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M2.5 8V6H17.5V8H2.5ZM2.5 13H17.5V11H2.5V13ZM2.5 18H17.5V16H2.5V18Z"/>
+        </svg>
+      </a>
+    </div>
+  </nav>
+</header>
+<div id="menu" href="#" class="not-a text-dark" style="display: block">
+  <nav style="display: block">
+    <div>
+      <a class="btn" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+      <a class="btn" href="javascript:history.back()" style="float: right;">
+        Close<svg width="20" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z"/>
+        </svg>        
+      </a>
+    </div>
+  </nav>
+  <table style="width: 100%; padding: 0 2rem;">
+    <tbody>
+      <tr>
+        <td class="div reveal" data-order="1" colspan="2"></td>
+      </tr>
+      <tr class="section">
+        <td><span class="label btn reveal" data-order="1">Projects</span></td>
+        <td>
+          <a class="link btn reveal" data-order="3" href="https://www.maximize.nyc">Maximize</a>
+        </td>
+      </tr>
+      <tr>
+        <td class="div reveal" data-order="4" colspan="2"></td>
+      </tr>
+      <tr class="section">
+        <td><span class="label btn reveal" data-order="4">Work</span></td>
+        <td>
+          <a class="link btn reveal" data-order="5" href="https://www.maestroqa.com">MaestroQA</a>
+        </td>
+      </tr>
+      <tr>
+        <td class="div reveal" data-order="6" colspan="2"></td>
+      </tr>
+      <tr class="section">
+        <td><span class="label btn reveal" data-order="6">Contact</span></td>
+        <td>
+          <a class="link btn reveal" data-order="8" href="https://linkedin.com/in/colelawr">Linkedin</a>
+          <a class="link btn reveal" data-order="9" href="mailto:hello@colelawrence.com?subject=Hello">Email</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  <br>
+  <div style="text-align: center">
+    <a href="javascript:history.back()" title="close menu" class="btn reveal" data-order="10">Close Menu</a>
+  </div>
+</div>

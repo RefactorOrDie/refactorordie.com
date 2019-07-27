@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "static-src/style/paper"
+		},
+		{
+			"path": "themes/blank/layouts"
+		},
+		{
+			"path": "content"
+		}
+	],
+	"settings": {}
+}

@@ -1,0 +1,47 @@
+@import 'colors';
+@import 'lengths';
+
+header {
+  height: calc(26px + 5vw);
+}
+
+#scroll-heading {
+  background: inherit;
+
+  .mini-title {
+    display: none;
+    float: left;
+    font-family: 'Playfair Display', serif;
+    font-style: normal;
+    font-weight: 900;
+  }
+}
+
+#scroll-heading.sticky {
+  background: $color-background-light;
+  opacity: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #eeeeeeee;
+  padding: #{$length-sides * .5} $length-sides;
+  transition: background .2s ease;
+  z-index: 400;
+
+  &.show-mini-title {
+    .mini-title {
+      display: block;
+    }
+  
+    .home-btn {
+      display: none;
+    }
+  }
+
+
+  .btn {
+    color: $color-subhead-black;
+  }
+}
+

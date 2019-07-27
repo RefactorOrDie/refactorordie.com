@@ -1,0 +1,5 @@
+#!/bin/bash
+read YYYY MM DD <<<$(date +'%Y %m %d')
+cd ..
+hugo new --kind post-bundle content/posts/$YYYY-$MM/$1 --editor code
+cd ./content

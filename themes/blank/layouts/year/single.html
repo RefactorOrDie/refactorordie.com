@@ -1,0 +1,25 @@
+{{ partial "header.html" . }}
+{{ partial "nav.html" . }}
+	<article>
+		{{ .Content }}
+	</article>
+	<ul style="list-style: none; padding: 0; margin-top: 0;">
+		{{ range (where (where .Site.Pages "Type" "post") "Date.Year" "==" .Params.year) }}
+		<li><time style="width: 7em; display: inline-block;">{{ .Date.Format "Jan 2, 2006" }}</time><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+		{{ end }}
+	</ul>
+	<ul style="list-style: none; padding: 0; margin-top: 0;">
+		{{ range (where (where .Site.Pages "Type" "blurt") "Date.Year" "==" .Params.year) }}
+		<li><time style="width: 7em; display: inline-block;">{{ .Date.Format "Jan 2, 2006" }}</time><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+		{{ end }}
+	</ul>
+	<ul style="list-style: none; padding: 0; margin-top: 0;">
+		{{ $pageYear := .Params.year }}
+		{{ range (where .Site.Pages "Type" "year") }}
+			{{ if ne .Params.year  $pageYear }}
+				<li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+			{{ else }}
+			{{ end }}
+		{{ end }}
+	</ul>
+{{ partial "footer.html" . }}

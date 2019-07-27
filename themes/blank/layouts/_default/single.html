@@ -1,0 +1,17 @@
+{{ partial "header.html" . }}
+{{ partial "nav.html" . }}
+<style>
+	/* colors slightly different for white background */
+	body { background: #EAEAEA; color: #1D1D1D; }
+	a { text-decoration: inherit; border-bottom: 1px solid #0a7dca; }
+</style>
+<article>
+	<div class="title">
+		<h1>{{ .Title }}</h1>
+		<time>{{ .Date.Format "Jan 2, 2006" }}</time>
+	</div>
+	<div>
+		{{ .Content }}
+	</div>
+</article>
+{{ partial "footer.html" . }}

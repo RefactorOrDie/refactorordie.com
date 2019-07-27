@@ -1,0 +1,37 @@
+// Colors based on http://colororacle.org/design.html
+
+$d1: #6b691f; // green-brown
+$d2: #9f9d23;
+$d3: #dad729;
+$d4: #f7fa32; // essentially yellow
+$c1: #b7b9f9; // light light blue
+$c2: #7a7ed6;
+$c3: #474db4;
+$c4: #30336d; // blue
+
+$d4l: #f9faaf;
+
+$w1: 400; // normal
+$w2: 600;
+$w3: 700; // bold
+
+$fadedgrey: #dbdbdb;
+
+pre {
+  // space grey #607d8b
+  // bright blue #2196f3
+  span.o { color: $c4; font-weight: $w2 }
+  span.c1 { color: $d2 }
+  span.p { color: $d1 }
+  span.k, span.kd { color: $c3; font-weight: $w1; }
+}
+
+.language-lua {
+  span.kr { color: $c4; font-weight: $w2 }
+}
+
+// .highlight *::-moz-selection { color: black; background: $fadedgrey; }
+// .highlight *::selection { color: black; background: $fadedgrey; }
+
+// a { color: #2196f3 }
+// a:visited { color: #3f51b5 }

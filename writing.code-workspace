@@ -1,0 +1,53 @@
+{
+	"folders": [
+		{
+			"name": "Content",
+			"path": "content"
+		},
+		{
+			"name": "Theme",
+			"path": "themes/blank"
+		}
+	],
+	"settings": {
+		"editor.fontSize": 16,
+		"editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace",
+		"editor.tabSize": 2,
+		"editor.wordWrap": "wordWrapColumn",
+		"editor.wordWrapColumn": 80,
+		"editor.lineNumbers": "off",
+		"editor.smoothScrolling": true,
+		"markdown.preview.fontFamily": "-apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif",
+		"markdown.preview.fontSize": 20,
+		"markdown.styles": ["http://localhost:1313/style/writing-preview.css", "https://colelawrence.com/style/paper/base.min.f85f752d095d03b1955b2e94a24ae0b5.css"],
+		"pasteImage.path": "${currentFileDir}/images",
+		"pasteImage.basePath": "${currentFileDir}",
+		"pasteImage.forceUnixStyleSeparator": true,
+		"pasteImage.prefix": "",
+		"pasteImage.showFilePathConfirmInputBox": true,
+		"pasteImage.filePathConfirmInputBoxMode": "onlyName",
+		"workbench.activityBar.visible": false,
+		"workbench.statusBar.feedback.visible": false,
+		"workbench.statusBar.visible": false,
+		"workbench.colorTheme": "Gray Matter Light",
+		"workbench.editor.labelFormat": "short",
+		"workbench.editor.enablePreview": true,
+		"editor.codeLens": false,
+		"editor.cursorSmoothCaretAnimation": true,
+		"editor.emptySelectionClipboard": false,
+		"editor.minimap.enabled": false,
+		"workbench.editor.showIcons": false,
+		"workbench.colorCustomizations": {
+			"[Verdandi]": {
+				"editorGroup.border": "#00000008"
+			}
+		}
+	},
+	"extensions": {
+		"recommendations": [
+			"davidanson.vscode-markdownlint",
+			"mushan.vscode-paste-image",
+			"patrykpeszko.vscode-proselint"
+		]
+	}
+}

@@ -1,0 +1,25 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: cibuilds/hugo:latest
+    working_directory: ~/hugo
+    environment:
+      HUGO_BUILD_DIR: ~/hugo/public
+    steps:
+      - run: apk update && apk add git
+      - checkout
+      - run: apk add --update python python-dev py-pip build-base
+      - run: pip install awscli
+      - run: HUGO_ENV=production hugo -v -d $HUGO_BUILD_DIR
+      - run: |
+          htmlproofer $HUGO_BUILD_DIR --allow-hash-href --check-html \
+          --empty-alt-ignore --disable-external
+       - deploy:
+          name: deploy to AWS
+          command: |
+            if [ "${CIRCLE_BRANCH}" = "master" ]; then
+              aws s3 sync $HUGO_BUILD_DIR s3://colel.dev/ --delete
+            else
+              echo "Not master branch, dry run only"
+            fi

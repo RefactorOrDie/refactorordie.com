@@ -1,0 +1,8 @@
+	<aside>
+		<h3>Thoughts</h3>
+		<ul style="list-style: none; padding: 0; margin-top: 0;">
+			{{ range first 5 (where .Site.Pages "Type" "post") }}
+			<li><time style="width: 7em; display: inline-block;">{{ .Date.Format "Jan 2, 2006" }}</time><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+			{{ end }}
+		</ul>
+	</aside>

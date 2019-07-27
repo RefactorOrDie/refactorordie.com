@@ -1,0 +1,92 @@
+@import 'colors';
+@import 'lengths';
+
+$color-body-black: $color-body-black;
+$color-subhead-black: $color-subhead-black;
+$color-subsubhead-black: $color-subsubhead-black;
+$color-highlight: $color-highlight;
+
+#menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: $length-top $length-sides;
+  z-index: 900;
+  pointer-events: none;
+  background: transparentize($color: $color-background-light, $amount: 0.01);
+  opacity: 0;
+  transition: opacity .3s ease;
+  
+  &:target {
+    pointer-events: all;
+    opacity: 1;
+    
+    .reveal {
+      opacity: 1;
+    }
+  }
+
+  > * {
+    max-width: $length-max-width;
+    margin: 0 auto;
+  }
+
+  table {
+    margin-top: 1em;
+    border-spacing: 0;
+    border-collapse: collapse;
+  }
+
+  tr td.div {
+    height: 1px;
+    padding: 0;
+    background: $color-light;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(0px);
+    position: relative;
+    transition: all .2s;
+  }
+
+  @for $i from 0 to 11 {
+    &:target {
+      .reveal[data-order="#{$i}"] {
+        transform: translateY(1px * $i);
+        transition-delay: .1s * $i;
+      }
+    }
+  }
+
+  tr td {
+    vertical-align: top;
+    margin: 0;
+  }
+
+  tr.section td:first-child {
+    padding-left: $length-sides;
+  }
+  tr.section td:last-child {
+    padding-right: calc(#{$length-space} + 20px);
+    padding-bottom: 1em;
+  }
+
+  .label {
+    color: $color-subhead-black;
+    display: block;
+  }
+  
+  .link {
+    color: $color-body-black;
+    display: block;
+    text-align: right;
+  }
+
+  .link, .label {
+    padding-top: 0.2em;
+    padding-bottom: 0.8em;
+  }
+}

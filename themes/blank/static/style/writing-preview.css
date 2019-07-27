@@ -1,0 +1,9 @@
+/* For vscode's markdown preview */
+body {
+  background: #EAEAEA;
+  color: #1D1D1D;
+}
+pre, code {
+  background: transparent !important;
+  color: black !important;
+}

@@ -1,0 +1,79 @@
+@import 'colors';
+
+$color-body-black: $color-body-black;
+$color-subhead-black: $color-subhead-black;
+$color-highlight: $color-highlight;
+
+.home-page .home-btn:not(:focus) {
+  visibility: hidden;
+}
+
+a, a:visited {
+  color: inherit;
+  text-decoration: inherit;
+  position: relative;
+  transition: all .2s ease;
+}
+a {
+  text-decoration: inherit;
+  border-bottom: 1px solid #78bce9;
+}
+a:hover {
+  background: #a3d1f0;
+}
+a[href^="/"]:not([href^="//"]),
+a[href*="colelawrence.com"],
+a[href*="colelawrence.ngrok.io"],
+a[href*="localhost:1313"] {
+  /* Internal weblinks */
+  border-color: #ff006d;
+
+  &:hover {
+    background-color: #f5569b;
+  }
+}
+
+a.not-a, a.btn {
+  border: none;
+  &:hover {
+    background-color: transparent;
+  }
+}
+
+a.not-a {
+  cursor: pointer;
+}
+
+.btn svg {
+  vertical-align: bottom;
+  margin-left: $length-space;
+}
+
+/* a:hover { border-bottom-style: dashed; } */
+/* a:focus { background: #ffb4ce } */
+
+[id] > a {
+  background: transparent;
+  transition: all .2s ease-in-out;
+  padding-left: 1em;
+  margin-left: -1em;
+  padding-right: 0.5em;
+  margin-right: -1em;
+}
+
+[id]:hover > a,
+[id]:target > a {
+  background: $color-highlight;
+  color: black !important;
+}
+
+// [id]:hover>a::before,
+// [id]:target>a::before {
+//   content: '🔗';
+//   position: absolute;
+//   left: 0em;
+//   font-style: normal;
+//   padding-right: .5ch;
+// }
+
+h1>a, h2>a, h3>a, h4>a { border: none !important; }

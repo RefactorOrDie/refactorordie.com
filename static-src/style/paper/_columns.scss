@@ -1,0 +1,16 @@
+.column-list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.column:first-child {
+  padding-left: 0;
+}
+
+.column {
+  padding: 0 1em;
+}
+
+img {
+  max-width: 100%;
+}

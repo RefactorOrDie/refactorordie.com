@@ -1,0 +1,19 @@
+pre span.o {
+  color: darkslateblue;
+  font-weight: 600;
+}
+pre span.c1 {
+  color: olivedrab;
+}
+pre span.p {
+  color: darkgoldenrod;
+}
+pre span.k, pre span.kd {
+  color: blue;
+  font-weight: 400;
+}
+
+.language-lua span.kr {
+  color: darkslateblue;
+  font-weight: 600;
+}

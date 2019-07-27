@@ -1,0 +1,10 @@
+{{ $_hugo_config := `{ "version": 1 }` }}
+{{ $parts := (split .Inner "============") }}
+
+<div class="column-list">
+{{ range $parts }}
+<div class="column" style="width: 50%">
+    {{ . | markdownify }}
+</div>
+{{ end }}
+</div>

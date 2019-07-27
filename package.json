@@ -1,0 +1,27 @@
+{
+  "name": "thoughts",
+  "version": "1.0.0",
+  "description": "blog",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp",
+    "prestart": "npm run build",
+    "start": "gulp watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/%3Acolelawrence/thoughts.git"
+  },
+  "author": "Coe Lawrence",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/%3Acolelawrence/thoughts/issues"
+  },
+  "homepage": "https://github.com/%3Acolelawrence/thoughts#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^4.0.2",
+    "sass": "^1.18.0"
+  }
+}
