@@ -1,14 +1,7 @@
-@import 'colors';
-
-$color-body-black: $color-body-black;
-$color-subhead-black: $color-subhead-black;
-$color-highlight: $color-highlight;
-
 body {
-  font-family: 'Libre Baskerville', serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 18px;
   line-height: 143.75%;
-  color: $color-body-black;
 
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
@@ -16,31 +9,18 @@ body {
   hyphens: auto;
 }
 
-h1, h2, h3, h4 {
-  font-size: 32px;
-  font-family: 'Playfair Display', serif;
-  font-style: normal;
-  font-weight: 400;
-  color: $color-subhead-black;
-  margin-bottom: .375em;
-  padding-top: .675em;
-  line-height: normal;
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 0.75em;
 }
 
-h1 {
-  margin-top: 1em;
-  color: $color-body-black;
-}
-
-.title {
-  text-align: center;
-
-  h1 {
-    font-size: 42px;
-    font-family: 'Playfair Display', serif;
-    font-style: normal;
-    font-weight: 900;
-  }
+h1, h2, h3 {
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  font-weight: 600;
+  margin-bottom: 0;
 }
 
 p {
@@ -55,49 +35,30 @@ pre, code, kbd, tt, samp {
   line-height: 1.3em;
 }
 
+.image {
+  border: none;
+  margin: 1.5em 0;
+  padding: 0;
+  border-radius: 0;
+  text-align: center;
+}
+
+.image a {
+  text-decoration: none;
+}
+
+figure {
+  margin: 1.25em 0;
+  page-break-inside: avoid;
+}
+
+figcaption {
+  opacity: 0.5;
+  font-size: 85%;
+  margin-top: 0.5em;
+}
+
 .btn {
-  font-family: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-weight: 500;
   border: none;
 }
-
-// Color Styles
-
-// Light text
-.text-light {
-  color: $color-body-light;
-
-  .btn {
-    color: $color-subsubhead-light;
-
-    svg {
-      fill: $color-subsubhead-light;
-    }
-  }
-
-  h1, .title h1 {
-    color: $color-body-light;
-  }
-  
-  h2, h3, h4 {
-    color: $color-subhead-light;
-  }
-}
-
-body, .text-dark {
-  color: $color-body-black;
-
-  .btn {
-    color: $color-subsubhead-black;
-
-    svg {
-      fill: $color-subsubhead-black;
-    }
-  }
-
-  .title h1 {
-    color: $color-body-black;
-  }
-}
-
-::selection { background: $color-highlight; }

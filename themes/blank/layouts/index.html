@@ -1,37 +1,17 @@
 {{ partial "header.html" . }}
-<div class="home-page text-light">
-{{ partial "nav.html" . }}
-	<div class="title">
-		<h1>{{ .Title }}</h1>
-	</div>
+<div class="home-page">
 	{{ range (where .Site.Pages "Type" "index") }}
 		<article>
 			{{ .Content }}
 		</article>
 	{{ end }}
-	<!--
 	<ul style="list-style: none; padding: 0; margin-top: 0;">
-		{{ range (where (where .Site.Pages "Type" "post") "Params.featured" true) }}
+		{{ range (where .Site.Pages "Type" "post") }}
 			<li>
+				<h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
 				<time style="width: 7em; display: inline-block;">{{ .Date.Format "Jan 2, 2006" }}</time>
-				<a href="{{ .Permalink }}">{{ .Title }}</a>
 			</li>
 		{{ end }}
 	</ul>
-	<ul style="list-style: none; padding: 0; margin-top: 0;">
-		{{ range (where (where .Site.Pages "Type" "blurt") "Params.featured" true) }}
-			<li>
-				<time style="width: 7em; display: inline-block;">{{ .Date.Format "Jan 2, 2006" }}</time>
-				<a href="{{ .Permalink }}">{{ .Title }}</a>
-			</li>
-		{{ end }}
-	</ul>
-
-	{{ range (where .Site.Pages "Type" "archive") }}
-	<div style="text-align: right">
-		<a href="{{ .Permalink }}">{{ .Title }}</a>
-	</div>
-	{{ end }}
-	-->
 </div>
 {{ partial "footer.html" . }}

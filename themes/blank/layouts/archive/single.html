@@ -1,28 +1,26 @@
 {{ partial "header.html" . }}
-<div class="text-light">
-	{{ partial "nav.html" . }}
-	<div class="title">
-		<h1>{{ .Title }}</h1>
-	</div>
-	<article>
-		{{ .Content }}
-	</article>
-	<ul style="list-style: none; padding: 0; margin-top: 0;">
-			{{ range (where .Site.Pages "Type" "year") }}
-			<li><h3 id="{{ anchorize .Title }}">{{ .Title }}</h3></li>
-			{{ range (where (where .Site.Pages "Type" "post") ".Date.Year" "==" .Params.year) }}
-			<li>
-				<time style="width: 7em; display: inline-block;">{{ .Date.Format "Jan 2, 2006" }}</time>
-				<a href="{{ .Permalink }}">{{ .Title }}</a>
-			</li>
-			{{ end }}
-			{{ range (where (where .Site.Pages "Type" "blurt") ".Date.Year" "==" .Params.year) }}
-			<li>
-				<time style="width: 7em; display: inline-block;">{{ .Date.Format "Jan 2, 2006" }}</time>
-				<a href="{{ .Permalink }}">{{ .Title }}</a>
-			</li>
-			{{ end }}
-			{{ end }}
-		</ul>
+{{ partial "nav.html" . }}
+<div class="title">
+	<h1>{{ .Title }}</h1>
 </div>
+<article>
+	{{ .Content }}
+</article>
+<ul style="list-style: none; padding: 0; margin-top: 0;">
+	{{ range (where .Site.Pages "Type" "year") }}
+		<li><h3 id="{{ anchorize .Title }}">{{ .Title }}</h3></li>
+		{{ range (where (where .Site.Pages "Type" "post") ".Date.Year" "==" .Params.year) }}
+			<li>
+				<time style="width: 7em; display: inline-block;">{{ .Date.Format "Jan 2, 2006" }}</time>
+				<a href="{{ .Permalink }}">{{ .Title }}</a>
+			</li>
+		{{ end }}
+		{{ range (where (where .Site.Pages "Type" "blurt") ".Date.Year" "==" .Params.year) }}
+			<li>
+				<time style="width: 7em; display: inline-block;">{{ .Date.Format "Jan 2, 2006" }}</time>
+				<a href="{{ .Permalink }}">{{ .Title }}</a>
+			</li>
+		{{ end }}
+	{{ end }}
+</ul>
 {{ partial "footer.html" . }}

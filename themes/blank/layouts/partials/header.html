@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode | default "en-us" }}" style="background-color: #37000e;">
+<html lang="{{ .Site.LanguageCode | default "en-us" }}" style="background-color: white">
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="{{ .Site.BaseURL }}style/background.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="theme-color" content="#1b0b0b">
 	<link rel="icon" href="/favicon.ico">
-	<link rel="shortcut icon" href="/favicon.svg">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i|Playfair+Display:400,900">
+	<link rel="shortcut icon" href="/icon.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>{{ .Title }}</title>
 	{{ with .Site.Params.description }}
@@ -29,13 +27,17 @@
 			m=f.getElementsByTagName('script')[0];
 			o.async=1; o.src=t; o.id='fathom-script';
 			m.parentNode.insertBefore(o,m)
-		})(document, window, 'https://count.colel.dev/tracker.js', 'fathom');
-		fathom('set', 'siteId', 'DNGIH');
+		})(document, window, 'https://count.refactorordie.com/tracker.js', 'fathom');
+		fathom('set', 'siteId', 'NALFU');
 		fathom('trackPageview');
 	</script>
 <style>body { opacity: 0 }</style>
 <noscript><style>body { opacity: 1 }</style></noscript>
 </head>
 <body style="transition: .4s ease opacity;">
-	<div id="page">
+	<div id="page" class="page">
+		<header>
+			<a href="/" class="btn site-link" title="Refactor or die articles">Refactor or die</a>
+			<h1 class="page-title">{{ .Title }}</h1>
+		</header>
 		<main>

@@ -1,6 +1,6 @@
 baseURL = "/"
 languageCode = "en-us"
-title = "Cole Lawrence"
+title = "Refactor or Die"
 publishDir = "public"
 theme = "blank"
 PygmentsCodeFences = true

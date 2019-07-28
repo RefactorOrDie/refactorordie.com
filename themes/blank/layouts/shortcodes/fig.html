@@ -1,0 +1,8 @@
+<figure class="image">
+    <a href="{{.Get "src"}}">
+        <img src={{.Get "src"}}>
+    </a>
+    {{ if isset .Params "caption" }}
+    <figcaption>{{(.Get "caption") | markdownify}}</figcaption>
+    {{ end }}
+</figure>

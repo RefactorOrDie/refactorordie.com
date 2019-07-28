@@ -7,10 +7,10 @@
   padding-left: 0;
 }
 
-.column {
-  padding: 0 1em;
+.column:last-child {
+  padding-right: 0;
 }
 
-img {
-  max-width: 100%;
+.column {
+  padding: 0 1em;
 }

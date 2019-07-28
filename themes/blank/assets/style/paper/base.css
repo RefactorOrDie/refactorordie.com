@@ -1,38 +1,25 @@
 body {
-  font-family: "Libre Baskerville", serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 18px;
   line-height: 143.75%;
-  color: #1d1d1d;
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
   -ms-hyphens: auto;
   hyphens: auto;
 }
 
-h1, h2, h3, h4 {
-  font-size: 32px;
-  font-family: "Playfair Display", serif;
-  font-style: normal;
-  font-weight: 400;
-  color: #797979;
-  margin-bottom: 0.375em;
-  padding-top: 0.675em;
-  line-height: normal;
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 0.75em;
 }
 
-h1 {
-  margin-top: 1em;
-  color: #1d1d1d;
-}
-
-.title {
-  text-align: center;
-}
-.title h1 {
-  font-size: 42px;
-  font-family: "Playfair Display", serif;
-  font-style: normal;
-  font-weight: 900;
+h1, h2, h3 {
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  font-weight: 600;
+  margin-bottom: 0;
 }
 
 p {
@@ -47,81 +34,118 @@ pre, code, kbd, tt, samp {
   line-height: 1.3em;
 }
 
+.image {
+  border: none;
+  margin: 1.5em 0;
+  padding: 0;
+  border-radius: 0;
+  text-align: center;
+}
+
+.image a {
+  text-decoration: none;
+}
+
+figure {
+  margin: 1.25em 0;
+  page-break-inside: avoid;
+}
+
+figcaption {
+  opacity: 0.5;
+  font-size: 85%;
+  margin-top: 0.5em;
+}
+
 .btn {
-  font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-weight: 500;
   border: none;
 }
 
-.text-light {
-  color: rgba(255, 255, 255, 0.9);
-}
-.text-light .btn {
-  color: rgba(255, 255, 255, 0.3);
-}
-.text-light .btn svg {
-  fill: rgba(255, 255, 255, 0.3);
-}
-.text-light h1, .text-light .title h1 {
-  color: rgba(255, 255, 255, 0.9);
-}
-.text-light h2, .text-light h3, .text-light h4 {
-  color: rgba(255, 255, 255, 0.8);
-}
-
-body, .text-dark {
+body {
   color: #1d1d1d;
 }
-body .btn, .text-dark .btn {
+body .btn {
   color: rgba(40, 40, 40, 0.3);
 }
-body .btn svg, .text-dark .btn svg {
+body .btn svg {
   fill: rgba(40, 40, 40, 0.3);
 }
-body .title h1, .text-dark .title h1 {
+body .page-title h1 {
   color: #1d1d1d;
 }
 
 ::selection {
-  background: #fffb00;
+  background: #9fdda9;
 }
 
-body {
+@media only print {
+  body, html, .page {
+    background: white !important;
+  }
+}
+.site-link {
+  text-transform: uppercase;
+  font-family: "Monaco", "Fira Code", "Hack", monospace;
+}
+
+body, html {
   margin: 0;
 }
 
-main {
+.page {
   display: block;
-  padding: 5vw 5vw;
-  margin: 0 auto;
-  max-width: 42rem;
 }
 
+@media only screen {
+  .page {
+    padding: 5vw 5vw;
+    margin: 0 auto;
+    max-width: 42rem;
+  }
+}
+@media only print {
+  img {
+    max-height: 100vh;
+    object-fit: contain;
+  }
+}
+@page {
+  margin: 1in;
+}
 footer {
   margin-top: 4rem;
 }
 
-p > code {
-  border: 0.075rem solid rgba(28, 28, 28, 0.039);
-  border-radius: 0.1rem;
-  background: rgba(245, 245, 245, 0.027);
+pre,
+.code,
+code {
+  background: rgba(135, 131, 120, 0.15);
+  border-radius: 3px;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-size: 85%;
+  tab-size: 2;
 }
 
-pre {
-  max-width: 100%;
+code {
+  color: #eb5757;
+}
+
+.code, pre {
+  padding: 1.5em 1em;
+  scroll-behavior: smooth;
   overflow-x: auto;
+}
+.code > code, pre > code {
+  background: none;
   padding: 0;
-  padding-left: 2ch;
-  border-left: 0.5ch solid rgba(255, 104, 172, 0.164);
+  font-size: 100%;
+  color: inherit;
 }
 
 img {
   max-width: 100%;
-  max-height: 90vh;
-  margin: 0 -8px;
-  display: block;
-  padding: 8px;
-  border: 1px solid #1d1d1d;
 }
 
 ul, ol {
@@ -141,12 +165,29 @@ ul.task-list {
   padding-left: 0;
 }
 
+.column:last-child {
+  padding-right: 0;
+}
+
 .column {
   padding: 0 1em;
 }
 
-img {
-  max-width: 100%;
+body {
+  color: #1d1d1d;
+}
+body .btn {
+  color: rgba(40, 40, 40, 0.3);
+}
+body .btn svg {
+  fill: rgba(40, 40, 40, 0.3);
+}
+body .page-title h1 {
+  color: #1d1d1d;
+}
+
+::selection {
+  background: #9fdda9;
 }
 
 .home-page .home-btn:not(:focus) {
@@ -154,44 +195,8 @@ img {
 }
 
 a, a:visited {
-  color: inherit;
+  color: dodgerblue;
   text-decoration: inherit;
-  position: relative;
-  transition: all 0.2s ease;
-}
-
-a {
-  text-decoration: inherit;
-  border-bottom: 1px solid #78bce9;
-}
-
-a:hover {
-  background: #a3d1f0;
-}
-
-a[href^="/"]:not([href^="//"]),
-a[href*="colel.dev"],
-a[href*="colelawrence.ngrok.io"],
-a[href*="localhost:1313"] {
-  /* Internal weblinks */
-  border-color: #ff006d;
-}
-a[href^="/"]:not([href^="//"]):hover,
-a[href*="colel.dev"]:hover,
-a[href*="colelawrence.ngrok.io"]:hover,
-a[href*="localhost:1313"]:hover {
-  background-color: #f5569b;
-}
-
-a.not-a, a.btn {
-  border: none;
-}
-a.not-a:hover, a.btn:hover {
-  background-color: transparent;
-}
-
-a.not-a {
-  cursor: pointer;
 }
 
 .btn svg {
@@ -199,8 +204,6 @@ a.not-a {
   margin-left: 1rem;
 }
 
-/* a:hover { border-bottom-style: dashed; } */
-/* a:focus { background: #ffb4ce } */
 [id] > a {
   background: transparent;
   transition: all 0.2s ease-in-out;
@@ -210,160 +213,31 @@ a.not-a {
   margin-right: -1em;
 }
 
+a:hover,
 [id]:hover > a,
 [id]:target > a {
-  background: #fffb00;
-  color: black !important;
+  text-decoration: underline !important;
 }
 
 h1 > a, h2 > a, h3 > a, h4 > a {
   border: none !important;
 }
 
-#menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  padding: 5vw 5vw;
-  z-index: 900;
-  pointer-events: none;
-  background: rgba(234, 234, 234, 0.99);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-#menu:target {
-  pointer-events: all;
-  opacity: 1;
-}
-#menu:target .reveal {
-  opacity: 1;
-}
-#menu > * {
-  max-width: 42rem;
-  margin: 0 auto;
-}
-#menu table {
-  margin-top: 1em;
-  border-spacing: 0;
-  border-collapse: collapse;
-}
-#menu tr td.div {
-  height: 1px;
-  padding: 0;
-  background: rgba(0, 0, 0, 0.1);
-}
-#menu .reveal {
-  opacity: 0;
-  transform: translateY(0px);
-  position: relative;
-  transition: all 0.2s;
-}
-#menu:target .reveal[data-order="0"] {
-  transform: translateY(0px);
-  transition-delay: 0s;
-}
-#menu:target .reveal[data-order="1"] {
-  transform: translateY(1px);
-  transition-delay: 0.1s;
-}
-#menu:target .reveal[data-order="2"] {
-  transform: translateY(2px);
-  transition-delay: 0.2s;
-}
-#menu:target .reveal[data-order="3"] {
-  transform: translateY(3px);
-  transition-delay: 0.3s;
-}
-#menu:target .reveal[data-order="4"] {
-  transform: translateY(4px);
-  transition-delay: 0.4s;
-}
-#menu:target .reveal[data-order="5"] {
-  transform: translateY(5px);
-  transition-delay: 0.5s;
-}
-#menu:target .reveal[data-order="6"] {
-  transform: translateY(6px);
-  transition-delay: 0.6s;
-}
-#menu:target .reveal[data-order="7"] {
-  transform: translateY(7px);
-  transition-delay: 0.7s;
-}
-#menu:target .reveal[data-order="8"] {
-  transform: translateY(8px);
-  transition-delay: 0.8s;
-}
-#menu:target .reveal[data-order="9"] {
-  transform: translateY(9px);
-  transition-delay: 0.9s;
-}
-#menu:target .reveal[data-order="10"] {
-  transform: translateY(10px);
-  transition-delay: 1s;
-}
-#menu tr td {
-  vertical-align: top;
-  margin: 0;
-}
-#menu tr.section td:first-child {
-  padding-left: 5vw;
-}
-#menu tr.section td:last-child {
-  padding-right: calc(1rem + 20px);
-  padding-bottom: 1em;
-}
-#menu .label {
-  color: #797979;
-  display: block;
-}
-#menu .link {
+body {
   color: #1d1d1d;
-  display: block;
-  text-align: right;
 }
-#menu .link, #menu .label {
-  padding-top: 0.2em;
-  padding-bottom: 0.8em;
+body .btn {
+  color: rgba(40, 40, 40, 0.3);
 }
-
-header {
-  height: calc(26px + 5vw);
+body .btn svg {
+  fill: rgba(40, 40, 40, 0.3);
 }
-
-#scroll-heading {
-  background: inherit;
-}
-#scroll-heading .mini-title {
-  display: none;
-  float: left;
-  font-family: "Playfair Display", serif;
-  font-style: normal;
-  font-weight: 900;
+body .page-title h1 {
+  color: #1d1d1d;
 }
 
-#scroll-heading.sticky {
-  background: #EAEAEA;
-  opacity: 1;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: #eeeeeeee;
-  padding: 2.5vw 5vw;
-  transition: background 0.2s ease;
-  z-index: 400;
-}
-#scroll-heading.sticky.show-mini-title .mini-title {
-  display: block;
-}
-#scroll-heading.sticky.show-mini-title .home-btn {
-  display: none;
-}
-#scroll-heading.sticky .btn {
-  color: #797979;
+::selection {
+  background: #9fdda9;
 }
 
 pre span.o {

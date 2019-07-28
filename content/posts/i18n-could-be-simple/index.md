@@ -16,8 +16,11 @@ I'm testing out I'm testing out I'm testing out I'm testing out I'm testing out 
 
 Cool image!
 
-![gmail](./images/gmail.png)
+{{< fig src="./images/gmail.png"
+    caption="Hello world"
+ >}}
+
 {{< /dual >}}
 ### Heading 3
 
-I'm testing out I'm testing out I'm testing out I'm testing out I'm testing out I'm testing out I'm testing out I'm testing out I'm testing out 
+I'm testing out [I'm testing out](//google.com) I'm testing out I'm testing out I'm testing out I'm testing out I'm testing out I'm testing out I'm testing out 

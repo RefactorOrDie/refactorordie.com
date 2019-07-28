@@ -5,43 +5,78 @@ $color-body-black: $color-body-black;
 $color-subhead-black: $color-subhead-black;
 $color-highlight: $color-highlight;
 
-body {
+@media only print {
+  body, html, .page {
+    background: white !important;
+  }
+}
+
+.site-link {
+  text-transform: uppercase;
+  font-family: 'Monaco', 'Fira Code', 'Hack', monospace;
+}
+
+body, html {
   margin: 0;
 }
 
-main {
+.page {
   display: block;
-  padding: $length-top $length-sides;
-  margin: 0 auto;
-  max-width: $length-max-width;
+}
+
+@media only screen {
+  .page {
+    padding: $length-top $length-sides;
+    margin: 0 auto;
+    max-width: $length-max-width;
+  }
+}
+
+@media only print {
+  img {
+    max-height: 100vh;
+    object-fit: contain;
+  }
+}
+
+@page {
+  margin: 1in;
 }
 
 footer {
   margin-top: 4rem;
 }
 
-p > code {
-  border: .075rem solid rgba(28, 28, 28, 0.039);
-  border-radius: .1rem;
-  background: rgba(245, 245, 245, 0.027);
+pre,
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
 }
 
-pre {
-  max-width: 100%;
+code {
+	color: #eb5757;
+}
+
+.code, pre {
+  padding: 1.5em 1em;
+  scroll-behavior: smooth;
   overflow-x: auto;
-  padding: 0;
-  padding-left: 2ch;
-  border-left: .5ch solid rgba(255, 104, 172, 0.164);
+
+  & > code {
+    background: none;
+    padding: 0;
+    font-size: 100%;
+    color: inherit;
+  }
 }
 
 img {
   max-width: 100%;
-  max-height: 90vh;
-  margin: 0 -8px;
-  display: block;
-
-  padding: 8px;
-  border: 1px solid $color-body-black;
 }
 
 ul, ol {

@@ -9,48 +9,14 @@ $color-highlight: $color-highlight;
 }
 
 a, a:visited {
-  color: inherit;
+  color: dodgerblue;
   text-decoration: inherit;
-  position: relative;
-  transition: all .2s ease;
-}
-a {
-  text-decoration: inherit;
-  border-bottom: 1px solid #78bce9;
-}
-a:hover {
-  background: #a3d1f0;
-}
-a[href^="/"]:not([href^="//"]),
-a[href*="colel.dev"],
-a[href*="colelawrence.ngrok.io"],
-a[href*="localhost:1313"] {
-  /* Internal weblinks */
-  border-color: #ff006d;
-
-  &:hover {
-    background-color: #f5569b;
-  }
-}
-
-a.not-a, a.btn {
-  border: none;
-  &:hover {
-    background-color: transparent;
-  }
-}
-
-a.not-a {
-  cursor: pointer;
 }
 
 .btn svg {
   vertical-align: bottom;
   margin-left: $length-space;
 }
-
-/* a:hover { border-bottom-style: dashed; } */
-/* a:focus { background: #ffb4ce } */
 
 [id] > a {
   background: transparent;
@@ -61,19 +27,10 @@ a.not-a {
   margin-right: -1em;
 }
 
+a:hover,
 [id]:hover > a,
 [id]:target > a {
-  background: $color-highlight;
-  color: black !important;
+  text-decoration: underline !important;
 }
-
-// [id]:hover>a::before,
-// [id]:target>a::before {
-//   content: '🔗';
-//   position: absolute;
-//   left: 0em;
-//   font-style: normal;
-//   padding-right: .5ch;
-// }
 
 h1>a, h2>a, h3>a, h4>a { border: none !important; }
