@@ -16,7 +16,7 @@ jobs:
           name: Run commands to see results on std-out in the circleci web gui log
           command: |
              pwd
-             hugo env
+             ./hugo env
       - deploy:
           name: deploy to AWS
           command: |
