@@ -1,0 +1,9 @@
+{{ partial "header.html" . }}
+<div class="home-page text-light">
+{{ partial "nav.html" . }}
+	<div class="title">
+		<h1>{{ .Title }}</h1>
+	</div>
+	{{ .Content }}
+</div>
+{{ partial "footer.html" . }}

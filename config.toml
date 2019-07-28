@@ -5,3 +5,4 @@ publishDir = "public"
 theme = "blank"
 PygmentsCodeFences = true
 pygmentsuseclasses = true
+ignoreFiles = [ "new-post$", "serve$" ]

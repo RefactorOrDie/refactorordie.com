@@ -2,7 +2,6 @@
   <nav id="scroll-heading">
     <div>
       <a class="btn home-btn" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
-      <a href="#" class="not-a mini-title">{{ .Title }}</a>
       <a class="btn" href="#menu" style="float: right;">
         Menu<svg width="20" height="24" viewBox="0 0 20 24" fill="none"
           xmlns="http://www.w3.org/2000/svg">
@@ -13,14 +12,14 @@
     </div>
   </nav>
 </header>
-<div id="menu" href="#" class="not-a text-dark" style="display: block">
+<div id="menu" class="not-a text-dark" style="display: block">
   <nav style="display: block">
     <div>
       <a class="btn" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
       <a class="btn" href="javascript:history.back()" style="float: right;">
         Close<svg width="20" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z"/>
-        </svg>        
+        </svg>
       </a>
     </div>
   </nav>
