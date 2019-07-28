@@ -12,9 +12,9 @@ jobs:
       - run: apk add --update python python-dev py-pip build-base
       - run: pip install awscli
       - run: HUGO_ENV=production hugo -v -d $HUGO_BUILD_DIR
-      - run: |
-          htmlproofer $HUGO_BUILD_DIR --allow-hash-href --check-html \
-          --empty-alt-ignore --disable-external
+      # - run: |
+      #     htmlproofer $HUGO_BUILD_DIR --allow-hash-href --check-html \
+      #     --empty-alt-ignore --disable-external
       - deploy:
           name: deploy to AWS
           command: |
