@@ -21,7 +21,7 @@ jobs:
           name: deploy to AWS
           command: |
             if [ "${CIRCLE_BRANCH}" = "master" ]; then
-              ./s3deploy -source=$HUGO_BUILD_DIR -region=us-east-1 -bucket=colel.dev -path=.
+              ./s3deploy -source=$HUGO_BUILD_DIR -region=us-east-1 -bucket=colel.dev -path=/
             else
               echo "Not master branch, dry run only"
             fi
