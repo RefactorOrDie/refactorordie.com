@@ -15,7 +15,7 @@ jobs:
       - run: |
           htmlproofer $HUGO_BUILD_DIR --allow-hash-href --check-html \
           --empty-alt-ignore --disable-external
-       - deploy:
+      - deploy:
           name: deploy to AWS
           command: |
             if [ "${CIRCLE_BRANCH}" = "master" ]; then
