@@ -9,17 +9,15 @@ jobs:
     steps:
       - run: apk update && apk add git
       - checkout
-      - run: apk add --update python python-dev py-pip build-base
-      - run: pip install awscli
+      - run: git submodule sync && git submodule update --init
+      - run: curl -L https://github.com/bep/s3deploy/releases/download/v2.0.1/s3deploy_2.0.1_Linux-64bit.tar.gz | tar xvz
       - run: HUGO_ENV=production hugo -v -d $HUGO_BUILD_DIR
-      # - run: |
-      #     htmlproofer $HUGO_BUILD_DIR --allow-hash-href --check-html \
-      #     --empty-alt-ignore --disable-external
+      - run: htmlproofer $HUGO_BUILD_DIR --allow-hash-href --check-html --empty-alt-ignore --disable-external
       - deploy:
           name: deploy to AWS
           command: |
             if [ "${CIRCLE_BRANCH}" = "master" ]; then
-              aws s3 sync $HUGO_BUILD_DIR s3://colel.dev/ --delete
+              ./s3deploy -source=$HUGO_BUILD_DIR -region=us-east-1 -bucket=colel.dev -path=.
             else
               echo "Not master branch, dry run only"
             fi
