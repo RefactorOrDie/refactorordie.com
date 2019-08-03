@@ -24,15 +24,8 @@ h1, h2, h3 {
 }
 
 p {
-  margin: 1em auto;
-  line-height: 183.75%;
-  text-align: justify;
-}
-
-pre, code, kbd, tt, samp {
-  font-family: 'Monaco', 'Fira Code', 'Hack', monospace;
-  font-size: 13px;
-  line-height: 1.3em;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
 }
 
 .image {

@@ -5,22 +5,33 @@ type: "post"
 draft: true
 ---
 
-{{< dual >}}
-## Heading 2?
+The way i18n works in most implementations I've seen consist of taking all natural language instances in an app and replacing them with some translation chooser which takes a translation key and looks up the corresponding natural language value for the current language.
 
-I'm testing out I'm testing out I'm testing out I'm testing out I'm testing out I'm testing out I'm testing out I'm testing out I'm testing out 
+
+So, lets say I have the following logic: `alert("I have ")` which sends a lovely message to the browser <button onClick="alert('Hello world!')">Send alert</button>
+
+
+{{< dual >}}
+
+Enabling an application to support many languages can be a deceptively simple.
+
+For this reason it is an incredibly common pitfall for development teams 
+
+<button onClick="alert('Hello world!')">Tell the people</button>
 
 ============
 
-## Blah blah blah
+What starts as a kind blend of formatting and natural language...
 
-Cool image!
+```html
+<p>Hello, world!</p>
+```
+...can easily become a mess of indirection.
 
-{{< fig src="./images/gmail.png"
-    caption="Hello world"
- >}}
+```html
+<p>{
+  translate("helloWorldMsg")
+}</p>
+```
 
 {{< /dual >}}
-### Heading 3
-
-I'm testing out [I'm testing out](//google.com) I'm testing out I'm testing out I'm testing out I'm testing out I'm testing out I'm testing out I'm testing out 
