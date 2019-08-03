@@ -28,6 +28,7 @@
 		"pasteImage.filePathConfirmInputBoxMode": "onlyName",
 		"workbench.activityBar.visible": false,
 		"workbench.statusBar.feedback.visible": false,
+		"scm.diffDecorations": "none",
 		"workbench.statusBar.visible": false,
 		"workbench.colorTheme": "Gray Matter Light",
 		"workbench.editor.labelFormat": "short",
@@ -41,7 +42,8 @@
 			"[Verdandi]": {
 				"editorGroup.border": "#00000008"
 			}
-		}
+		},
+		"git.decorations.enabled": false
 	},
 	"extensions": {
 		"recommendations": [
