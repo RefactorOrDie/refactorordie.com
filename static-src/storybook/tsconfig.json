@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "outDir": "./lib/",
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "strict": true,
+    "sourceMap": true,
+    "declaration": true,
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "target": "es5",
+    "jsx": "react",
+    "lib": ["es6", "dom"]
+  },
+  "include": ["stories/*.ts", "stories/**/*.ts", "stories/**/*.tsx"],
+  "exclude": ["./node_modules/*", "**/node_modules"]
+}
