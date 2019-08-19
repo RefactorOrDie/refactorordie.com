@@ -9,9 +9,15 @@ import {
   TodoActionTypes,
   TOGGLE_TODO,
   DELETE_TODO,
-  ADD_TODO
+  ADD_TODO,
+  CHANGE_TODO_LABEL
 } from "./redux/types";
-import { addTodo, deleteTodo, toggleTodo } from "./redux/actions";
+import {
+  addNewTodo,
+  deleteTodo,
+  toggleTodo,
+  changeNewTodoLabel
+} from "./redux/actions";
 
 declare const todosService: TodosService;
 
@@ -56,7 +62,12 @@ function todosReducer(
     case ADD_TODO:
       return {
         ...state,
-        todos: [...state.todos, todosService.createTodo(action.label)]
+        todos: [...state.todos, todosService.createTodo(state.newTodoLabel)]
+      };
+    case CHANGE_TODO_LABEL:
+      return {
+        ...state,
+        newTodoLabel: action.label
       };
     default:
       const _exhaust: never = action;
@@ -83,14 +94,12 @@ export function AppRedux(props: { todosService: TodosService }) {
             key={todo.id}
             style={{ textDecoration: todo.done ? "line-through" : "none" }}
             className="list-group-item"
-            {...onEnterOrClick(() =>
-              dispatch(toggleTodo(todo.id))
-            )}
+            {...onEnterOrClick(() => dispatch(toggleTodo(todo.id)))}
           >
             {todo.label}&nbsp;
             <button
               className="float-right btn btn-light btn-sm"
-              {...onEnterOrClick(()=> dispatch(deleteTodo(todo.id)))}
+              {...onEnterOrClick(() => dispatch(deleteTodo(todo.id)))}
             >
               Delete
             </button>
@@ -99,25 +108,18 @@ export function AppRedux(props: { todosService: TodosService }) {
       </ul>
       <br />
       <form
-        onSubmit={preventDefaultThen(() => dispatch(addTodo()))}
+        onSubmit={preventDefaultThen(() => dispatch(addNewTodo()))}
         className="form"
       >
         <label htmlFor="new-todo-label">New Todo</label>
         <div className="input-group">
-          <Observer
-            of={newTodoLabel}
-            next={value => (
-              <>
-                <input
-                  id="new-todo-label"
-                  type="text"
-                  className="form-control"
-                  placeholder="Todo title"
-                  value={value}
-                  onChange={changeValue(bloc.changeNewTodoLabel)}
-                />
-              </>
-            )}
+          <input
+            id="new-todo-label"
+            type="text"
+            className="form-control"
+            placeholder="Todo title"
+            value={newTodoLabel}
+            onChange={changeValue(value => dispatch(changeNewTodoLabel(value)))}
           />
           <div className="input-group-append">
             <button type="submit" className="btn btn-primary">

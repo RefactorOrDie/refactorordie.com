@@ -1,12 +1,12 @@
 import { ADD_TODO, DELETE_TODO, TodoActionTypes, TOGGLE_TODO, CHANGE_TODO_LABEL } from "./types";
 
-export const addTodo = (): TodoActionTypes => ({
-  type: ADD_TODO,
-});
-
-export const updateLabel = (label: string): TodoActionTypes => ({
+export const changeNewTodoLabel = (label: string): TodoActionTypes => ({
   type: CHANGE_TODO_LABEL,
   label,
+});
+
+export const addNewTodo = (): TodoActionTypes => ({
+  type: ADD_TODO,
 });
 
 export const deleteTodo = (todo_id: string): TodoActionTypes => ({
