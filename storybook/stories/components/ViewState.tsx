@@ -1,27 +1,68 @@
+import { px, em } from "csx";
 import React, { useMemo } from "react";
 import { style } from "typestyle";
-import { px } from "csx";
+import { useAnimationName } from "./useAnimationName";
+import { flash } from "./flash";
+import { Observable } from "rxjs";
+import { Observer } from "observer-react";
+
+export function ViewObservableState({
+  label,
+  value,
+  maxLen,
+  maxLines
+}: {
+  label: string;
+  value: Observable<any>;
+  maxLen?: number;
+  maxLines?: number;
+}) {
+  return (
+    <Observer
+      of={value}
+      next={value => (
+        <ViewState
+          label={label}
+          value={value}
+          maxLen={maxLen}
+          maxLines={maxLines}
+        />
+      )}
+    />
+  );
+}
 
 export function ViewState({
   label,
   value,
-  maxLen = 28
+  maxLen = 28,
+  maxLines = 1
 }: {
   label: string;
   value: any;
   maxLen?: number;
+  maxLines?: number;
 }) {
   const valueString = useMemo(() => {
     const str = JSON.stringify(value);
-    if (str.length < maxLen) {
-      return str;
+    const max = maxLen * maxLines;
+    if (str.length < max) {
+      return str.replace(/\},\{/g, "},\n{");
     } else {
-      return str.slice(0, maxLen - 3) + "...";
+      return str.slice(0, max - 3) + "...";
     }
   }, [value]);
+
+  const flashAnimName = useAnimationName(flash("#252D52"), [valueString]);
+
   return (
     <div
+      style={{
+        animationName: flashAnimName
+      }}
       className={style({
+        textAlign: "left",
+        animationDuration: "2s",
         background: "#C6D6DF",
         border: "4px solid #252D52",
         borderRadius: px(8),
@@ -56,11 +97,27 @@ export function ViewState({
           fontSize: px(24),
           paddingLeft: px(18),
           paddingRight: px(16),
+          paddingBottom: px(4),
           fontFamily: "'Nunito Sans Black', 'Nunito Sans', sans-serif",
-          fontWeight: 900,
+          fontWeight: 900
         })}
       >
         {label}
+        <div className="float-right" style={{ marginLeft: px(8) }}>
+          <svg
+            width="28"
+            height="28"
+            viewBox="0 0 28 28"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M27.1213 6.12131L21.8787 0.878687C21.3161 0.316077 20.553 4.16048e-06 19.7574 0H3C1.34312 0 0 1.34312 0 3V25C0 26.6569 1.34312 28 3 28H25C26.6569 28 28 26.6569 28 25V8.24263C28 7.44698 27.6839 6.68392 27.1213 6.12131ZM17 3V8H9V3H17ZM24.625 25H3.375C3.27554 25 3.18016 24.9605 3.10983 24.8902C3.03951 24.8198 3 24.7245 3 24.625V3.375C3 3.27554 3.03951 3.18016 3.10983 3.10984C3.18016 3.03951 3.27554 3 3.375 3H6V9.5C6 10.3284 6.67156 11 7.5 11H18.5C19.3284 11 20 10.3284 20 9.5V3.24263L24.8902 8.13281C24.925 8.16764 24.9526 8.20898 24.9715 8.25448C24.9903 8.29998 25 8.34875 25 8.398V24.625C25 24.7245 24.9605 24.8198 24.8902 24.8902C24.8198 24.9605 24.7245 25 24.625 25ZM14 12.5C10.9673 12.5 8.5 14.9673 8.5 18C8.5 21.0327 10.9673 23.5 14 23.5C17.0327 23.5 19.5 21.0327 19.5 18C19.5 14.9673 17.0327 12.5 14 12.5ZM14 20.5C12.6215 20.5 11.5 19.3785 11.5 18C11.5 16.6215 12.6215 15.5 14 15.5C15.3785 15.5 16.5 16.6215 16.5 18C16.5 19.3785 15.3785 20.5 14 20.5Z"
+              fill="#252D52"
+              fill-opacity="0.4"
+            />
+          </svg>
+        </div>
       </div>
       <div
         className={style({
@@ -72,20 +129,15 @@ export function ViewState({
         })}
       >
         <div style={{ padding: px(8), display: "inline-block" }}>
-          <svg
-            width="14"
-            height="15"
-            viewBox="0 0 14 15"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
+          <div
+            style={{
+              padding: px(8),
+              maxWidth: em(maxLen),
+              wordBreak: "break-word"
+            }}
           >
-            <path
-              d="M13.5607 3.27927L10.9393 0.470725C10.658 0.169327 10.2765 2.22883e-06 9.87869 0H1.5C0.671562 0 0 0.719531 0 1.60714V13.3929C0 14.2805 0.671562 15 1.5 15H12.5C13.3284 15 14 14.2805 14 13.3929V4.41569C14 3.98945 13.842 3.58067 13.5607 3.27927V3.27927ZM8.5 1.60714V4.28571H4.5V1.60714H8.5ZM12.3125 13.3929H1.6875C1.63777 13.3929 1.59008 13.3717 1.55492 13.334C1.51975 13.2963 1.5 13.2452 1.5 13.192V1.80804C1.5 1.75476 1.51975 1.70366 1.55492 1.66598C1.59008 1.62831 1.63777 1.60714 1.6875 1.60714H3V5.08929C3 5.53309 3.33578 5.89286 3.75 5.89286H9.25C9.66422 5.89286 10 5.53309 10 5.08929V1.73712L12.4451 4.35686C12.4625 4.37552 12.4763 4.39767 12.4857 4.42204C12.4952 4.44642 12.5 4.47255 12.5 4.49893V13.192C12.5 13.2452 12.4802 13.2963 12.4451 13.334C12.4099 13.3717 12.3622 13.3929 12.3125 13.3929V13.3929ZM7 6.69643C5.48366 6.69643 4.25 8.0182 4.25 9.64286C4.25 11.2675 5.48366 12.5893 7 12.5893C8.51634 12.5893 9.75 11.2675 9.75 9.64286C9.75 8.0182 8.51634 6.69643 7 6.69643ZM7 10.9821C6.31075 10.9821 5.75 10.3813 5.75 9.64286C5.75 8.90437 6.31075 8.30357 7 8.30357C7.68925 8.30357 8.25 8.90437 8.25 9.64286C8.25 10.3813 7.68925 10.9821 7 10.9821Z"
-              fill="#252D52"
-              fillOpacity="0.4"
-            />
-          </svg>
-          <span style={{ marginLeft: px(8) }}>{valueString}</span>
+            {valueString}
+          </div>
         </div>
       </div>
     </div>
