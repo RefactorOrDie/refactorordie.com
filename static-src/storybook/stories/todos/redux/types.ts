@@ -1,15 +1,15 @@
-export const ADD_TODO = "ADD_TODO";
 export const CHANGE_TODO_LABEL = "CHANGE_TODO_LABEL";
+export const ADD_TODO = "ADD_TODO";
 export const DELETE_TODO = "DELETE_TODO";
 export const TOGGLE_TODO = "TOGGLE_TODO";
 
-export interface AddTodoAction {
-  type: typeof ADD_TODO;
-}
-
-export interface ChangeLabelAction {
+export interface ChangeTodoLabelAction {
   type: typeof CHANGE_TODO_LABEL;
   label: string;
+}
+
+export interface AddTodoAction {
+  type: typeof ADD_TODO;
 }
 
 export interface DeleteTodoAction {
@@ -24,6 +24,6 @@ export interface ToggleTodoAction {
 
 export type TodoActionTypes =
   | AddTodoAction
-  | ChangeLabelAction
+  | ChangeTodoLabelAction
   | DeleteTodoAction
   | ToggleTodoAction;

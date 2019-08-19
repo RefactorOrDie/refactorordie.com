@@ -12,7 +12,12 @@ import {
   ADD_TODO,
   CHANGE_TODO_LABEL
 } from "./redux/types";
-import { addTodo, deleteTodo, toggleTodo, updateLabel } from "./redux/actions";
+import {
+  addNewTodo,
+  deleteTodo,
+  toggleTodo,
+  changeNewTodoLabel
+} from "./redux/actions";
 
 declare const todosService: TodosService;
 
@@ -60,7 +65,10 @@ function todosReducer(
         todos: [...state.todos, todosService.createTodo(state.newTodoLabel)]
       };
     case CHANGE_TODO_LABEL:
-      return state;
+      return {
+        ...state,
+        newTodoLabel: action.label
+      };
     default:
       const _exhaust: never = action;
       return _exhaust;
@@ -100,7 +108,7 @@ export function AppRedux(props: { todosService: TodosService }) {
       </ul>
       <br />
       <form
-        onSubmit={preventDefaultThen(() => dispatch(addTodo()))}
+        onSubmit={preventDefaultThen(() => dispatch(addNewTodo()))}
         className="form"
       >
         <label htmlFor="new-todo-label">New Todo</label>
@@ -111,7 +119,7 @@ export function AppRedux(props: { todosService: TodosService }) {
             className="form-control"
             placeholder="Todo title"
             value={newTodoLabel}
-            onChange={changeValue(value => dispatch(updateLabel(value)))}
+            onChange={changeValue(value => dispatch(changeNewTodoLabel(value)))}
           />
 
           <div className="input-group-append">

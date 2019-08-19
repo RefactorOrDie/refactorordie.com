@@ -1,15 +1,15 @@
+// @ts-check
 /* eslint-disable */
 
 const path = require('path');
 
 const USE_SOURCEMAPS = true;
-const IS_DEVELOPMENT = false;
 
 /** @param {string[]} seg */
 const root = (...seg) => path.resolve(__dirname, ...seg);
 
-/** @type {import("webpack").Configuration} */
-module.exports = {
+/** @type {(isDev: boolean) => import("webpack").Configuration} */
+module.exports = isDev => ({
   module: {
     rules: [
       {
@@ -17,8 +17,8 @@ module.exports = {
         use: {
           loader: require.resolve('ts-loader'),
           options: {
-            transpileOnly: IS_DEVELOPMENT,
-            experimentalWatchApi: IS_DEVELOPMENT,
+            transpileOnly: isDev,
+            experimentalWatchApi: isDev,
             compilerOptions: {
               sourceMap: USE_SOURCEMAPS,
               // declaration: USE_SOURCEMAPS,
@@ -30,7 +30,7 @@ module.exports = {
       },
     ],
   },
-  devtool: IS_DEVELOPMENT
+  devtool: isDev
     ? (USE_SOURCEMAPS
       ? 'inline-source-map'
       : 'eval')
@@ -42,8 +42,8 @@ module.exports = {
     // webpack has the ability to generate path info in the output bundle. However, this puts garbage collection pressure on projects that bundle thousands of modules.
     pathinfo: USE_SOURCEMAPS,
   },
-  mode: IS_DEVELOPMENT ? 'development' : 'production',
-  optimization: IS_DEVELOPMENT
+  mode: isDev ? 'development' : 'production',
+  optimization: isDev
     ? {
         removeAvailableModules: false,
         removeEmptyChunks: false,
@@ -54,4 +54,4 @@ module.exports = {
         removeEmptyChunks: true,
         usedExports: true,
       },
-};
+});
