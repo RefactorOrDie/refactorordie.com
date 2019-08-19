@@ -45,7 +45,7 @@ export function App(props: { todosService: TodosService }) {
         <label htmlFor="new-todo-label">New Todo</label>
         <div className="input-group">
           <Observer
-            of={bloc.newTodoLabel}
+            of={bloc.newTodoTitle}
             next={value => (
               <>
                 <input
@@ -54,7 +54,7 @@ export function App(props: { todosService: TodosService }) {
                   className="form-control"
                   placeholder="Todo title"
                   value={value}
-                  onChange={changeValue(bloc.changeNewTodoLabel)}
+                  onChange={changeValue(bloc.updateTitle)}
                 />
               </>
             )}

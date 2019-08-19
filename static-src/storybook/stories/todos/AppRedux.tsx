@@ -1,88 +1,35 @@
-import { Observer } from "observer-react";
-import React, { useMemo } from "react";
-import { changeValue, onEnterOrClick, preventDefaultThen } from "../utils";
-import { TodosService, Todo } from "./Todos.service";
-
+import React from "react";
+import { Provider, shallowEqual, useDispatch, useSelector } from "react-redux";
 import { createStore, Dispatch } from "redux";
-import { useDispatch, useStore, useSelector } from "react-redux";
-import {
-  TodoActionTypes,
-  TOGGLE_TODO,
-  DELETE_TODO,
-  ADD_TODO,
-  CHANGE_TODO_LABEL
-} from "./redux/types";
+import { changeValue, onEnterOrClick, preventDefaultThen } from "../utils";
 import {
   addNewTodo,
+  changeNewTodoTitle,
   deleteTodo,
-  toggleTodo,
-  changeNewTodoLabel
+  toggleTodo
 } from "./redux/actions";
-
-declare const todosService: TodosService;
-
-type TodosState = {
-  newTodoLabel: string;
-  todos: Todo[];
-};
-
-const initialState: TodosState = {
-  newTodoLabel: "",
-  todos: []
-};
-
-function todosReducer(
-  state = initialState,
-  action: TodoActionTypes
-): TodosState {
-  switch (action.type) {
-    case TOGGLE_TODO:
-      return {
-        ...state,
-        todos: state.todos.map(originalTodo => {
-          if (originalTodo.id === action.todo_id) {
-            // flip todo item
-            return {
-              ...originalTodo,
-              done: !originalTodo.done
-            };
-          } else {
-            return originalTodo;
-          }
-        })
-      };
-    case DELETE_TODO:
-      return {
-        ...state,
-        todos: state.todos.filter(originalTodo => {
-          // filter out todo
-          return originalTodo.id !== action.todo_id;
-        })
-      };
-    case ADD_TODO:
-      return {
-        ...state,
-        todos: [...state.todos, todosService.createTodo(state.newTodoLabel)]
-      };
-    case CHANGE_TODO_LABEL:
-      return {
-        ...state,
-        newTodoLabel: action.label
-      };
-    default:
-      const _exhaust: never = action;
-      return _exhaust;
-  }
-}
-
-const store = createStore(todosReducer);
+import { TodoActionTypes } from "./redux/types";
+import { createTodosReducer, TodosState } from "./Store";
+import { Todo, TodosService } from "./Todos.service";
 
 export function AppRedux(props: { todosService: TodosService }) {
+  const store = createStore(createTodosReducer(props.todosService));
+  return (
+    <Provider store={store}>
+      <TodosAppView />
+    </Provider>
+  );
+}
+
+function TodosAppView() {
   const dispatch = useDispatch<Dispatch<TodoActionTypes>>();
-  const store = useStore<TodosState>();
-  const todos = useSelector<TodosState, Todo[]>(state => state.todos);
+  const todos = useSelector<TodosState, Todo[]>(
+    state => state.todos,
+    shallowEqual
+  );
   const newTodoLabel = useSelector<TodosState, string>(
-    state => state.newTodoLabel
+    state => state.newTodoLabel,
+    shallowEqual
   );
 
   return (
@@ -119,7 +66,7 @@ export function AppRedux(props: { todosService: TodosService }) {
             className="form-control"
             placeholder="Todo title"
             value={newTodoLabel}
-            onChange={changeValue(value => dispatch(changeNewTodoLabel(value)))}
+            onChange={changeValue(value => dispatch(changeNewTodoTitle(value)))}
           />
 
           <div className="input-group-append">

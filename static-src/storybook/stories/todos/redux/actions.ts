@@ -1,7 +1,7 @@
-import { ADD_TODO, DELETE_TODO, TodoActionTypes, TOGGLE_TODO, CHANGE_TODO_LABEL } from "./types";
+import { ADD_TODO, DELETE_TODO, TodoActionTypes, TOGGLE_TODO, CHANGE_NEW_TODO_TITLE } from "./types";
 
-export const changeNewTodoLabel = (label: string): TodoActionTypes => ({
-  type: CHANGE_TODO_LABEL,
+export const changeNewTodoTitle = (label: string): TodoActionTypes => ({
+  type: CHANGE_NEW_TODO_TITLE,
   label,
 });
 

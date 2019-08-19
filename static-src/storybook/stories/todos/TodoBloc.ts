@@ -4,8 +4,8 @@ import { Todo, TodosService } from './Todos.service';
 
 export interface TodoBloc {
   todos: Observable<Todo[]>;
-  newTodoLabel: Observable<string>;
-  changeNewTodoLabel(label: string): void;
+  newTodoTitle: Observable<string>;
+  updateTitle(label: string): void;
   saveTodo(): void;
   toggleTodo(todoId: string): void;
   deleteTodo(todoId: string): void;
@@ -48,7 +48,7 @@ export function createTodoBloc(service: TodosService): TodoBloc {
         })
       );
     },
-    changeNewTodoLabel(label: string) {
+    updateTitle(label: string) {
       newTodoLabel.next(label);
     },
     saveTodo() {
@@ -58,7 +58,7 @@ export function createTodoBloc(service: TodosService): TodoBloc {
       ]);
       newTodoLabel.next('');
     },
-    newTodoLabel,
+    newTodoTitle: newTodoLabel,
     todos,
   };
 }
