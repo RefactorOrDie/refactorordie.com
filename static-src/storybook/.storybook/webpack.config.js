@@ -1,5 +1,4 @@
 // @ts-check
-const path = require('path');
 // your app's webpack.config.js
 const createCustom = require('../webpack.config.js');
 
