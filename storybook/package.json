@@ -1,7 +1,7 @@
 {
   "scripts": {
     "storybook": "start-storybook --port 5888",
-    "build-storybook": "build-storybook --output-dir ../../static/storybook"
+    "build-storybook": "build-storybook --output-dir ../static/storybook"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
