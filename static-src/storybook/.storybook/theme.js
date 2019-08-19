@@ -13,8 +13,8 @@ export default create({
   appBorderRadius: 4,
 
   // Typography
-  fontBase: '"Open Sans", sans-serif',
-  fontCode: 'monospace',
+  fontBase: '-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"',
+  fontCode: 'Monaco", "Fira Code", "Hack", monospace',
 
   // Text colors
   textColor: 'black',
@@ -33,5 +33,5 @@ export default create({
 
   brandTitle: 'Refactor or die',
   brandUrl: 'https://refactorordie.com',
-  brandImage: 'https://refactorordie.com/icon.png',
+  brandImage: 'https://refactorordie.com/logo-sb.svg',
 });
