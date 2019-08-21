@@ -1,60 +1,52 @@
-import React, { useState, useEffect } from "react";
-
-import { request } from "graphql-request";
+import React, { useEffect, useState } from "react";
+import Gallery from "react-photo-gallery";
 import { changeValue } from "../utils";
-import { github } from "./github";
-
-type GithubRepo = {
-  "nameWithOwner": string,
-}
+import { searchGifs, Gif } from "./giphy";
+import { WheelOfFortune } from "./WheelOfFortune";
 
 export function App() {
-  const [search, setSearch] = useState("");
-  const [searchResults, setSearchResults] = useState<GithubRepo[]>([]);
+  const [search, setSearch] = useState("welcomes");
+  const [searchResults, setSearchResults] = useState<Gif[]>([]);
   const [searchResultsLoading, setSearchResultsLoading] = useState(false);
 
   useEffect(() => {
+    setTimeout(() => {
+      searchGifs(search).then(gifs => {
+        setSearchResults(gifs);
+        setSearchResultsLoading(false);
+      });
+    }, 2000);
     setSearchResultsLoading(true);
-    github(
-      `query($limit:Int!, $query:String!) {
-      search(query: $query, type:REPOSITORY, first: $limit){
-        nodes {
-          __typename ... on Repository {
-            nameWithOwner
-          }
-        }
-        repositoryCount
-      }
-    }
-    `,
-      {
-        limit: 30,
-        query: search
-      }
-    ).then(res => {
-      setSearchResults(res.search.nodes);
-      setSearchResultsLoading(false);
-    });
   }, [search]);
 
   return (
-    <div className="container" style={{ maxWidth: "30em" }}>
-      <input
-        type="text"
-        className="form-control"
-        value={search}
-        onChange={changeValue(setSearch)}
-      />
+    <div className="container">
+      <h1>Super Giphy Search</h1>
+      <div className="input-group">
+        <div className="input-group-prepend">
+          <span className="input-group-text">🔍📼</span>
+        </div>
+        <input
+          type="text"
+          className="form-control"
+          style={{ maxWidth: "30em" }}
+          value={search}
+          onChange={changeValue(setSearch)}
+        />
+      </div>
+      <br/>
       {searchResultsLoading ? (
-        "Loading..."
+        <WheelOfFortune />
+      ) : searchResults.length > 0 ? (
+        <Gallery photos={searchResults} margin={2} />
       ) : (
-        <ul>
-          {searchResults.map(result => (
-            <li>
-              <pre>{result.nameWithOwner}</pre>
-            </li>
-          ))}
-        </ul>
+        <>
+          <h2>Nothing found...</h2>
+          <img
+            src="https://media2.giphy.com/media/gQzoxR4vrBYg8/giphy.gif?cid=790b76119af7dbfb7c0136cdca75cead3a026176c00e7453&rid=giphy.gif"
+            alt="Spilled milk"
+          />
+        </>
       )}
     </div>
   );

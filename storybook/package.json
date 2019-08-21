@@ -24,6 +24,7 @@
     "observer-react": "^0.0.5",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-photo-gallery": "^8.0.0",
     "react-redux": "^7.1.0",
     "redux": "^4.0.4",
     "rxjs": "^6.5.2",
