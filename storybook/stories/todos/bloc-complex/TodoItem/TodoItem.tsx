@@ -1,11 +1,10 @@
 import { Observer } from "observer-react";
-import React, { useMemo } from "react";
-import { changeValue, onEnterOrClick, preventDefaultThen } from "../../utils";
-import { useTodoBloc } from "./useTodoBloc";
+import React from "react";
+import { onEnterOrClick } from "../../../utils";
+import { useTodoItemBloc } from "./TodoItemBlocProvider";
 
-export function TodoItem({ id }: { id: string }) {
-  const bloc = useTodoBloc();
-  const itemBloc = useMemo(() => bloc.createItemBloc(id), [id]);
+export function TodoItem() {
+  const itemBloc = useTodoItemBloc();
 
   return (
     <>
@@ -17,7 +16,6 @@ export function TodoItem({ id }: { id: string }) {
         of={itemBloc.done}
         next={done => (
           <li
-            key={id}
             style={{ textDecoration: done ? "line-through" : "none" }}
             className="list-group-item"
             {...onEnterOrClick(() => itemBloc.toggleDone())}

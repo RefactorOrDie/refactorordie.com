@@ -11,7 +11,7 @@ const randId = () =>
     .toString(36)
     .slice(2);
 
-export interface TodosService {
+export interface TodosRepo {
   createTodo(label: string): Promise<Todo>;
   saveTodo(id: string, todo: Omit<Todo, "id">): Promise<void>;
   updateTodo(id: string, todo: Partial<Omit<Todo, "id">>): Promise<void>;
@@ -28,7 +28,7 @@ export interface TodosService {
 
 const STORAGE_KEY = "todos-list";
 /** This is a stupidly implemented service */
-export function createTodosService(storage: Storage): TodosService {
+export function createTodosRepo(storage: Storage): TodosRepo {
   // events
   const added = new Subject<Todo>();
   const removed = new Subject<string>();

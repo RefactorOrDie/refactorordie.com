@@ -6,7 +6,7 @@ export interface TodoBloc {
   todos: Observable<Todo[]>;
   newTodoTitle: Observable<string>;
   updateTitle(label: string): void;
-  saveTodo(): void;
+  addNewTodo(): void;
   toggleTodo(todoId: string): void;
   deleteTodo(todoId: string): void;
 }
@@ -14,10 +14,10 @@ export interface TodoBloc {
 export function createTodoBloc(service: TodosService): TodoBloc {
   const savedState = service.getSave();
   const todos = new BehaviorSubject(savedState.todos);
-  const newTodoLabel = new BehaviorSubject(savedState.newTodoLabel);
+  const newTodoTitle = new BehaviorSubject(savedState.newTodoLabel);
 
   // anytime the source todos are updated, let's save to storage
-  combineLatest(todos, newTodoLabel)
+  combineLatest(todos, newTodoTitle)
     // debounce after a half second
     .pipe(debounceTime(500))
     .subscribe(([todos, newTodoLabel]) =>
@@ -49,16 +49,16 @@ export function createTodoBloc(service: TodosService): TodoBloc {
       );
     },
     updateTitle(label: string) {
-      newTodoLabel.next(label);
+      newTodoTitle.next(label);
     },
-    saveTodo() {
+    addNewTodo() {
       todos.next([
         ...todos.value,
-        service.createTodo(newTodoLabel.value),
+        service.createTodo(newTodoTitle.value),
       ]);
-      newTodoLabel.next('');
+      newTodoTitle.next('');
     },
-    newTodoTitle: newTodoLabel,
+    newTodoTitle,
     todos,
   };
 }

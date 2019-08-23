@@ -1,12 +1,12 @@
 import { Observer } from "observer-react";
-import React, { useMemo } from "react";
-import { changeValue, onEnterOrClick, preventDefaultThen } from "../../utils";
-import { createTodoBloc } from "./TodoBloc";
-import { TodosService } from "./TodosService";
-import { TodoItem } from "./TodoItem";
+import React from "react";
+import { changeValue, preventDefaultThen } from "../../utils";
+import { useTodosBloc } from "./TodosBlocProvider";
+import { TodoItem } from "./TodoItem/TodoItem";
+import { TodoItemBlocCreator } from "./TodoItem/TodoItemBlocProvider";
 
-export function App2(props: { todosService: TodosService }) {
-  const bloc = useMemo(() => createTodoBloc(props.todosService), []);
+export function TodosApp() {
+  const todos = useTodosBloc();
 
   return (
     <div className="container" style={{ maxWidth: "30em" }}>
@@ -17,21 +17,25 @@ export function App2(props: { todosService: TodosService }) {
             into the stream. This is great for fine-grained
             control over the render performance */}
         <Observer
-          of={bloc.todoIds}
+          of={todos.todoIds}
           next={todos =>
-            todos.map(id => <TodoItem id={id}/>)
+            todos.map(id => (
+              <TodoItemBlocCreator todoId={id} key={id}>
+                <TodoItem />
+              </TodoItemBlocCreator>
+            ))
           }
         />
       </ul>
       <br />
       <form
-        onSubmit={preventDefaultThen(() => bloc.addTodo())}
+        onSubmit={preventDefaultThen(() => todos.addTodo())}
         className="form"
       >
         <label htmlFor="new-todo-label">New Todo</label>
         <div className="input-group">
           <Observer
-            of={bloc.newTodoTitle}
+            of={todos.newTodoTitle}
             next={value => (
               <>
                 <input
@@ -40,7 +44,7 @@ export function App2(props: { todosService: TodosService }) {
                   className="form-control"
                   placeholder="Todo title"
                   value={value}
-                  onChange={changeValue(bloc.updateTitle)}
+                  onChange={changeValue(todos.updateTitle)}
                 />
               </>
             )}

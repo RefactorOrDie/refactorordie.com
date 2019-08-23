@@ -55,7 +55,7 @@ export function AppView(props: { todosService: TodosService }) {
       </ul>
       <br />
       <form
-        onSubmit={preventDefaultThen(() => bloc.saveTodo())}
+        onSubmit={preventDefaultThen(() => bloc.addNewTodo())}
         className="form"
       >
         <label htmlFor="new-todo-label">New Todo</label>

@@ -5,7 +5,7 @@ import { createTodoBloc } from "./TodoBloc";
 import { TodosService } from "./Todos.service";
 
 export function App(props: { todosService: TodosService }) {
-  const bloc = useMemo(() => createTodoBloc(props.todosService), []);
+  const blob = useMemo(() => createTodoBloc(props.todosService), []);
 
   return (
     <div className="container" style={{ maxWidth: "30em" }}>
@@ -16,19 +16,19 @@ export function App(props: { todosService: TodosService }) {
             into the stream. This is great for fine-grained
             control over the render performance */}
         <Observer
-          of={bloc.todos}
+          of={blob.todos}
           next={todos =>
             todos.map(todo => (
               <li
                 key={todo.id}
                 style={{ textDecoration: todo.done ? "line-through" : "none" }}
                 className="list-group-item"
-                {...onEnterOrClick(() => bloc.toggleTodo(todo.id))}
+                {...onEnterOrClick(() => blob.toggleTodo(todo.id))}
               >
                 {todo.label}&nbsp;
                 <button
                   className="float-right btn btn-light btn-sm"
-                  {...onEnterOrClick(() => bloc.deleteTodo(todo.id))}
+                  {...onEnterOrClick(() => blob.deleteTodo(todo.id))}
                 >
                   Delete
                 </button>
@@ -39,13 +39,13 @@ export function App(props: { todosService: TodosService }) {
       </ul>
       <br />
       <form
-        onSubmit={preventDefaultThen(() => bloc.saveTodo())}
+        onSubmit={preventDefaultThen(() => blob.addNewTodo())}
         className="form"
       >
         <label htmlFor="new-todo-label">New Todo</label>
         <div className="input-group">
           <Observer
-            of={bloc.newTodoTitle}
+            of={blob.newTodoTitle}
             next={value => (
               <>
                 <input
@@ -54,7 +54,7 @@ export function App(props: { todosService: TodosService }) {
                   className="form-control"
                   placeholder="Todo title"
                   value={value}
-                  onChange={changeValue(bloc.updateTitle)}
+                  onChange={changeValue(blob.updateTitle)}
                 />
               </>
             )}

@@ -1,21 +1,25 @@
-import { BehaviorSubject, Observable, ReplaySubject } from "rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
 import { distinctUntilChanged, filter } from "rxjs/operators";
-import { Todo, TodosService } from "./TodosService";
+import { Todo, TodosRepo } from "../TodosRepo";
 
-export interface TodoItemBloc {
+export type TodoItemBloc = {
   title: Observable<string>;
   done: Observable<boolean>;
   toggleDone(): void;
   remove(): void;
-}
+};
 
-export function createTodoItemBloc(
-  todoService: TodosService,
+export async function createTodoItemBloc(
+  todosRepo: TodosRepo,
   todoId: string
-): TodoItemBloc {
-  const id = todoId;
-  const title = new BehaviorSubject("");
-  const done = new BehaviorSubject(false);
+): Promise<TodoItemBloc> {
+  const todoMaybe = await todosRepo.getTodo(todoId);
+  if (todoMaybe == null) {
+    throw new Error(`Unknown todo with id ${todoId}`);
+  }
+  const { id } = todoMaybe;
+  const title = new BehaviorSubject(todoMaybe.label);
+  const done = new BehaviorSubject(todoMaybe.done);
   const updateTodoData = (update: Todo | null) => {
     if (update == null)
       return console.error("it looks like this Todo might have been deleted", {
@@ -26,8 +30,8 @@ export function createTodoItemBloc(
     done.next(update.done);
   };
 
-  todoService.getTodo(todoId).then(updateTodoData);
-  todoService.events.updated
+  todosRepo.getTodo(todoId).then(updateTodoData);
+  todosRepo.events.updated
     .pipe(filter(todo => todo.id === id))
     .subscribe(updateTodoData);
 
@@ -36,10 +40,10 @@ export function createTodoItemBloc(
     done: done.pipe(distinctUntilChanged()),
     toggleDone() {
       done.next(!done.value);
-      todoService.updateTodo(id, { done: !done.value });
+      todosRepo.updateTodo(id, { done: !done.value });
     },
     remove() {
-      todoService.deleteTodo(id);
+      todosRepo.deleteTodo(id);
     }
   };
 }
