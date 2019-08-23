@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Gallery from "react-photo-gallery";
-import { changeValue } from "../utils";
-import { searchGifs, Gif } from "./giphy";
-import { WheelOfFortune } from "./WheelOfFortune";
+import { changeValue } from "../../utils";
+import { searchGifs, Gif } from "../giphy";
+import { WheelOfFortune } from "../WheelOfFortune";
 
-export function App() {
-  const [search, setSearch] = useState("welcomes");
+function useGifSearcher(initialSearch: string) {
+  const [search, setSearch] = useState(initialSearch);
   const [searchResults, setSearchResults] = useState<Gif[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -18,6 +18,17 @@ export function App() {
     }, 2000);
     setIsLoading(true);
   }, [search]);
+
+  return {
+    search,
+    setSearch,
+    searchResults,
+    isLoading
+  };
+}
+
+export function App() {
+  const { isLoading, searchResults, search, setSearch } = useGifSearcher('hello');
 
   return (
     <div className="container">
@@ -34,7 +45,7 @@ export function App() {
           onChange={changeValue(setSearch)}
         />
       </div>
-      <br/>
+      <br />
       {isLoading ? (
         <WheelOfFortune />
       ) : searchResults.length > 0 ? (

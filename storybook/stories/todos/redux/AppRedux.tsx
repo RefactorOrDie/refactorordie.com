@@ -1,16 +1,16 @@
 import React from "react";
 import { Provider, shallowEqual, useDispatch, useSelector } from "react-redux";
 import { createStore, Dispatch } from "redux";
-import { changeValue, onEnterOrClick, preventDefaultThen } from "../utils";
+import { changeValue, onEnterOrClick, preventDefaultThen } from "../../utils";
+import { createTodosReducer, TodosState } from "../Store";
+import { Todo, TodosService } from "../Todos.service";
 import {
   addNewTodo,
   changeNewTodoTitle,
   deleteTodo,
   toggleTodo
-} from "./redux/actions";
-import { TodoActionTypes } from "./redux/types";
-import { createTodosReducer, TodosState } from "./Store";
-import { Todo, TodosService } from "./Todos.service";
+} from "./actions";
+import { TodoActionTypes } from "./types";
 
 export function AppRedux(props: { todosService: TodosService }) {
   const store = createStore(createTodosReducer(props.todosService));

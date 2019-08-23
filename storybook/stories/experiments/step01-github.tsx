@@ -11,10 +11,10 @@ type GithubRepo = {
 export function App() {
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState<GithubRepo[]>([]);
-  const [searchResultsLoading, setSearchResultsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    setSearchResultsLoading(true);
+    setIsLoading(true);
     github(
       `query($limit:Int!, $query:String!) {
       search(query: $query, type:REPOSITORY, first: $limit){
@@ -33,7 +33,7 @@ export function App() {
       }
     ).then(res => {
       setSearchResults(res.search.nodes);
-      setSearchResultsLoading(false);
+      setIsLoading(false);
     });
   }, [search]);
 
@@ -45,7 +45,7 @@ export function App() {
         value={search}
         onChange={changeValue(setSearch)}
       />
-      {searchResultsLoading ? (
+      {isLoading ? (
         "Loading..."
       ) : (
         <ul>
