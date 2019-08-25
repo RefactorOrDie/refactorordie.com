@@ -20,7 +20,8 @@ module.exports = isDev => ({
             transpileOnly: isDev,
             experimentalWatchApi: isDev,
             compilerOptions: {
-              sourceMap: USE_SOURCEMAPS
+              sourceMap: USE_SOURCEMAPS,
+              baseUrl: root()
               // declaration: USE_SOURCEMAPS,
               // declarationMap: USE_SOURCEMAPS,
             }
@@ -44,7 +45,8 @@ module.exports = isDev => ({
   },
   output: {
     // webpack has the ability to generate path info in the output bundle. However, this puts garbage collection pressure on projects that bundle thousands of modules.
-    pathinfo: USE_SOURCEMAPS
+    pathinfo: USE_SOURCEMAPS,
+    devtoolModuleFilenameTemplate: 'source://[namespace]/[resource-path]?[loaders]',
   },
   mode: isDev ? "development" : "production",
   optimization: isDev
