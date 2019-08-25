@@ -16,8 +16,6 @@ const CounterObservable1$ = require("!shiki-loader!./CounterObservable1.tsx");
 const CounterObservable2$ = require("!shiki-loader!./CounterObservable2.tsx");
 const CounterReactClass$ = require("!shiki-loader!./CounterReactClass.tsx");
 
-console.log(CounterReact$);
-
 storiesOf("Writing / ObservableState", module)
   .add("Counter (Hooks)", () => (
     <Demo title="Counter" source={CounterReact$}>
