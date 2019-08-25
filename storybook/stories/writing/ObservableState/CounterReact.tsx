@@ -6,7 +6,7 @@ export function CounterReact() {
   return (
     <>
       <button onClick={() => setCounter(counter - 1)}>-</button>
-      <span className="m-3">{counter}</span>
+      <span style={{ margin: "1em" }}>{counter}</span>
       <button onClick={() => setCounter(counter + 1)}>+</button>
     </>
   );

@@ -13,7 +13,7 @@ export function CounterObservable2() {
           `counter` has a next value. */}
       <Observer
         of={counter}
-        next={counterValue => <span className="m-3">{counterValue}</span>}
+        next={counterValue => <span style={{ margin: "1em" }}>{counterValue}</span>}
       />
 
       {/* Since we've isolated the part of our UI that

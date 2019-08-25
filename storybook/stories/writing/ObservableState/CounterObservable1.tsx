@@ -7,7 +7,7 @@ export function CounterObservable1() {
   return (
     <>
       <button onClick={() => counter.next(counter.value - 1)}>-</button>
-      <span className="m-3">{counter.value}</span>
+      <span style={{ margin: "1em" }}>{counter.value}</span>
       <button onClick={() => counter.next(counter.value + 1)}>+</button>
     </>
   );

@@ -5,10 +5,14 @@ import { CounterObservable2 } from "./CounterObservable2";
 import { CounterReact } from "./CounterReact";
 import { Demo } from "../formatting/Demo";
 import { em } from "csx";
+import { dual } from "../../components/dual";
+import { CounterReactClass } from "./CounterReactClass";
+import { Container } from "../../components/Container";
 
 const CounterReact$ = require("!shiki-loader!./CounterReact.tsx");
 const CounterObservable1$ = require("!shiki-loader!./CounterObservable1.tsx");
 const CounterObservable2$ = require("!shiki-loader!./CounterObservable2.tsx");
+const CounterReactClass$ = require("!shiki-loader!./CounterReactClass.tsx");
 
 console.log(CounterReact$);
 
@@ -39,16 +43,51 @@ storiesOf("Writing / ObservableState", module)
         <CounterObservable2 />
       </Example>
       <Notes>
-        Surrounding the counter display with an <code>{"<Observer .../>"}</code>&nbsp;
-        component will ensure that whenever <code>counter</code> has a next
-        value, that the <code style={{ whiteSpace: 'nowrap'}}>{"next={value => ...}"}</code> render function
-        will be executed.
+        Surrounding the counter display with an <code>{"<Observer .../>"}</code>
+        &nbsp; component will ensure that whenever <code>counter</code> has a
+        next value, that the{" "}
+        <code style={{ whiteSpace: "nowrap" }}>{"next={value => ...}"}</code>{" "}
+        render function will be executed.
       </Notes>
     </Demo>
-  ));
+  ))
+  .add("Counter React (Hooks vs Class)", () =>
+    dual(
+      <Demo
+        title="Counter using React Class"
+        source={CounterReactClass$}
+        hideLinks
+      >
+        <Example>
+          <CounterReactClass />
+        </Example>
+      </Demo>,
+      <>
+        <Demo title="Counter using Hooks" source={CounterReact$}>
+          <Example>
+            <CounterReact />
+          </Example>
+        </Demo>
+        <Container>
+          <Notes>
+            Ignoring the performance implications of new functions for{" "}
+            <code>onClick</code> handlers; Hooks have already made our simple
+            components vastly easier to manage and reason about. As we'll see,
+            using the <code>{"<Observer .../>"}</code> component will feel
+            cleaner in a similar way.
+          </Notes>
+        </Container>
+      </>
+    )
+  );
 
 function Example(props: { children: React.ReactNode }) {
-  return <div className="bg-white p-2 mt-1 mb-1" children={props.children} />;
+  return (
+    <div
+      className="bg-white p-2 mt-1 mb-1 d-inline-block"
+      children={props.children}
+    />
+  );
 }
 
 function Notes(props: { children: React.ReactNode }) {

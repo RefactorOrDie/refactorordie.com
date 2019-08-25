@@ -6,13 +6,14 @@ import { Container } from "../../components/Container";
 export function Demo(props: {
   source: string;
   title: string;
+  hideLinks?: boolean;
   children: React.ReactNode;
 }) {
   const href = window.location.href;
   const query = window.location.search;
   const hideCode = query.includes("hide-code");
   const hideDemo = query.includes("hide-demo");
-  const hideLinks = query.includes("hide-links");
+  const hideLinks = props.hideLinks || query.includes("hide-links");
   return (
     <Container>
       <b>{props.title}</b>
