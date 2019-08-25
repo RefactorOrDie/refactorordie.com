@@ -1,11 +1,13 @@
 import React from "react";
 
-export class CounterReactClass extends React.Component<{}, { counter: number }> {
+type State = { count: number };
+
+export class CounterClass extends React.Component<{}, State> {
   constructor(props: {}) {
     super(props);
 
     this.state = {
-      counter: 1
+      count: 1
     };
 
     this.addOne = this.addOne.bind(this);
@@ -13,18 +15,18 @@ export class CounterReactClass extends React.Component<{}, { counter: number }> 
   }
 
   subtractOne() {
-    this.setState(state => ({ counter: state.counter - 1 }));
+    this.setState(state => ({ count: state.count - 1 }));
   }
 
   addOne() {
-    this.setState(state => ({ counter: state.counter + 1 }));
+    this.setState(state => ({ count: state.count + 1 }));
   }
 
   render() {
     return (
       <>
         <button onClick={this.subtractOne}>-</button>
-        <span style={{ margin: "1em" }}>{this.state.counter}</span>
+        <span style={{ margin: "1em" }}>{this.state.count}</span>
         <button onClick={this.addOne}>+</button>
       </>
     );
