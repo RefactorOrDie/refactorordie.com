@@ -1,7 +1,7 @@
 // @ts-check
 /* eslint-disable */
 
-const path = require('path');
+const path = require("path");
 
 const USE_SOURCEMAPS = true;
 
@@ -15,43 +15,47 @@ module.exports = isDev => ({
       {
         test: /\.tsx?$/,
         use: {
-          loader: require.resolve('ts-loader'),
+          loader: require.resolve("ts-loader"),
           options: {
             transpileOnly: isDev,
             experimentalWatchApi: isDev,
             compilerOptions: {
-              sourceMap: USE_SOURCEMAPS,
+              sourceMap: USE_SOURCEMAPS
               // declaration: USE_SOURCEMAPS,
               // declarationMap: USE_SOURCEMAPS,
-            },
-          },
+            }
+          }
         },
-        include: [root('stories')],
-      },
-    ],
+        include: [root("stories")]
+      }
+    ]
   },
   devtool: isDev
-    ? (USE_SOURCEMAPS
-      ? 'inline-source-map'
-      : 'eval')
-    : 'source-map',
+    ? USE_SOURCEMAPS
+      ? "inline-source-map"
+      : "eval"
+    : "source-map",
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: [".tsx", ".ts", ".js"]
+  },
+  resolveLoader: {
+    // make our custom shiki-loader (syntax highlighter) available
+    modules: ["node_modules", path.resolve(__dirname, "loaders")]
   },
   output: {
     // webpack has the ability to generate path info in the output bundle. However, this puts garbage collection pressure on projects that bundle thousands of modules.
-    pathinfo: USE_SOURCEMAPS,
+    pathinfo: USE_SOURCEMAPS
   },
-  mode: isDev ? 'development' : 'production',
+  mode: isDev ? "development" : "production",
   optimization: isDev
     ? {
         removeAvailableModules: false,
         removeEmptyChunks: false,
-        splitChunks: false,
+        splitChunks: false
       }
     : {
         minimize: true,
         removeEmptyChunks: true,
-        usedExports: true,
-      },
+        usedExports: true
+      }
 });

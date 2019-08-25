@@ -6478,7 +6478,7 @@ lowlight@~1.9.1:
     fault "^1.0.2"
     highlight.js "~9.12.0"
 
-lru-cache@^4.0.1:
+lru-cache@^4.0.1, lru-cache@^4.1.1:
   version "4.1.5"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-4.1.5.tgz#8bbe50ea85bed59bc9e33dcab8235ee9bcf443cd"
   integrity sha512-sWZlbEP2OsHNkXrMl5GYk/jKk70MBng6UU4YI/qGDYbgf6YbP4EvmqISbXCoJiRKs+1bSpFHVgQxvJ17F2li5g==
@@ -7246,6 +7246,13 @@ onetime@^5.1.0:
   integrity sha512-5NcSkPHhwTVFIQN+TUqXoS5+dlElHXdpAWu9I0HP20YOtIi+aZ0Ct82jdlILDxjLEAWwvm+qj1m6aEtsDVmm6Q==
   dependencies:
     mimic-fn "^2.1.0"
+
+onigasm@^2.2.1:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/onigasm/-/onigasm-2.2.2.tgz#0f853152278bf0da5b3d5be728d5218e472d03ca"
+  integrity sha512-TQTMk+RmPYx4sGzNAgV0q7At7PABDNHVqZBlC4aRXHg8hpCdemLOF0qq0gUCjwUbc7mhJMBOo3XpTRYwyr45Gw==
+  dependencies:
+    lru-cache "^4.1.1"
 
 open@^6.1.0, open@^6.3.0:
   version "6.4.0"
@@ -8889,6 +8896,30 @@ shelljs@^0.8.3:
     interpret "^1.0.0"
     rechoir "^0.6.2"
 
+shiki-languages@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/shiki-languages/-/shiki-languages-0.1.4.tgz#f74d0b7fda0e36e04e0740c852147b5db3fdf90a"
+  integrity sha512-hAjiX9YL39AA+ozjo50+20qgt6KWJ/3lcNjmqShtUZYOXakHekon3Rd8Fzq8xSUnA3UFTlwpovAZ2nzFrTFFyA==
+  dependencies:
+    vscode-textmate "https://github.com/octref/vscode-textmate"
+
+shiki-themes@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/shiki-themes/-/shiki-themes-0.1.4.tgz#defb7442f0edd56bc5ce817e0eb64149051b1c91"
+  integrity sha512-4rRmKEyqLW4X1nUF6cGkS+dD4hmLDlNkEUn4dPIlsKv36XUgbEIC/GbR0SGEkcmPT9yuibjotzQw+PVS0Rls/w==
+  dependencies:
+    vscode-textmate "https://github.com/octref/vscode-textmate"
+
+shiki@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/shiki/-/shiki-0.1.4.tgz#35834b96e651494ac37683152cd30c8754c22e49"
+  integrity sha512-NnBmbSCaKGKQ4PZ4WHjhtTQgDLCw+wJfxxPOPekwAcsFMg5OhPvfIlq8AjbXZJV1D8QwKyNiSPpwLYV5Z8/ewQ==
+  dependencies:
+    onigasm "^2.2.1"
+    shiki-languages "^0.1.4"
+    shiki-themes "^0.1.4"
+    vscode-textmate "https://github.com/octref/vscode-textmate"
+
 signal-exit@^3.0.0, signal-exit@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
@@ -9836,6 +9867,10 @@ vm-browserify@^1.0.1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.0.tgz#bd76d6a23323e2ca8ffa12028dc04559c75f9019"
   integrity sha512-iq+S7vZJE60yejDYM0ek6zg308+UZsdtPExWP9VZoCFCz1zkJoXFnAX7aZfd/ZwrkidzdUZL0C/ryW+JwAiIGw==
+
+"vscode-textmate@https://github.com/octref/vscode-textmate":
+  version "4.0.1"
+  resolved "https://github.com/octref/vscode-textmate#e65aabe2227febda7beaad31dd0fca1228c5ddf3"
 
 warning@^3.0.0:
   version "3.0.0"

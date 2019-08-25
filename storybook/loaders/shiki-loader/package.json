@@ -1,0 +1,9 @@
+{
+  "name": "shiki-loader",
+  "private": true,
+  "version": "0.0.1",
+  "main": "./index.js",
+  "peerDependencies": {
+    "shiki": "^0.1.4"
+  }
+}
