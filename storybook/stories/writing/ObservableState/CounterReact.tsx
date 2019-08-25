@@ -5,21 +5,9 @@ export function CounterReact() {
 
   return (
     <>
-      <button
-        className="btn"
-        title="Subtract 1"
-        onClick={() => setCounter(counter - 1)}
-      >
-        -
-      </button>
-      <div className="btn">{counter}</div>
-      <button
-        className="btn"
-        title="Add 1"
-        onClick={() => setCounter(counter + 1)}
-      >
-        +
-      </button>
+      <button onClick={() => setCounter(counter - 1)}>-</button>
+      <span className="m-3">{counter}</span>
+      <button onClick={() => setCounter(counter + 1)}>+</button>
     </>
   );
 }

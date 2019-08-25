@@ -6,21 +6,9 @@ export function CounterObservable1() {
 
   return (
     <>
-      <button
-        className="btn"
-        title="Subtract 1"
-        onClick={() => counter.next(counter.value - 1)}
-      >
-        -
-      </button>
-      <div className="btn">{counter.value}</div>
-      <button
-        className="btn"
-        title="Add 1"
-        onClick={() => counter.next(counter.value + 1)}
-      >
-        +
-      </button>
+      <button onClick={() => counter.next(counter.value - 1)}>-</button>
+      <span className="m-3">{counter.value}</span>
+      <button onClick={() => counter.next(counter.value + 1)}>+</button>
     </>
   );
 }
