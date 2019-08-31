@@ -6,7 +6,7 @@ import { createTodosService } from "./Todos.service";
 
 const todosService = createTodosService(localStorage);
 
-storiesOf("Todos", module)
+storiesOf("Writing / Observable State / Todos", module)
   // .add("Todo App Observer", () => <App todosService={todosService} />)
   .add("Todo App Observer Simple ", () => (
     <AppSimple todosService={todosService} />
