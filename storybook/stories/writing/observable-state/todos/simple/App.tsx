@@ -1,28 +1,14 @@
+import { Observer } from "observer-react";
 import React, { useMemo } from "react";
-import { dual } from "../components/dual";
-import { ViewObserver } from "../components/ViewObserver";
-import { ViewObservableState } from "../components/ViewState";
-import { changeValue, onEnterOrClick, preventDefaultThen } from "../utils";
+import { changeValue, onEnterOrClick, preventDefaultThen } from "../../../../utils";
 import { createTodoBloc } from "./TodoBloc";
-import { TodosService } from "./Todos.service";
+import { TodosService } from "../Todos.service";
 
-export function AppView(props: { todosService: TodosService }) {
+export function App(props: { todosService: TodosService }) {
   const bloc = useMemo(() => createTodoBloc(props.todosService), []);
 
-  return dual(
-    <div style={{ textAlign: "right" }}>
-      <br />
-      <br />
-      <ViewObservableState
-        label="Todos"
-        value={bloc.todos}
-        maxLines={12}
-        maxLen={36}
-      />
-      <br />
-      <br />
-      <ViewObservableState label="New Todo Title" value={bloc.newTodoTitle} />
-    </div>,
+  
+  return (
     <div className="container" style={{ maxWidth: "30em" }}>
       <h1>Todos</h1>
       <ul className="list-group">
@@ -30,8 +16,7 @@ export function AppView(props: { todosService: TodosService }) {
             which rerenders whenever a new value is inserted
             into the stream. This is great for fine-grained
             control over the render performance */}
-        <ViewObserver
-          label="Todo List"
+        <Observer
           of={bloc.todos}
           next={todos =>
             todos.map(todo => (
@@ -55,13 +40,12 @@ export function AppView(props: { todosService: TodosService }) {
       </ul>
       <br />
       <form
-        onSubmit={preventDefaultThen(() => bloc.addNewTodo())}
+        onSubmit={preventDefaultThen(() => bloc.addTodo())}
         className="form"
       >
         <label htmlFor="new-todo-label">New Todo</label>
         <div className="input-group">
-          <ViewObserver
-            label="Title Input"
+          <Observer
             of={bloc.newTodoTitle}
             next={value => (
               <>

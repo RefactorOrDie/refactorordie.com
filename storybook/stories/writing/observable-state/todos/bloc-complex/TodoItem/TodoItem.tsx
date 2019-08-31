@@ -1,6 +1,6 @@
 import { Observer } from "observer-react";
 import React from "react";
-import { onEnterOrClick } from "../../../utils";
+import { onEnterOrClick } from "../../../../../utils";
 import { useTodoItemBloc } from "./TodoItemBlocProvider";
 
 export function TodoItem() {

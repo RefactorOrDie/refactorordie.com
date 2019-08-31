@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import { createBloc, useBloc } from "../../../bloc/strict";
+import { createBloc, useBloc } from "../../../../../bloc/strict";
 import { createTodoItemBloc, TodoItemBloc } from "./TodoItemBloc";
 import { useTodosRepo } from "../TodosRepoProvider";
 

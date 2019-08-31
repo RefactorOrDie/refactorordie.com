@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { createRepo, useRepo } from "../../bloc/strict";
+import { createRepo, useRepo } from "../../../../bloc/strict";
 import { createTodosRepo, TodosRepo } from "./TodosRepo";
 
 const TodosRepoCtx = createRepo<TodosRepo>();

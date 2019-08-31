@@ -1,11 +1,11 @@
 import { storiesOf } from "@storybook/react";
 import React, { useState } from "react";
-import { dual } from "../components/dual";
-import { ViewState } from "../components/ViewState";
-import { changeValue } from "../utils";
-import { ViewView } from "../components/ViewView";
+import { dual } from "../../../../components/dual";
+import { ViewState } from "../../../../components/ViewState";
+import { changeValue } from "../../../../utils";
+import { ViewView } from "../../../../components/ViewView";
 
-storiesOf("Todos Notes", module).add("User Name Input", () => (
+storiesOf("Writing / Observable State / Todos / Notes", module).add("User Name Input", () => (
   <UserNameInputDemo />
 ));
 

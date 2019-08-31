@@ -1,6 +1,6 @@
 import { Observer } from "observer-react";
 import React, { useMemo } from "react";
-import { changeValue, onEnterOrClick, preventDefaultThen } from "../utils";
+import { changeValue, onEnterOrClick, preventDefaultThen } from "../../../utils";
 import { createTodoBloc } from "./TodoBloc";
 import { TodosService } from "./Todos.service";
 

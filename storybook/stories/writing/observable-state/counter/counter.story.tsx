@@ -4,11 +4,11 @@ import { CounterObservable1 } from "./CounterObservable1";
 import { CounterObservable } from "./CounterObservable2";
 import { Counter } from "./CounterReact";
 import { Counter as CounterCompareToObservable } from "./CounterReactCompareToObservable";
-import { Demo } from "../formatting/Demo";
+import { Demo } from "../../formatting/Demo";
 import { em } from "csx";
-import { dual } from "../../components/dual";
+import { dual } from "../../../components/dual";
 import { CounterClass } from "./CounterReactClass";
-import { Container } from "../../components/Container";
+import { Container } from "../../../components/Container";
 
 const CounterReact$ = require("!shiki-loader!./CounterReact.tsx");
 const CounterCompareToObservable$ = require("!shiki-loader!./CounterReactCompareToObservable.tsx");
@@ -16,7 +16,7 @@ const CounterObservable1$ = require("!shiki-loader!./CounterObservable1.tsx");
 const CounterObservable2$ = require("!shiki-loader!./CounterObservable2.tsx");
 const CounterReactClass$ = require("!shiki-loader!./CounterReactClass.tsx");
 
-storiesOf("Writing / ObservableState", module)
+storiesOf("Writing / Observable State / Counter", module)
   .add("Counter (Hooks)", () => (
     <Demo title="Counter" source={CounterReact$}>
       <Example>

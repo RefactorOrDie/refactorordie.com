@@ -1,6 +1,6 @@
 import { Observer } from "observer-react";
 import React from "react";
-import { changeValue, preventDefaultThen } from "../../utils";
+import { changeValue, preventDefaultThen } from "../../../../utils";
 import { useTodosBloc } from "./TodosBlocProvider";
 import { TodoItem } from "./TodoItem/TodoItem";
 import { TodoItemBlocCreator } from "./TodoItem/TodoItemBlocProvider";
