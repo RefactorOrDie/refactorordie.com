@@ -30,21 +30,55 @@ export function Demo(props: {
       )}
       <br />
       {!hideDemo && props.children}
-      {!hideCode && (
-        <p
-          className={style({
-            borderRadius: px(4),
-            overflow: "auto",
-            $nest: {
-              pre: {
-                padding: em(1)
-              }
-            }
-          })}
-          dangerouslySetInnerHTML={{ __html: props.source }}
-        />
-      )}
+      {!hideCode && <SourceCode source={props.source} />}
     </Container>
+  );
+}
+
+export function Story(props: {
+  title: string;
+  hideLinks?: boolean;
+  children: React.ReactNode;
+}) {
+  const href = window.location.href;
+  const query = window.location.search;
+  const hideLinks = props.hideLinks || query.includes("hide-links");
+  return (
+    <Container>
+      <b>{props.title}</b>
+      {!hideLinks && (
+        <div className="float-right">
+          <a target="_blank" href={href}>
+            Frame
+          </a>
+          &nbsp;&nbsp;&nbsp;
+          <a target="_blank" href={storybookLink(href)}>
+            Storybook
+          </a>
+        </div>
+      )}
+      <br />
+      {props.children}
+    </Container>
+  );
+}
+
+export function SourceCode(props: { source: string }) {
+  const query = window.location.search;
+  const hideCode = query.includes("hide-code");
+  return hideCode ? null : (
+    <p
+      className={style({
+        borderRadius: px(4),
+        overflow: "auto",
+        $nest: {
+          pre: {
+            padding: em(1)
+          }
+        }
+      })}
+      dangerouslySetInnerHTML={{ __html: props.source }}
+    />
   );
 }
 

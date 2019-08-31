@@ -96,7 +96,7 @@ storiesOf("Writing / ObservableState", module)
     )
   );
 
-function Example(props: { children: React.ReactNode }) {
+export function Example(props: { children: React.ReactNode }) {
   return (
     <div
       className="bg-white p-2 mt-1 mb-1 d-inline-block"
