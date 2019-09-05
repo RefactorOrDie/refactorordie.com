@@ -1,7 +1,9 @@
 //@ts-check
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import { changeValue, preventDefaultThen } from "../../../utils";
+import { Observer } from "./react-observer";
+import createTodoBloc from "./TodoBloc";
 import { TodoItem } from "./TodoItem";
-import { changeValue, preventDefaultThen, TODO } from "../../../utils";
 
 function createTodo(title = "Untitled Todo", done = false) {
   return {
@@ -15,41 +17,45 @@ const todos = [
   createTodo("Build UI for TodoApp", true),
   createTodo("Toggling a Todo"),
   createTodo("Deleting a Todo"),
-  createTodo("Adding a Todo"),
+  createTodo("Adding a Todo")
 ];
 
+export const TodoBloc = React.createContext(createTodoBloc(todos));
+
 export default function AppRoot() {
-  return <TodoApp></TodoApp>
+  return <TodoApp></TodoApp>;
 }
 
 function TodoApp() {
-  const [todoInput, setTodoInput] = useState("");
+  const bloc = useContext(TodoBloc);
 
   return (
     <div className="container">
       <h1>Todos</h1>
       <ul className="list-group">
-        {todos.map(todo => (
-          <TodoItem key={todo.id} todo={todo} />
-        ))}
+        <Observer
+          of={bloc.$todos}
+          next={todos =>
+            todos.map(todo => <TodoItem key={todo.id} todo={todo} />)
+          }
+        />
       </ul>
       <br />
-      <form
-        className="form-group"
-        onSubmit={preventDefaultThen(() => {
-          TODO(`Add todo for "${todoInput}"`)
-          setTodoInput("")
-        })}
-      >
+      <form className="form-group" onSubmit={preventDefaultThen(bloc.addTodo)}>
         <label htmlFor="todo-title">New Todo Title</label>
         <div className="input-group">
-          <input
-            id="todo-title"
-            type="text"
-            className="form-control"
-            value={todoInput}
-            onChange={changeValue(setTodoInput)}
-            placeholder="What do you want to get done?"
+          <Observer
+            of={bloc.$todoInput}
+            next={value => (
+              <input
+                id="todo-title"
+                type="text"
+                className="form-control"
+                value={value}
+                onChange={changeValue(bloc.updateNewTodoInput)}
+                placeholder="What do you want to get done?"
+              />
+            )}
           />
           <button className="btn btn-primary">Add</button>
         </div>
