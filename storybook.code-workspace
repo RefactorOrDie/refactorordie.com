@@ -1,0 +1,18 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "storybook"
+		},
+		{
+			"path": "storybook/stories/writing/presentations/TodoApp"
+		}
+	],
+	"settings": {
+		"files.exclude": {
+			"**/node_modules/**": true
+		}
+	},
+}

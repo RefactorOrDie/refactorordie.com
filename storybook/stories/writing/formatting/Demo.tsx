@@ -63,13 +63,15 @@ export function Story(props: {
   );
 }
 
-export function SourceCode(props: { source: string }) {
+export function SourceCode(props: { source: string, fontSize?: string | number }) {
   const query = window.location.search;
   const hideCode = query.includes("hide-code");
   return hideCode ? null : (
     <p
       className={style({
         borderRadius: px(4),
+        fontSize: props.fontSize || undefined,
+        textAlign: "left",
         overflow: "auto",
         $nest: {
           pre: {

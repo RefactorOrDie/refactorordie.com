@@ -28,6 +28,23 @@ module.exports = isDev => ({
           }
         },
         include: [root("stories")]
+      },
+      {
+        test: /\.jsx?$/,
+        use: {
+          loader: require.resolve("ts-loader"),
+          options: {
+            transpileOnly: true,
+            experimentalWatchApi: isDev,
+            compilerOptions: {
+              sourceMap: USE_SOURCEMAPS,
+              baseUrl: root()
+              // declaration: USE_SOURCEMAPS,
+              // declarationMap: USE_SOURCEMAPS,
+            }
+          }
+        },
+        include: [root("stories")]
       }
     ]
   },
@@ -37,7 +54,7 @@ module.exports = isDev => ({
       : "eval"
     : "source-map",
   resolve: {
-    extensions: [".tsx", ".ts", ".js"]
+    extensions: [".tsx", ".ts", ".jsx",  ".js"]
   },
   resolveLoader: {
     // make our custom shiki-loader (syntax highlighter) available

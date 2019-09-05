@@ -29,6 +29,8 @@
     "react-redux": "^7.1.0",
     "redux": "^4.0.4",
     "rxjs": "^6.5.2",
+    "spectacle": "^5.7.0",
+    "spectacle-renderer": "^0.0.3",
     "typestyle": "^2.0.4"
   }
 }
