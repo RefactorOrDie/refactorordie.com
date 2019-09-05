@@ -13,7 +13,8 @@ storiesOf("Writing / Observable State / Presentations", module)
   .add("React NYC, Sept 2019 / Todo App", () => (
     <div className={style({ $nest: {
       '.container': {
-        maxWidth: em(24)
+        maxWidth: em(24),
+        paddingTop: em(2),
       }
     }})}>
       <TodoApp/>

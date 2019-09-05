@@ -1,18 +1,26 @@
 {
-	"folders": [
-		{
-			"path": "."
-		},
-		{
-			"path": "storybook"
-		},
-		{
-			"path": "storybook/stories/writing/presentations/TodoApp"
-		}
-	],
-	"settings": {
-		"files.exclude": {
-			"**/node_modules/**": true
-		}
-	},
+  "folders": [
+    {
+      "path": "."
+    },
+    {
+      "path": "storybook"
+    },
+    {
+      "path": "storybook/stories/writing/presentations/TodoApp"
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/node_modules/**": true
+    },
+    "editor.wordBasedSuggestions": false,
+    "editor.suggest.filteredTypes": {
+      "keyword": false,
+      "snippet": true,
+      "text": false
+    },
+    "editor.suggest.localityBonus": true,
+    "editor.suggestSelection": "first"
+  }
 }

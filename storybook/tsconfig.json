@@ -5,10 +5,11 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "allowSyntheticDefaultImports": true,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
+    "allowJs": true,
     "strict": true,
     "sourceMap": true,
-    "declaration": true,
+    "declaration": false,
     "skipLibCheck": true,
     "moduleResolution": "node",
     "module": "commonjs",
@@ -16,6 +17,6 @@
     "jsx": "react",
     "lib": ["es6", "dom"]
   },
-  "include": ["stories/*.ts", "stories/**/*.ts", "stories/**/*.tsx"],
-  "exclude": ["./node_modules/*", "**/node_modules"]
+  "include": ["stories/*.ts", "stories/**/*.ts", "stories/**/*.tsx", "stories/**/*.js", "stories/**/*.jsx"],
+  "exclude": ["./node_modules/*", "**/node_modules", "**/__*/**", "./lib/**"]
 }

@@ -23,6 +23,6 @@
   "observer": {
     "scope": "typescriptreact,tsx,javascriptreact,jsx",
     "prefix": "obs",
-    "body": ["<Observer", "\tof={$1}","\tnext={${2:value => (<>${3}</>)}}", "/>"]
+    "body": ["<Observer", "\tof={$1}","\tnext={${2:value => (${3})}}", "/>"]
   }
 }

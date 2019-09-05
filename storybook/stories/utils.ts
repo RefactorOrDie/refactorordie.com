@@ -28,9 +28,18 @@ export function onEnterOrClick(fn: () => void): React.HTMLAttributes<unknown> {
     onKeyDown: evt => {
       if (evt.key === "Enter") {
         evt.stopPropagation();
-        fn();
+        if (
+          !(
+            evt.currentTarget instanceof HTMLButtonElement ||
+            evt.currentTarget instanceof HTMLAnchorElement
+          )
+        ) {
+          // onClick will handle this one
+          fn();
+        }
       }
     }
   };
 }
 
+export const TODO = console.warn.bind(console, '%c[TODO]:', 'color: green');
