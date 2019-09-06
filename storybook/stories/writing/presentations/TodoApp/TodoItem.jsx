@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { onEnterOrClick } from "../../../utils";
+import { onEnterOrClick } from "utils";
 import { TodoBloc } from "./TodoApp";
 
 /**

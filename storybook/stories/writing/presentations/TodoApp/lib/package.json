@@ -1,0 +1,13 @@
+{
+  "peerDependencies": {
+    "rxjs": "^6",
+    "react": "^16"
+  },
+  "dependencies": {
+    "typescript": "^3.6.2"
+  },
+  "devDependencies": {
+    "rxjs": "^6",
+    "react": "^16"
+  }
+}

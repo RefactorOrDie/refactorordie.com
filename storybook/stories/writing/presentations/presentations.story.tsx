@@ -1,8 +1,7 @@
 import { storiesOf } from "@storybook/react";
 import React from "react";
 import { ObservableStatePresentationSept2019 } from "./ObservableStatePresentationSept2019";
-// @ts-ignore
-import TodoApp from "./TodoApp/TodoApp.jsx";
+import TodoApp from "./TodoApp";
 import { style } from "typestyle";
 import { em } from "csx";
 

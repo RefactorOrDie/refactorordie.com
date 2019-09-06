@@ -1,4 +1,4 @@
-import { Observable } from "rxjs";
+import { Observable, Subscribable } from "rxjs";
 
 export function collectValues<T>(obs: Observable<T>) {
   const queue: T[] = [];
@@ -32,6 +32,27 @@ export function collectValues<T>(obs: Observable<T>) {
       } else {
         throw new Error("no latest values");
       }
+    }
+  };
+}
+
+const NO_VALUE = Symbol("no value");
+
+export function rememberLatest<T>(obs: Subscribable<T>): () => T {
+  let latest: T | typeof NO_VALUE = NO_VALUE;
+  obs.subscribe({
+    next: value => {
+      latest = value;
+    }
+  });
+
+  return () => {
+    jest.runOnlyPendingTimers();
+
+    if (latest === NO_VALUE) {
+      throw new Error("no latest value");
+    } else {
+      return latest;
     }
   };
 }

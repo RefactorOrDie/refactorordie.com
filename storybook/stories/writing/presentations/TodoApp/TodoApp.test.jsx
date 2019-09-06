@@ -1,5 +1,6 @@
+// @ts-check
 import createTodoBloc from "./TodoBloc";
-import { collectValues } from "./react-observer";
+import { rememberLatest } from "react-observer/jest";
 
 function createMockTodos() {
   return [
@@ -14,25 +15,25 @@ jest.useFakeTimers();
 test("todos / update input", async () => {
   const bloc = createTodoBloc([]);
 
-  const todoInput = collectValues(bloc.$todoInput);
+  const latestTodoInput = rememberLatest(bloc.$todoInput);
 
   bloc.updateNewTodoInput("abc");
-  expect(todoInput.latest()).toBe("abc");
+  expect(latestTodoInput()).toBe("abc");
 
   bloc.updateNewTodoInput("");
-  expect(todoInput.latest()).toBe("");
+  expect(latestTodoInput()).toBe("");
 });
 
 test("todos / add todo", async () => {
   const bloc = createTodoBloc([]);
 
-  const todos = collectValues(bloc.$todos);
-  const todoInput = collectValues(bloc.$todoInput);
+  const latestTodos = rememberLatest(bloc.$todos);
+  const latestTodoInput = rememberLatest(bloc.$todoInput);
 
   bloc.updateNewTodoInput("new todo");
   bloc.addTodo();
 
-  const updatedTodos = todos.latest();
+  const updatedTodos = latestTodos();
 
   expect(updatedTodos).toHaveLength(1);
 
@@ -41,16 +42,16 @@ test("todos / add todo", async () => {
   expect(addedTodo.title).toBe("new todo");
   expect(addedTodo.done).toBe(false);
 
-  expect(todoInput.latest()).toBe("");
+  expect(latestTodoInput()).toBe("");
 });
 
 test("todos / toggle todo", async () => {
   const bloc = createTodoBloc([{ done: false, id: 1, title: "Todo 1" }]);
 
-  const getTodos = collectValues(bloc.$todos);
+  const latestTodos = rememberLatest(bloc.$todos);
 
   // sanity check existing data
-  const originalTodos = getTodos.latest();
+  const originalTodos = latestTodos();
 
   expect(originalTodos).toHaveLength(1);
   const [originalTodo] = originalTodos;
@@ -58,10 +59,10 @@ test("todos / toggle todo", async () => {
 
   bloc.toggleTodo(1);
 
-  const updatedTodos = getTodos.latest();
+  const updatedTodos = latestTodos();
   expect(updatedTodos).toHaveLength(1);
-  const [originalTodo] = updatedTodos;
-  expect(originalTodo.done).toBe(true);
+  const [updatedTodo] = updatedTodos;
+  expect(updatedTodo.done).toBe(true);
 });
 
 test("todos / delete todo", async () => {
@@ -72,17 +73,17 @@ test("todos / delete todo", async () => {
     ...createMockTodos()
   ]);
 
-  const todos = collectValues(bloc.$todos);
+  const latestTodos = rememberLatest(bloc.$todos);
 
   // sanity check existing data
-  const originalTodos = todos.latest();
+  const originalTodos = latestTodos();
 
   const originalTodosLength = originalTodos.length;
   expect(originalTodos.find(todo => todo.title === TITLE)).toBeDefined();
 
   bloc.deleteTodo(1);
 
-  const updated = todos.latest();
+  const updated = latestTodos();
   expect(updated).toHaveLength(originalTodosLength - 1);
   expect(updated.find(todo => todo.title === TITLE)).toBeUndefined();
 });

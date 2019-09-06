@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "rootDir": "./",
+    "outDir": "../node_modules",
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "module": "es6",
+    "lib": ["es6", "dom"]
+  },
+  "files": ["./react-observer/index.ts", "./react-observer/jest.ts", "./utils/index.ts"]
+}
