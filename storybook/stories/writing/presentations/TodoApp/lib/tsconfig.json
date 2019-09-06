@@ -2,14 +2,19 @@
   "compilerOptions": {
     "rootDir": "./",
     "outDir": "../node_modules",
+    "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
     "skipLibCheck": true,
     "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "module": "es6",
+    "module": "commonjs",
+    "target": "es5",
     "lib": ["es6", "dom"]
   },
-  "files": ["./react-observer/index.ts", "./react-observer/jest.ts", "./utils/index.ts"]
+  "files": [
+    "./react-observer/index.ts",
+    "./react-observer/jest.ts",
+    "./utils/index.ts"
+  ]
 }

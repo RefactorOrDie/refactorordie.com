@@ -1,2 +1,2 @@
-import TodoApp from "./TodoApp"
+import TodoApp from "./steps"
 export default TodoApp

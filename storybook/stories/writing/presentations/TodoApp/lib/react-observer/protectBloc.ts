@@ -1,10 +1,10 @@
 import { Subject, Observable } from "rxjs";
 
-type ProtectedBloc<T> = {
+export type ProtectedBloc<T> = {
   [P in keyof T]: T[P] extends Subject<infer R> ? Observable<R> : T[P];
 };
 
-type BlocInput = {
+export type BlocInput = {
   [propertyOrAction: string]: ((...args: any[]) => void) | Observable<unknown>;
 };
 

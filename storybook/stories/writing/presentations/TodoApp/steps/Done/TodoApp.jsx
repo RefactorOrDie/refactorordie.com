@@ -1,18 +1,12 @@
 //@ts-check
 import React, { useContext } from "react";
-import { changeValue, preventDefaultThen } from "../../../utils";
-import { Observer } from "./react-observer";
+import { changeValue, preventDefaultThen } from "utils";
+import { Observer } from "react-observer";
 import createTodoBloc from "./TodoBloc";
 import { TodoItem } from "./TodoItem";
+import { createTodo } from "../helpers";
 
-function createTodo(title = "Untitled Todo", done = false) {
-  return {
-    id: Math.random(),
-    title,
-    done
-  };
-}
-
+/** @type {Todo[]} */
 const todos = [
   createTodo("Build UI for TodoApp", true),
   createTodo("Toggling a Todo"),

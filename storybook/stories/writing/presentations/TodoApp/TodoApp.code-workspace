@@ -1,0 +1,28 @@
+{
+  "folders": [
+    {
+      "path": ".",
+      "name": "Todo App"
+    },
+    {
+      "path": "steps",
+      "name": "Todo App Steps"
+    },
+    {
+      "path": "/Users/cole/Desktop/refactorordie.com/storybook"
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/node_modules/**": true
+    },
+    "editor.wordBasedSuggestions": false,
+    "editor.suggest.filteredTypes": {
+      "keyword": false,
+      "snippet": true,
+      "text": false
+    },
+    "editor.suggest.localityBonus": true,
+    "editor.suggestSelection": "first"
+  }
+}

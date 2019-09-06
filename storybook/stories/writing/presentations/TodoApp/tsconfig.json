@@ -1,13 +1,17 @@
 {
   "compilerOptions": {
     "rootDir": "./",
-    "outDir": "./",
+    "outDir": "./out",
     "sourceMap": true,
     "skipLibCheck": true,
     "allowJs": true,
     "moduleResolution": "node",
+    "jsx": "react",
     "module": "es6",
-    "lib": ["es6"]
+    "allowSyntheticDefaultImports": true,
+    "lib": ["es6", "dom"]
   },
-  "include": ["./*.js", "./*.jsx"],
+  "files": ["./index.js"],
+  "include": ["./steps/**/*.js", "./steps/**/*.jsx", "./types/*.d.ts"],
+  "exclude": ["./lib/**/*"]
 }
