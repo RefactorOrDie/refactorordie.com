@@ -1,4 +1,4 @@
-import { Observable, Subscribable } from "rxjs";
+import { Observable } from "rxjs";
 import { ProtectedBloc } from "./protectBloc";
 
 interface SpyOnObservable<T> extends Observable<T> {
