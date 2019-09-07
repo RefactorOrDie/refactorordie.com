@@ -1,14 +1,10 @@
 // @ts-check
-import createTodoBloc from "./TodoBloc";
-import { spyOnBloc } from "react-observer/jest";
+import { spyOnBloc } from "bloc-utils/jest";
 import { createTodo } from "../helpers";
+import createTodoBloc from "./TodoBloc";
 
 function createMockTodos() {
-  return [
-    createTodo("Todo 0"),
-    createTodo("Todo 1"),
-    createTodo("Todo 2"),
-  ];
+  return [createTodo("Todo 0"), createTodo("Todo 1"), createTodo("Todo 2")];
 }
 
 jest.useFakeTimers();
@@ -43,7 +39,9 @@ test("todos / add todo", async () => {
 });
 
 test("todos / toggle todo", async () => {
-  const bloc = spyOnBloc(createTodoBloc([{ done: false, id: 1, title: "Todo 1" }]));
+  const bloc = spyOnBloc(
+    createTodoBloc([{ done: false, id: 1, title: "Todo 1" }])
+  );
 
   // sanity check existing data
   const originalTodos = bloc.$todos.latestValue;
@@ -61,11 +59,13 @@ test("todos / toggle todo", async () => {
 
 test("todos / delete todo", async () => {
   const TITLE = "to be deleted";
-  const bloc = spyOnBloc(createTodoBloc([
-    ...createMockTodos(),
-    { id: 1, done: false, title: TITLE },
-    ...createMockTodos()
-  ]));
+  const bloc = spyOnBloc(
+    createTodoBloc([
+      ...createMockTodos(),
+      { id: 1, done: false, title: TITLE },
+      ...createMockTodos()
+    ])
+  );
 
   // sanity check existing data
   const originalTodos = bloc.$todos.latestValue;

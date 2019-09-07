@@ -1,4 +1,5 @@
-import { protectBloc, Behavior } from "react-observer";
+//@ts-check
+import { protectBloc, Behavior } from "bloc-utils";
 
 /**
  * @param {Todo[]} initialTodos

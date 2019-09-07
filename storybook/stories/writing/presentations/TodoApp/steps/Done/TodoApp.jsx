@@ -1,10 +1,12 @@
 //@ts-check
 import React, { useContext } from "react";
-import { changeValue, preventDefaultThen } from "utils";
-import { Observer } from "react-observer";
+import { Observer } from "bloc-utils/react";
+
+import { createTodo } from "../helpers";
+import { changeValue, preventDefaultThen } from "../react-helpers";
+
 import createTodoBloc from "./TodoBloc";
 import { TodoItem } from "./TodoItem";
-import { createTodo } from "../helpers";
 
 /** @type {Todo[]} */
 const todos = [

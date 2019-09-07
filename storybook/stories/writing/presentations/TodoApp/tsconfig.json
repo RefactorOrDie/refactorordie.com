@@ -13,5 +13,5 @@
   },
   "files": ["./index.js"],
   "include": ["./steps/**/*.js", "./steps/**/*.jsx", "./types/*.d.ts"],
-  "exclude": ["./lib/**/*"]
+  "exclude": ["bloc-utils/**/*"]
 }

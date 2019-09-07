@@ -1,7 +1,4 @@
 {
-  "scripts": {
-    "postinstall": "cd ./lib && yarn tsc && cd .."
-  },
   "peerDependencies": {
     "rxjs": "^6",
     "react": "^16"
