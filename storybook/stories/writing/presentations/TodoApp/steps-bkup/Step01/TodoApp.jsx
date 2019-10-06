@@ -1,8 +1,8 @@
 //@ts-check
-import React from "react";
+import React, { useState } from "react";
 
 import { createTodo } from "../helpers";
-import { changeValue } from "../react-helpers";
+import { changeValue, TODO, preventDefaultThen } from "../react-helpers";
 
 import { TodoItem } from "./TodoItem";
 
@@ -32,7 +32,7 @@ function TodoApp() {
       <br />
       <form
         className="form-group"
-        // onSubmit={preventDefaultThen(bloc.addTodo)}
+        onSubmit={preventDefaultThen(() => TODO("Add todo"))}
       >
         <label htmlFor="todo-title">New Todo Title</label>
         <div className="input-group">

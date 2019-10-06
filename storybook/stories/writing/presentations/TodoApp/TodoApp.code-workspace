@@ -2,14 +2,11 @@
   "folders": [
     {
       "path": ".",
-      "name": "Todo App"
+      "name": "Project"
     },
     {
       "path": "steps",
-      "name": "Todo App Steps"
-    },
-    {
-      "path": "/Users/cole/Desktop/refactorordie.com/storybook"
+      "name": "Todo App Tutorial"
     }
   ],
   "settings": {
@@ -23,6 +20,8 @@
       "text": false
     },
     "editor.suggest.localityBonus": true,
-    "editor.suggestSelection": "first"
+    "editor.suggestSelection": "first",
+    "explorer.decorations.badges": false,
+    "explorer.decorations.colors": false
   }
 }

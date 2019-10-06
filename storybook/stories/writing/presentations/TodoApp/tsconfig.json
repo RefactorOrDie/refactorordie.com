@@ -11,7 +11,13 @@
     "allowSyntheticDefaultImports": true,
     "lib": ["es6", "dom"]
   },
-  "files": ["./index.js"],
-  "include": ["./steps/**/*.js", "./steps/**/*.jsx", "./types/*.d.ts"],
+  "files": ["./index.js", "./steps/TodoApp/useTodoState.jsx"],
+  "include": [
+    "./steps/**/*.js",
+    "./steps/**/*.jsx",
+    "./steps-bkup/**/*.js",
+    "./steps-bkup/**/*.jsx",
+    "steps/*.d.ts"
+  ],
   "exclude": ["bloc-utils/**/*"]
 }

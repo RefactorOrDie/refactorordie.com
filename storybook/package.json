@@ -23,6 +23,7 @@
     "webpack-cli": "^3.3.6"
   },
   "dependencies": {
+    "bloc-utils": "^0.0.4",
     "csx": "^9.1.0",
     "graphql-request": "^1.8.2",
     "observer-react": "^0.0.5",
@@ -32,7 +33,7 @@
     "react-redux": "^7.1.0",
     "redux": "^4.0.4",
     "rxjs": "^6.5.2",
-    "spectacle": "^5.7.0",
+    "spectacle": "^5.7.1",
     "spectacle-renderer": "^0.0.3",
     "typestyle": "^2.0.4"
   }

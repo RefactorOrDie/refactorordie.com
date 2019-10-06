@@ -1,5 +1,5 @@
 //@ts-check
-import { protectBloc, Behavior } from "bloc-utils";
+import { protectBloc as seal, Behavior } from "bloc-utils";
 
 /**
  * @param {Todo[]} initialTodos
@@ -8,7 +8,7 @@ export default function createTodoBloc(initialTodos = []) {
   const $todos = new Behavior(initialTodos);
   const $todoInput = new Behavior("");
 
-  return protectBloc({
+  return seal({
     $todos,
     $todoInput,
     toggleTodo(id) {

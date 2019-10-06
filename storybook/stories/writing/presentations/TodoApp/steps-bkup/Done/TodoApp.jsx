@@ -29,8 +29,7 @@ function TodoApp() {
     <div className="container">
       <h1>Todos</h1>
       <ul className="list-group">
-        <Observer
-          of={bloc.$todos}
+        <bloc.$todos.react
           next={todos =>
             todos.map(todo => <TodoItem key={todo.id} todo={todo} />)
           }
@@ -40,8 +39,7 @@ function TodoApp() {
       <form className="form-group" onSubmit={preventDefaultThen(bloc.addTodo)}>
         <label htmlFor="todo-title">New Todo Title</label>
         <div className="input-group">
-          <Observer
-            of={bloc.$todoInput}
+          <bloc.$todoInput.react
             next={value => (
               <input
                 id="todo-title"
