@@ -2,7 +2,7 @@ import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
 import { Todo, TodosService } from '../Todos.service';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
-export interface TodoBloc {
+export interface TodoState {
   todos: Observable<Todo[]>;
   newTodoTitle: Observable<string>;
   updateTitle(label: string): void;
@@ -11,7 +11,7 @@ export interface TodoBloc {
   deleteTodo(todoId: string): void;
 }
 
-export function createTodoBloc(service: TodosService): TodoBloc {
+export function createTodoState(service: TodosService): TodoState {
   const save = service.getSave()
   const todos = new BehaviorSubject<Todo[]>([
     { done: false, id: '1', label: 'adlijawoid'}

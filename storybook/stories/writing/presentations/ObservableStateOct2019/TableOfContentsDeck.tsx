@@ -2,7 +2,7 @@
  * Observable State presentation for React NYC
  */
 
-import { Behavior } from "bloc-utils";
+import { Behavior } from "behavior-state";
 import React, { useMemo } from "react";
 import { Deck, DeckProps } from "spectacle";
 

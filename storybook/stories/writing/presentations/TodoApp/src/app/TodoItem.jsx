@@ -1,19 +1,21 @@
 //@ts-check
 import React, { useContext } from "react";
+import { TodoState } from "./TodoApp";
 import { onEnterOrClick } from "../react-helpers";
-import { TodoBloc } from "./TodoApp";
 
 /**
  * TodoItem appears within the TodoApp
  * @param {{ todo: Todo }} props
  */
 export function TodoItem({ todo }) {
-  const bloc = useContext(TodoBloc);
+  const state = useContext(TodoState);
 
   return (
     <li
       className="list-group-item"
-      {...onEnterOrClick(() => bloc.toggleTodo(todo.id))}
+      {...onEnterOrClick(() => {
+        state.toggleTodo(todo.id);
+      })}
     >
       <span style={{ textDecoration: todo.done ? "line-through" : "none" }}>
         {todo.title}
@@ -22,7 +24,7 @@ export function TodoItem({ todo }) {
         className="btn btn-sm btn-default float-right"
         aria-label={`Delete "${todo.title}"`}
         {...onEnterOrClick(() => {
-          bloc.deleteTodo(todo.id);
+          state.deleteTodo(todo.id);
         })}
       >
         🗑

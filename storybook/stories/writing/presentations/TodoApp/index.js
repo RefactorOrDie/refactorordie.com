@@ -1,2 +1,3 @@
-import TodoApp from "./steps"
-export default TodoApp
+// @ts-check
+import TodoApp from "./src";
+export default TodoApp;

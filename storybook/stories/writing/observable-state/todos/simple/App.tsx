@@ -1,11 +1,11 @@
 import { Observer } from "observer-react";
 import React, { useMemo } from "react";
 import { changeValue, onEnterOrClick, preventDefaultThen } from "../../../../utils";
-import { createTodoBloc } from "./TodoBloc";
+import { createTodoState } from "./TodoState";
 import { TodosService } from "../Todos.service";
 
 export function App(props: { todosService: TodosService }) {
-  const bloc = useMemo(() => createTodoBloc(props.todosService), []);
+  const state = useMemo(() => createTodoState(props.todosService), []);
 
   
   return (
@@ -17,19 +17,19 @@ export function App(props: { todosService: TodosService }) {
             into the stream. This is great for fine-grained
             control over the render performance */}
         <Observer
-          of={bloc.todos}
+          of={state.todos}
           next={todos =>
             todos.map(todo => (
               <li
                 key={todo.id}
                 style={{ textDecoration: todo.done ? "line-through" : "none" }}
                 className="list-group-item"
-                {...onEnterOrClick(() => bloc.toggleTodo(todo.id))}
+                {...onEnterOrClick(() => state.toggleTodo(todo.id))}
               >
                 {todo.label}&nbsp;
                 <button
                   className="float-right btn btn-light btn-sm"
-                  {...onEnterOrClick(() => bloc.deleteTodo(todo.id))}
+                  {...onEnterOrClick(() => state.deleteTodo(todo.id))}
                 >
                   Delete
                 </button>
@@ -40,13 +40,13 @@ export function App(props: { todosService: TodosService }) {
       </ul>
       <br />
       <form
-        onSubmit={preventDefaultThen(() => bloc.addTodo())}
+        onSubmit={preventDefaultThen(() => state.addTodo())}
         className="form"
       >
         <label htmlFor="new-todo-label">New Todo</label>
         <div className="input-group">
           <Observer
-            of={bloc.newTodoTitle}
+            of={state.newTodoTitle}
             next={value => (
               <>
                 <input
@@ -55,7 +55,7 @@ export function App(props: { todosService: TodosService }) {
                   className="form-control"
                   placeholder="Todo title"
                   value={value}
-                  onChange={changeValue(bloc.updateTitle)}
+                  onChange={changeValue(state.updateTitle)}
                 />
               </>
             )}

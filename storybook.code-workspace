@@ -13,7 +13,7 @@
     },
     "editor.wordBasedSuggestions": false,
     "editor.suggest.filteredTypes": {
-      "keyword": false,
+      "keyword": true,
       "snippet": true,
       "text": false
     },

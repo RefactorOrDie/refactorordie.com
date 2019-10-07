@@ -3,11 +3,11 @@ import { dual } from "../../../components/dual";
 import { ViewObserver } from "../../../components/ViewObserver";
 import { ViewObservableState } from "../../../components/ViewState";
 import { changeValue, onEnterOrClick, preventDefaultThen } from "../../../utils";
-import { createTodoBloc } from "./TodoBloc";
+import { createTodoState } from "./TodoState";
 import { TodosService } from "./Todos.service";
 
 export function AppView(props: { todosService: TodosService }) {
-  const bloc = useMemo(() => createTodoBloc(props.todosService), []);
+  const state = useMemo(() => createTodoState(props.todosService), []);
 
   return dual(
     <div style={{ textAlign: "right" }}>
@@ -15,13 +15,13 @@ export function AppView(props: { todosService: TodosService }) {
       <br />
       <ViewObservableState
         label="Todos"
-        value={bloc.todos}
+        value={state.todos}
         maxLines={12}
         maxLen={36}
       />
       <br />
       <br />
-      <ViewObservableState label="New Todo Title" value={bloc.newTodoTitle} />
+      <ViewObservableState label="New Todo Title" value={state.newTodoTitle} />
     </div>,
     <div className="container" style={{ maxWidth: "30em" }}>
       <h1>Todos</h1>
@@ -32,19 +32,19 @@ export function AppView(props: { todosService: TodosService }) {
             control over the render performance */}
         <ViewObserver
           label="Todo List"
-          of={bloc.todos}
+          of={state.todos}
           next={todos =>
             todos.map(todo => (
               <li
                 key={todo.id}
                 style={{ textDecoration: todo.done ? "line-through" : "none" }}
                 className="list-group-item"
-                {...onEnterOrClick(() => bloc.toggleTodo(todo.id))}
+                {...onEnterOrClick(() => state.toggleTodo(todo.id))}
               >
                 {todo.label}&nbsp;
                 <button
                   className="float-right btn btn-light btn-sm"
-                  {...onEnterOrClick(() => bloc.deleteTodo(todo.id))}
+                  {...onEnterOrClick(() => state.deleteTodo(todo.id))}
                 >
                   Delete
                 </button>
@@ -55,14 +55,14 @@ export function AppView(props: { todosService: TodosService }) {
       </ul>
       <br />
       <form
-        onSubmit={preventDefaultThen(() => bloc.addNewTodo())}
+        onSubmit={preventDefaultThen(() => state.addNewTodo())}
         className="form"
       >
         <label htmlFor="new-todo-label">New Todo</label>
         <div className="input-group">
           <ViewObserver
             label="Title Input"
-            of={bloc.newTodoTitle}
+            of={state.newTodoTitle}
             next={value => (
               <>
                 <input
@@ -71,7 +71,7 @@ export function AppView(props: { todosService: TodosService }) {
                   className="form-control"
                   placeholder="Todo title"
                   value={value}
-                  onChange={changeValue(bloc.updateTitle)}
+                  onChange={changeValue(state.updateTitle)}
                 />
               </>
             )}

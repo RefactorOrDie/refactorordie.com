@@ -1,11 +1,11 @@
 import { Observer } from "observer-react";
 import React, { useMemo } from "react";
 import { changeValue, onEnterOrClick, preventDefaultThen } from "../../../utils";
-import { createTodoBloc } from "./TodoBloc";
+import { createTodoState } from "./TodoState";
 import { TodosService } from "./Todos.service";
 
 export function App(props: { todosService: TodosService }) {
-  const blob = useMemo(() => createTodoBloc(props.todosService), []);
+  const blob = useMemo(() => createTodoState(props.todosService), []);
 
   return (
     <div className="container" style={{ maxWidth: "30em" }}>

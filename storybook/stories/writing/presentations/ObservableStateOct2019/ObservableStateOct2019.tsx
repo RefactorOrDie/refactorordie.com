@@ -55,7 +55,7 @@ export function ObservableStateOct2019() {
         <h1>Hello React NYC</h1>
       </Slide>
       {...Intro}
-      <Slide
+      {/* <Slide
         key="Ingredients"
         bgImage="https://images.unsplash.com/photo-1540420828642-fca2c5c18abe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1230&q=80"
       >
@@ -68,8 +68,8 @@ export function ObservableStateOct2019() {
         >
           Ingredients for great state management
         </h1>
-      </Slide>
-      {...Ingredients}
+      </Slide> */}
+      {/* {...Ingredients} */}
       <Slide id="examples" state="examples">
         <h1>Examples</h1>
         <Notes>Examples</Notes>
