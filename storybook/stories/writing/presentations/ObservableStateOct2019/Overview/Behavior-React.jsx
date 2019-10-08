@@ -11,14 +11,14 @@ const CountState = createContext({
 export function Incrementer() {
   const state = useContext(CountState);
   return <>
-    <StepBy by={5} />
-    <StepBy by={1} />
+    <StepBy by={-5} />
+    <StepBy by={-1} />
     <div style={require("./incrementShowStyle")}>
       {/* The special sauce 💎 */}
       <state.$num.react />
     </div>
-    <StepBy by={-1} />
-    <StepBy by={-5} />
+    <StepBy by={1} />
+    <StepBy by={5} />
   </>;
 }
 
