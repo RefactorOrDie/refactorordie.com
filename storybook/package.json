@@ -23,7 +23,7 @@
     "webpack-cli": "^3.3.6"
   },
   "dependencies": {
-    "behavior-state": "^0.0.2",
+    "behavior-state": "0.0.3",
     "csx": "^9.1.0",
     "graphql-request": "^1.8.2",
     "observer-react": "^0.0.5",

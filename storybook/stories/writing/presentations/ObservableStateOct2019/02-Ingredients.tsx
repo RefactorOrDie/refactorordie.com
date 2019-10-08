@@ -6,7 +6,7 @@ import { Notes, Slide, List, ListItem } from "spectacle";
 
 /** Section 2. Ingredients slides */
 export const Ingredients = [
-  <Slide state="ing-1" key="Separation of UI and State">
+  <Slide state="section-ing-1" key="💎 The Secret Sauce" bgImage="https://images.unsplash.com/photo-1540420828642-fca2c5c18abe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1230&q=80">
     <h1>UI and State</h1>
     <small>Cole Lawrence</small>
     <Notes>

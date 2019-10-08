@@ -3464,10 +3464,10 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
-behavior-state@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/behavior-state/-/behavior-state-0.0.2.tgz#8071a3c94e62225d3cd2f1b55a27059f67b7aacb"
-  integrity sha512-KGfsKVrN83PJ6M5HK9gAKIrjaCEpe6RSOxBrKUE2oI0/8MWgoRU67SF/ygohNy723jSNAn250RG6oPaYdPYGFw==
+behavior-state@0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/behavior-state/-/behavior-state-0.0.3.tgz#6f658475dbdd88cb115a7291d5271f482542c69f"
+  integrity sha512-6rXPSoW/5T14ub+MkO5IKUkQsJx2npAdcoUXvZlyxg6xIB8pS5BPGeZZoR9VklKHYPRPxYknulN+CJuY+YBXwg==
   dependencies:
     csstype "^2.6.7"
     performance-now "^2.1.0"

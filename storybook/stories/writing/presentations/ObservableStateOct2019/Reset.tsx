@@ -17,7 +17,8 @@ export function Reset({
           background: "#f7f7f7",
           color: "black",
           fontSize: "18px",
-          padding: ".5em"
+          padding: ".5em",
+          textAlign: "left"
         })
       )}
     >

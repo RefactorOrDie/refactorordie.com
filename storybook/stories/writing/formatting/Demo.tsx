@@ -63,7 +63,10 @@ export function Story(props: {
   );
 }
 
-export function SourceCode(props: { source: string, fontSize?: string | number }) {
+export function SourceCode(props: {
+  source: string;
+  fontSize?: string | number;
+}) {
   const query = window.location.search;
   const hideCode = query.includes("hide-code");
   return hideCode ? null : (
@@ -73,9 +76,13 @@ export function SourceCode(props: { source: string, fontSize?: string | number }
         fontSize: props.fontSize || undefined,
         textAlign: "left",
         overflow: "auto",
+        margin: 0,
+        marginBlockStart: 0,
+        marginBlockEnd: 0,
         $nest: {
           pre: {
-            padding: em(1)
+            padding: em(1),
+            maxHeight: px(700),
           }
         }
       })}

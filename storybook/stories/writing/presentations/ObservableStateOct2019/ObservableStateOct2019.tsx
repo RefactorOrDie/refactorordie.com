@@ -12,10 +12,12 @@ import { SourceCode } from "../../formatting/Demo";
 import { Counter } from "../../observable-state/counter/CounterReact";
 import { AppRedux } from "../../observable-state/todos/redux/AppRedux";
 import { createTodosService } from "../../observable-state/todos/Todos.service";
-import { Intro } from "./01-Intro";
+import { Intro } from "./00-Intro";
 import { Ingredients } from "./02-Ingredients";
 import { Reset } from "./Reset";
 import { ToCDeck } from "./TableOfContentsDeck";
+import { Overview } from "./01-Overview";
+import TodoApp from "./TodoApp";
 
 const theme = createTheme(
   {
@@ -46,15 +48,10 @@ export function ObservableStateOct2019() {
       transition={["fade"]}
       controls={false}
       showFullscreenControl={false}
-      progress="bar"
+      progress="none"
     >
-      <Slide
-        key="Intro"
-        bgImage="https://images.unsplash.com/photo-1570212049797-abc6e855dd3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80"
-      >
-        <h1>Hello React NYC</h1>
-      </Slide>
       {...Intro}
+      {...Overview}
       {/* <Slide
         key="Ingredients"
         bgImage="https://images.unsplash.com/photo-1540420828642-fca2c5c18abe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1230&q=80"
@@ -70,12 +67,14 @@ export function ObservableStateOct2019() {
         </h1>
       </Slide> */}
       {/* {...Ingredients} */}
-      <Slide id="examples" state="examples">
-        <h1>Examples</h1>
-        <Notes>Examples</Notes>
+      <Slide state="section-examples" key="Example Todo app" >
+        <Reset>
+          <TodoApp/>
+        </Reset>
+        <Notes>I want to look at the following app which takes these concepts just a little bit further</Notes>
       </Slide>
 
-      <Slide>
+      {/* <Slide>
         <h1>Counter</h1>
         <Dual
           right={
@@ -109,7 +108,6 @@ export function ObservableStateOct2019() {
       </Slide>
 
       <Slide>
-        {/* <TodosApp></TodosApp> */}
         <Notes>Let's start with a very basic TodoApp</Notes>
       </Slide>
 
@@ -118,7 +116,7 @@ export function ObservableStateOct2019() {
         <Notes>Let's start with a very basic TodoApp</Notes>
       </Slide>
 
-      <Slide className={style({ textAlign: "left" })}></Slide>
+      <Slide className={style({ textAlign: "left" })}></Slide> */}
     </ToCDeck>
   );
 }

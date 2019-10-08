@@ -11,6 +11,9 @@ export default function createTodoState(initialTodos = []) {
   return {
     $todos,
     $todoInput,
+    updateNewTodoInput(value) {
+      $todoInput.next(value);
+    },
     toggleTodo(id) {
       $todos.nextUpdateItemsWhere(
         todo => todo.id === id,
@@ -29,9 +32,6 @@ export default function createTodoState(initialTodos = []) {
         });
         $todoInput.next("");
       }
-    },
-    updateNewTodoInput(value) {
-      $todoInput.next(value);
     }
   };
 }

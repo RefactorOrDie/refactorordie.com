@@ -3,7 +3,7 @@ const shiki = require("shiki");
 module.exports = function shikiLoader(source, ...args) {
   return shiki
     .getHighlighter({
-      theme: "nord"
+      theme: "dark_plus"
     })
     .then(highlighter => {
       return `module.exports = ${JSON.stringify(
