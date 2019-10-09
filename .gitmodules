@@ -1,0 +1,3 @@
+[submodule "storybook/packages/behavior-state"]
+	path = storybook/packages/behavior-state
+	url = git@github.com:colelawrence/behavior-state.git
