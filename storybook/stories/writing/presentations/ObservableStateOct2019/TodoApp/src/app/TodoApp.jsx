@@ -11,10 +11,7 @@ const todos = [
   createTodo("Build UI for TodoApp", true),
   createTodo("Toggling a Todo"),
   createTodo("Deleting a Todo"),
-  createTodo("Adding a Todo"),
-  ...Array(10000)
-    .fill(null)
-    .map((_, idx) => createTodo("Item " + idx))
+  createTodo("Adding a Todo")
 ];
 
 export const TodoState = React.createContext(createTodoState(todos));
