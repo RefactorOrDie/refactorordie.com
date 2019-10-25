@@ -1,15 +1,15 @@
 //@ts-check
-import { Behavior, BehaviorArray } from "behavior-state";
+import { Behavior, BehaviorList } from "behavior-state";
 
 /**
  * @param {Todo[]} initialTodos
  */
 export default function createTodoState(initialTodos = []) {
-  const $todos = new BehaviorArray(initialTodos);
+  const $todos = new BehaviorList(initialTodos);
   const $todoInput = new Behavior("");
 
   return {
-    $todos,
+    $todos: $todos.asObservableList(),
     $todoInput,
     updateNewTodoInput(value) {
       $todoInput.next(value);

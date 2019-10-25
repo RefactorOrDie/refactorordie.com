@@ -2,7 +2,7 @@ import React, { useMemo, useState } from "react";
 import { storiesOf } from "@storybook/react";
 import "behavior-state/react";
 import { BehaviorSpring } from "behavior-state/spring";
-import { combineLatest, Observable } from "rxjs";
+import { combineLatest } from "rxjs";
 import { FlashDot } from "../components/FlashDot";
 
 

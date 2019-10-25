@@ -11,7 +11,10 @@ const todos = [
   createTodo("Build UI for TodoApp", true),
   createTodo("Toggling a Todo"),
   createTodo("Deleting a Todo"),
-  createTodo("Adding a Todo")
+  createTodo("Adding a Todo"),
+  ...Array(10000)
+    .fill(null)
+    .map((_, idx) => createTodo("Item " + idx))
 ];
 
 export const TodoState = React.createContext(createTodoState(todos));
@@ -25,12 +28,10 @@ function TodoApp() {
 
   return (
     <div className="container">
-      <h1>Todos</h1>
+      <h1>Todos <small style={{ fontSize: 16}}>APP</small></h1>
       <ul className="list-group">
         <state.$todos.react
-          next={todos =>
-            todos.map(todo => <TodoItem key={todo.id} todo={todo} />)
-          }
+          nextItem={todo => <TodoItem key={todo.id} todo={todo} />}
         />
       </ul>
       <br />
