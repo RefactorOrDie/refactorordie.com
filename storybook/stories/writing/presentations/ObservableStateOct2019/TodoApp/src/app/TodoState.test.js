@@ -1,4 +1,4 @@
-// @ts-check
+// @ts-nocheck until spyOnState works with BehaviorList
 import { spyOnState } from "behavior-state/jest";
 import { createTodo } from "../helpers";
 import createTodoState from "./TodoState";
