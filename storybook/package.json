@@ -15,7 +15,7 @@
     "babel-loader": "^8.0.6",
     "jest": "^24.9.0",
     "shiki": "^0.1.4",
-    "storybook": "^1.0.0",
+    "storybook": "^5.1.11",
     "ts-jest": "^24.0.2",
     "ts-loader": "^6.0.4",
     "typescript": "^3.5.3",
@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "behavior-state": "0.0.4",
-    "csx": "^9.1.0",
+    "csx": "^10.0.0",
     "graphql-request": "^1.8.2",
     "observer-react": "^0.0.5",
     "react": "^16.9.0",
