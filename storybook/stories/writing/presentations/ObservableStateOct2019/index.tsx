@@ -10,7 +10,7 @@ export function clearLogs() {
 }
 
 export function log(...args: any[]) {
-  logs.nextPushItem(args);
+  logs.nextAppendItem(args);
 }
 
 export const continueWait = function () {}

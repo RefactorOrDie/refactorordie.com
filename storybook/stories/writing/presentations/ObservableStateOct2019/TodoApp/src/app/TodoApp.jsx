@@ -11,6 +11,7 @@ const todos = [
   createTodo("Build UI for TodoApp", true),
   createTodo("Toggling a Todo"),
   createTodo("Deleting a Todo"),
+  createTodo("Performant lists", true),
   createTodo("Adding a Todo")
 ];
 
@@ -25,7 +26,9 @@ function TodoApp() {
 
   return (
     <div className="container">
-      <h1>Todos <small style={{ fontSize: 16}}>APP</small></h1>
+      <h1>
+        Todos <small style={{ fontSize: 16 }}>APP</small>
+      </h1>
       <ul className="list-group">
         <state.$todos.react
           nextItem={todo => <TodoItem key={todo.id} todo={todo} />}
