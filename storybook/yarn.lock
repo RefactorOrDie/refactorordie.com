@@ -2947,10 +2947,8 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
-behavior-state@0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/behavior-state/-/behavior-state-0.0.4.tgz#117f582c6e57c5e8c499d7cf820b46f3d45dabb9"
-  integrity sha512-f0yd1vJT+oXAkd8qAdNbgcStA2Nc486HD0AV5yTujLezHrupmdxPNqw/vf+CWK0RygPuaU3QHUcobytP8LRQjQ==
+behavior-state@./packages/behavior-state:
+  version "0.0.6"
   dependencies:
     csstype "^2.6.7"
     performance-now "^2.1.0"

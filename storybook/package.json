@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "storybook": "start-storybook --port 5888",
+    "storybook": "start-storybook --port 5888 --ci",
     "build-storybook": "build-storybook --output-dir ../static/storybook"
   },
   "devDependencies": {
@@ -23,7 +23,7 @@
     "webpack-cli": "^3.3.6"
   },
   "dependencies": {
-    "behavior-state": "0.0.4",
+    "behavior-state": "./packages/behavior-state",
     "csx": "^10.0.0",
     "graphql-request": "^1.8.2",
     "observer-react": "^0.0.5",
