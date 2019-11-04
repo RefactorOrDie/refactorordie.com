@@ -17,7 +17,7 @@ module.exports = isDev => ({
         use: {
           loader: require.resolve("ts-loader"),
           options: {
-            transpileOnly: isDev,
+            transpileOnly: true, // isDev,
             experimentalWatchApi: isDev,
             compilerOptions: {
               sourceMap: USE_SOURCEMAPS,
