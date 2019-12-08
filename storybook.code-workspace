@@ -5,6 +5,9 @@
     },
     {
       "path": "storybook/stories/writing/presentations/ObservableStateOct2019/TodoApp"
+    },
+    {
+      "path": "storybook/packages/dotjsx"
     }
   ],
   "settings": {
