@@ -6,7 +6,7 @@ import { FormDemo } from "./FormDemo";
 
 storiesOf("Random / Forms", module)
   .add("Reactive Forms", () => (
-    <Story title="useHovering">
+    <Story title="Signup Form">
       <Example>
         <FormDemo />
       </Example>
