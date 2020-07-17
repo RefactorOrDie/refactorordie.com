@@ -1,7 +1,8 @@
 {
   "scripts": {
     "storybook": "start-storybook --port 5888 --ci",
-    "build-storybook": "build-storybook --output-dir ../static/storybook"
+    "build-storybook": "build-storybook --output-dir ../static/storybook",
+    "preinstall": "git submodule update --init --recursive"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
@@ -23,7 +24,7 @@
     "webpack-cli": "^3.3.6"
   },
   "dependencies": {
-    "behavior-state": "./packages/behavior-state",
+    "behavior-state": "^0.0.9",
     "csx": "^10.0.0",
     "graphql-request": "^1.8.2",
     "observer-react": "^0.0.5",

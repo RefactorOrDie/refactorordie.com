@@ -2947,18 +2947,6 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
-behavior-state@./packages/behavior-state:
-  version "0.0.9"
-  dependencies:
-    csstype "^2.6.7"
-    performance-now "^2.1.0"
-    raf "^3.4.1"
-  optionalDependencies:
-    dotjsx "*"
-    jest "^24"
-    preact "^10.0.0"
-    react "^16"
-
 behavior-state@^0.0.8:
   version "0.0.8"
   resolved "https://registry.yarnpkg.com/behavior-state/-/behavior-state-0.0.8.tgz#dcb394ffe59c44daa8f0e3dd8ed7531a83b075f3"
@@ -2968,6 +2956,20 @@ behavior-state@^0.0.8:
     performance-now "^2.1.0"
     raf "^3.4.1"
   optionalDependencies:
+    jest "^24"
+    preact "^10.0.0"
+    react "^16"
+
+behavior-state@^0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/behavior-state/-/behavior-state-0.0.9.tgz#7f4d206339a1ddd836a85cd8caa637f183ab9627"
+  integrity sha512-cz/P5Q2J77Qyj/O0badxjn3MD9igeX5Wna8kd6a6UJs8/4qnc6E3xIYFZzngTGRMQ43UfJVlaHIcGSlogSbvXA==
+  dependencies:
+    csstype "^2.6.7"
+    performance-now "^2.1.0"
+    raf "^3.4.1"
+  optionalDependencies:
+    dotjsx "*"
     jest "^24"
     preact "^10.0.0"
     react "^16"
@@ -4017,10 +4019,15 @@ cssstyle@^1.0.0:
   dependencies:
     cssom "0.3.x"
 
-csstype@^2.2.0, csstype@^2.4.0, csstype@^2.5.1, csstype@^2.5.7, csstype@^2.6.0, csstype@^2.6.7:
+csstype@^2.2.0, csstype@^2.4.0, csstype@^2.5.1, csstype@^2.5.7, csstype@^2.6.0:
   version "2.6.7"
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.7.tgz#20b0024c20b6718f4eda3853a1f5a1cce7f5e4a5"
   integrity sha512-9Mcn9sFbGBAdmimWb2gLVDtFJzeKtDGIr76TUqmjZrw9LFXBMSU70lcs+C0/7fyCd6iBDqmksUcCOUIkisPHsQ==
+
+csstype@^2.6.7:
+  version "2.6.11"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.11.tgz#452f4d024149ecf260a852b025e36562a253ffc5"
+  integrity sha512-l8YyEC9NBkSm783PFTvh0FmJy7s5pFKrDp49ZL7zBGX3fWkO+N4EEyan1qqp8cwPLDcD0OSdyY6hAMoxp34JFw==
 
 csx@^10.0.0:
   version "10.0.0"
@@ -8908,9 +8915,9 @@ postcss@^7.0.0, postcss@^7.0.14, postcss@^7.0.16, postcss@^7.0.17, postcss@^7.0.
     supports-color "^6.1.0"
 
 preact@^10.0.0:
-  version "10.0.1"
-  resolved "https://registry.yarnpkg.com/preact/-/preact-10.0.1.tgz#16451887a8490dd534d60d1bc7d2ff4a70f7e0ee"
-  integrity sha512-lq7jo1rwwCd1YkiBcuOxRc3I0y1FZACa6O7tgNXt47QZJtSlLEE53f/FDNsLtiB2IVQTHbaey20TjSPmejhDyQ==
+  version "10.4.6"
+  resolved "https://registry.yarnpkg.com/preact/-/preact-10.4.6.tgz#86cc43396e4bdd755726a2b4b1f0529e78067cd3"
+  integrity sha512-80WJfXH53yyINig5Wza/8MD9n4lMg9G6aN00ws0ptsAaY/Fu/M7xW4zICf7OLfocVltxS30wvNQ8oIbUyZS1tw==
 
 prelude-ls@~1.1.2:
   version "1.1.2"
@@ -9491,7 +9498,16 @@ react-typography@^0.16.18:
   resolved "https://registry.yarnpkg.com/react-typography/-/react-typography-0.16.19.tgz#5736b47961dcf6b9605b6fa38d41980db2588e28"
   integrity sha512-kV2qLEsdm0x9P4YXQEDVc88tDb4Vg0h/vdVZGgbqaRn8ERvNzV76JHUeOby3vvcUYU5MPd5Kz5DPH9Bhp4I/iw==
 
-react@^16, react@^16.8.3, react@^16.9.0:
+react@^16:
+  version "16.13.1"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.13.1.tgz#2e818822f1a9743122c063d6410d85c1e3afe48e"
+  integrity sha512-YMZQQq32xHLX0bz5Mnibv1/LHb3Sqzngu7xstSM+vrkE5Kzr9xE0yMByK5kMoTK30YVJE61WfbxIFFvfeDKT1w==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.2"
+
+react@^16.8.3, react@^16.9.0:
   version "16.11.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.11.0.tgz#d294545fe62299ccee83363599bf904e4a07fdbb"
   integrity sha512-M5Y8yITaLmU0ynd0r1Yvfq98Rmll6q8AxaEe88c8e7LxO8fZ2cNgmFt0aGAS9wzf1Ao32NKXtCl+/tVVtkxq6g==
@@ -10049,10 +10065,17 @@ rxjs@^6.4.0:
   dependencies:
     tslib "^1.9.0"
 
-rxjs@^7.0.0-alpha, rxjs@^7.0.0-alpha.0:
+rxjs@^7.0.0-alpha:
   version "7.0.0-alpha.0"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.0.0-alpha.0.tgz#8123daf3a9fa994536ca0089dbc448f7cde98403"
   integrity sha512-dX5CjwuWIuo4uHI5u1ou8w/2qMZyt025qiLoiYgSoYKiLS4czmJhSlptXGUi/2KAVJlHpMHiKNyhnVODg68xVw==
+  dependencies:
+    tslib "^1.9.0"
+
+rxjs@^7.0.0-alpha.0:
+  version "7.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.0.0-beta.2.tgz#41f71f9a876c3b5ad1fde49a08276124e1d92268"
+  integrity sha512-MlsT7OVk1wOIlClZGZCangq+SR7qWBh7KUJvQ8CzFClKv4uveTNGDA5bxVcdP8Lf/pnKf5w9bEUUk41GQ2kzBA==
   dependencies:
     tslib "^1.9.0"
 
