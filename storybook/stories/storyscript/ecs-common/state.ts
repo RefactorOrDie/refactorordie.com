@@ -49,7 +49,7 @@ export type BoxView = {
   label: string;
 };
 
-type ECSData = {
+export type ECSData = {
   allComponents: ComponentStorage[];
   allUniques: UniqueStorage[];
   allSystems: System[];

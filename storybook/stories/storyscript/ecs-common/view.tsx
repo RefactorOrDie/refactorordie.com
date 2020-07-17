@@ -1,7 +1,7 @@
 import React from "react";
 import { style } from "typestyle";
-import { ECSState, BoxView } from "./state";
 import { Dual } from "../../components/dual";
+import { BoxView, ECSState } from "./state";
 
 const tileLayoutClass = style({
   padding: `.2em 1em .2em .2em`,
