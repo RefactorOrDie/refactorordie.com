@@ -2,6 +2,7 @@ import React from "react";
 import { style } from "typestyle";
 import { Dual } from "../../components/dual";
 import { BoxView, ECSState } from "./state";
+import { ats, roles } from "./data";
 
 const tileLayoutClass = style({
   padding: `.2em 1em .2em .2em`,
@@ -14,36 +15,147 @@ const tileLayoutClass = style({
 export const ECSView = ({ state }: { state: ECSState }) => (
   <Dual
     left={
-      <>
-        <h2>Systems</h2>
+      <div style={{ paddingLeft: "1rem" }}>
+        <h1 style={{ marginLeft: "-1rem" }}>Systems</h1>
+        <h2>Hierarchy</h2>
         <state.$systems.react
-          nextItem={system => (
-            <Box
-              boxView={system}
-              onFocus={() => state.focusOnSystem(system.id)}
-            />
-          )}
+          nextItem={system =>
+            system.tags.includes(roles.Hierarchy) && (
+              <Box
+                boxView={system}
+                onFocus={() => state.focusOnSystem(system.id)}
+              />
+            )
+          }
+        />
+        <h2>Sync to Executor</h2>
+        <state.$systems.react
+          nextItem={system =>
+            system.tags.includes(roles.SyncToExecutor) && (
+              <Box
+                boxView={system}
+                onFocus={() => state.focusOnSystem(system.id)}
+              />
+            )
+          }
+        />
+        <h2>Save</h2>
+        <state.$systems.react
+          nextItem={system =>
+            system.tags.includes(roles.Save) && (
+              <Box
+                boxView={system}
+                onFocus={() => state.focusOnSystem(system.id)}
+              />
+            )
+          }
+        />
+        <h2>Semantics</h2>
+        <state.$systems.react
+          nextItem={system =>
+            system.tags.includes(roles.Semantics) && (
+              <Box
+                boxView={system}
+                onFocus={() => state.focusOnSystem(system.id)}
+              />
+            )
+          }
+        />
+        <h2>Sync to UI</h2>
+        <state.$systems.react
+          nextItem={system =>
+            system.tags.includes(roles.SyncToUI) && (
+              <Box
+                boxView={system}
+                onFocus={() => state.focusOnSystem(system.id)}
+              />
+            )
+          }
+        />
+        <hr />
+        <h2>Indexing</h2>
+        <state.$systems.react
+          nextItem={system =>
+            system.tags.includes(roles.Indexing) && (
+              <Box
+                boxView={system}
+                onFocus={() => state.focusOnSystem(system.id)}
+              />
+            )
+          }
         />
         <br />
-        <br />
+        <hr />
+        <state.$systems.react
+          nextItem={system =>
+            system.tags.length === 0 && (
+              <Box
+                boxView={system}
+                onFocus={() => state.focusOnSystem(system.id)}
+              />
+            )
+          }
+        />
         <br />
         <small>
           <button onClick={state.clearFocus}>clear</button>
         </small>
-      </>
+        <br />
+        <br />
+        <br />
+      </div>
     }
     right={
       <>
-        <h2>Components</h2>
+        <h1 style={{ marginLeft: "-1rem" }}>Components</h1>
+        <h2>Page Entities</h2>
         <state.$componentStorages.react
-          nextItem={component => (
-            <Box
-              boxView={component}
-              onFocus={() => state.focusOnComponentStorage(component.id)}
-            />
-          )}
+          nextItem={component =>
+            component.tags.includes(ats.Page) && (
+              <Box
+                boxView={component}
+                onFocus={() => state.focusOnComponentStorage(component.id)}
+              />
+            )
+          }
         />
-        <h2>Unique Values</h2>
+        <h2>Skill Entities</h2>
+        <state.$componentStorages.react
+          nextItem={component =>
+            component.tags.includes(ats.Skill) && (
+              <Box
+                boxView={component}
+                onFocus={() => state.focusOnComponentStorage(component.id)}
+              />
+            )
+          }
+        />
+        <h2>Block Entities</h2>
+        <state.$componentStorages.react
+          nextItem={component =>
+            component.tags.includes(ats.Block) && (
+              <Box
+                boxView={component}
+                onFocus={() => state.focusOnComponentStorage(component.id)}
+              />
+            )
+          }
+        />
+        <h2>Atom Entities</h2>
+        <state.$componentStorages.react
+          nextItem={component =>
+            component.tags.includes(ats.Atom) && (
+              <Box
+                boxView={component}
+                onFocus={() => state.focusOnComponentStorage(component.id)}
+              />
+            )
+          }
+        />
+        <br />
+        <hr />
+        <br />
+        <h1 style={{ marginLeft: "-1rem" }}>Unique Values</h1>
         <state.$uniqueStorages.react
           nextItem={unique => (
             <Box
@@ -88,6 +200,8 @@ function Box(props: { boxView: BoxView; onFocus: () => void }) {
         Empty28()
       )}
       <span>&nbsp;&nbsp;{props.boxView.label}</span>
+      <br />
+      <small>{props.boxView.tags.join(", ")}</small>
     </div>
   );
 }

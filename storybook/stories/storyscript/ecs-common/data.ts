@@ -27,25 +27,38 @@ function world() {
       console.assert(id, `better find that id for "${label}"!`);
       return id;
     },
-    component(label: string) {
+    addTagsToLabels(labels: string[], tags: string[]) {
+      const hasLabel = ({ label }) => labels.includes(label);
+      const toUpdate: { tags: string[] }[] = [
+        ...data.allComponents.filter(hasLabel),
+        ...data.allSystems.filter(hasLabel),
+        ...data.allUniques.filter(hasLabel)
+      ];
+      for (const item of toUpdate) {
+        item.tags.push(...tags);
+      }
+    },
+    component(label: string, tags: string[] = []) {
       const id = hash(label);
       data.allComponents.push({
         id,
-        label
+        label,
+        tags
       });
       return id;
     },
-    unique(label: string) {
+    unique(label: string, tags: string[] = []) {
       const id = hash(label);
       data.allUniques.push({
         id,
-        label
+        label,
+        tags
       });
       return id;
     },
-    system(label: string) {
+    system(label: string, tags: string[] = []) {
       const id = hash(label);
-      const sys = systemData(id, label, {});
+      const sys = systemData(id, label, { tags });
       data.allSystems.push(sys);
       const self = {
         view(...ids: number[]) {
@@ -75,54 +88,83 @@ function world() {
   return world;
 }
 
-const { build, component, system, unique, idFromLabel } = world();
+const {
+  build,
+  component,
+  system,
+  unique,
+  idFromLabel,
+  addTagsToLabels
+} = world();
+
+/** Archetypes */
+export const ats = {
+  Page: "Page",
+  Skill: "Skill",
+  Tokens: "Tokens",
+  Block: "Block",
+  Atom: "Atom"
+};
+
+/** Roles */
+export const roles = {
+  Save: "Save",
+  SyncToUI: "Sync to UI",
+  SyncToExecutor: "Sync to Executor",
+  Semantics: "Semantics",
+  Indexing: "Indexing",
+  Hierarchy: "Hierarchy"
+};
 
 const Entities = unique("Entities");
 
-const UID = component("UID");
-const PageTag = component("PageTag");
-const SkillTag = component("SkillTag");
-const ChildOf = component("ChildOf");
-const ParentIndex = component("ParentIndex");
-const SiblingIndex = component("SiblingIndex");
-const ecs_BlockKindTag = component("ecs::BlockKindTag");
-const BlockStyle = component("BlockStyle");
+const UID = component("UID", [ats.Atom, ats.Block, ats.Tokens, ats.Skill]);
+const PageTag = component("PageTag", [ats.Page]);
+const SkillTag = component("SkillTag", [ats.Skill]);
+const ChildOf = component("ChildOf", [ats.Skill, ats.Block]);
+const ParentIndex = component("ParentIndex", [ats.Skill, ats.Block]);
+const SiblingIndex = component("SiblingIndex", [ats.Skill, ats.Block]);
+const ecs_BlockKindTag = component("ecs::BlockKindTag", [ats.Block]);
+const BlockStyle = component("BlockStyle", [ats.Block]);
 
 // Atom archetype
-const AtomDisplay = component("AtomDisplay");
-const AtomKind = component("AtomKind");
+const AtomDisplay = component("AtomDisplay", [ats.Atom]);
+const AtomKind = component("AtomKind", [ats.Atom]);
 // Atom index
-const semantics_AtomScopeCheck = component("AtomScopeCheck");
+const semantics_AtomScopeCheck = component("AtomScopeCheck", [ats.Atom]);
 
-const ecs_Tokens = component("ecs::Tokens");
+const ecs_Tokens = component("ecs::Tokens", [ats.Block]);
 
 const ui_OptUITokensSelection = unique("Option<ui::UITokensSelection>");
 const suggestions_CursorIndex = unique("suggestions::CursorIndex");
 
 const UIDLookup = unique("UIDLookup");
 
-system("save_objects::import_page(PaveSaveObject) -> EntityId")
+system("import_page(PaveSaveObject) -> EntityId", [roles.Save])
   .uniqueViewMut(Entities)
   .viewMut(PageTag, SkillTag)
   .viewMut(ChildOf)
   .viewMut(UID)
   .viewMut(ecs_BlockKindTag, BlockStyle, AtomDisplay, AtomKind, ecs_Tokens);
 
-system("save_objects::export(EntityId) -> PageSaveObject")
+system("export(EntityId) -> PageSaveObject", [roles.Save])
   .view(PageTag, SkillTag)
   .view(ParentIndex)
   .view(UID)
   .view(AtomDisplay, AtomKind)
   .view(ecs_BlockKindTag, BlockStyle, ecs_Tokens);
 
-system("sync::atom_view_collect_updates() -> Vec<(UID, ui::AtomView)>")
+system("atom_view_collect_updates() -> Vec<(UID, ui::AtomView)>", [
+  roles.SyncToUI
+])
   .view(UID)
   .view(AtomKind)
   .viewMut(semantics_AtomScopeCheck)
   .viewMut(AtomDisplay);
 
 system(
-  "suggestions::cursor_collect_suggestions() -> Option<SelectionSuggestions>"
+  "suggestions::cursor_collect_suggestions() -> Option<SelectionSuggestions>",
+  [roles.SyncToUI]
 )
   .uniqueView(ui_OptUITokensSelection)
   .uniqueView(suggestions_CursorIndex)
@@ -135,31 +177,33 @@ system(
   .viewMut(ecs_BlockKindTag)
   .viewMut(ChildOf);
 
-system("sync::update_tokens(UID, Vec<ui::Token>)")
+system("update_tokens(UID, Vec<ui::Token>)", [roles.SyncToExecutor])
   .uniqueView(UIDLookup)
   .uniqueViewMut(Entities)
   .viewMut(ecs_Tokens)
   .viewMut(UID)
   .viewMut(AtomDisplay, AtomKind);
 
-system("sync::update_block_style(UID, ui::BlockStyle)")
+system("update_block_style(UID, ui::BlockStyle)", [roles.SyncToExecutor])
   .uniqueView(UIDLookup)
   .viewMut(BlockStyle);
 
-system("sync::remove_block(UID)")
+system("remove_block(UID)", [roles.SyncToExecutor])
   .uniqueView(UIDLookup)
   .viewMut(ChildOf);
 
-system("sync::move_blocks(ui::BlockRelativePosition, Vec<UID>)")
+system("move_blocks(ui::BlockRelativePosition, Vec<UID>)", [
+  roles.SyncToExecutor
+])
   .uniqueView(UIDLookup)
   .view(ParentIndex)
   .view(SiblingIndex)
   .uniqueView(Entities)
   .viewMut(ChildOf);
 
-system(
-  "sync::create_basic_blocks(ui::BlockRelativePosition, Vec<ui::BlockKind>)"
-)
+system("create_basic_blocks(ui::BlockRelativePosition, Vec<ui::BlockKind>)", [
+  roles.SyncToExecutor
+])
   .uniqueView(UIDLookup)
   .view(ParentIndex)
   .view(SiblingIndex)
@@ -188,15 +232,6 @@ for name in $(rg with_system -g '!crates' | awk -F'(' '{print $NF}' | sed 's/)//
 done
 `;
 const hmm = `
-storycore/src/tree/indexing.rs
-pub fn tree_indexing(
-    (v_entities, mut vm_child_of, mut vm_sibling_index, mut vm_parent_index): (
-        EntitiesView,
-        ViewMut<ChildOf>,
-        ViewMut<SiblingIndex>,
-        ViewMut<ParentIndex>,
-    ),
-) {
 storycore/src/id/uid_indexing.rs
 pub fn uid_indexing(mut uid_map: UniqueViewMut<UIDLookup>, mut vm_uid: ViewMut<UID>) {
 storycore/src/semantics/scope_indexing.rs
@@ -255,15 +290,6 @@ pub fn tree_reordering(
         View<ParentIndex>,
     ),
 ) {
-storycore/src/tree/indexing.rs
-pub fn tree_indexing(
-    (v_entities, mut vm_child_of, mut vm_sibling_index, mut vm_parent_index): (
-        EntitiesView,
-        ViewMut<ChildOf>,
-        ViewMut<SiblingIndex>,
-        ViewMut<ParentIndex>,
-    ),
-) {
 `;
 
 for (const systemDefRust of hmm.split(/(storycore|web_author)/g)) {
@@ -298,5 +324,23 @@ for (const systemDefRust of hmm.split(/(storycore|web_author)/g)) {
     sys.uniqueViewMut(id);
   }
 }
+
+addTagsToLabels(["tree_reordering", "tree_indexing"], [roles.Hierarchy]);
+addTagsToLabels(
+  ["suggesting", "scope_dependency_checking", "atom_dependency_indexing"],
+  [roles.Semantics]
+);
+addTagsToLabels(["suggesting"], [roles.SyncToUI]);
+addTagsToLabels(
+  [
+    "tree_indexing",
+    "uid_indexing",
+    "scope_indexing",
+    "atom_dependency_indexing",
+    "cursor_indexing",
+    "cursor_indexing"
+  ],
+  [roles.Indexing]
+);
 
 export const data = build();

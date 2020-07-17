@@ -1,18 +1,22 @@
 import { Behavior, BehaviorList } from "behavior-state";
+import { map } from "rxjs/operators";
 
 type ComponentStorage = {
   id: number;
   label: string;
+  tags: string[];
 };
 
 type UniqueStorage = {
   id: number;
   label: string;
+  tags: string[];
 };
 
 type System = {
   id: number;
   label: string;
+  tags: string[];
   viewComponentIds: number[];
   viewMutComponentIds: number[];
   viewUniqueIds: number[];
@@ -23,6 +27,7 @@ export function systemData(
   id: number,
   label: string,
   data: {
+    tags?: string[];
     viewComponentIds?: number[];
     viewMutComponentIds?: number[];
     viewUniqueIds?: number[];
@@ -32,6 +37,7 @@ export function systemData(
   return {
     id,
     label,
+    tags: data.tags || [],
     viewComponentIds: data.viewComponentIds || [],
     viewMutComponentIds: data.viewMutComponentIds || [],
     viewUniqueIds: data.viewUniqueIds || [],
@@ -47,6 +53,7 @@ export type BoxView = {
   accessSecondary?: { hue: number; write: boolean };
   marked: boolean;
   label: string;
+  tags: string[];
 };
 
 export type ECSData = {
@@ -66,7 +73,7 @@ export function createECSState(config: ECSData) {
 
   const $componentStorages = createBoxViewState(
     config.allComponents.map<BoxView>(componentItem => ({
-      backgroundCSS: "transparent",
+      tags: componentItem.tags,
       marked: false, // everything unfocused at the beginning
       id: componentItem.id,
       label: componentItem.label
@@ -75,7 +82,7 @@ export function createECSState(config: ECSData) {
 
   const $uniqueStorages = createBoxViewState(
     config.allUniques.map<BoxView>(componentItem => ({
-      backgroundCSS: "transparent",
+      tags: componentItem.tags,
       marked: false, // everything unfocused at the beginning
       id: componentItem.id,
       label: componentItem.label
@@ -84,7 +91,7 @@ export function createECSState(config: ECSData) {
 
   const $systems = createBoxViewState(
     config.allSystems.map<BoxView>(componentItem => ({
-      backgroundCSS: "transparent",
+      tags: componentItem.tags,
       marked: false, // everything unfocused at the beginning
       id: componentItem.id,
       label: componentItem.label
@@ -254,7 +261,7 @@ function createBoxViewState(boxViews: BoxView[]) {
           ...boxView,
           marked: true,
           accessDirect: {
-            hue: 190,
+            hue: write ? 20 : 190,
             write
           }
         })
@@ -283,6 +290,11 @@ function createBoxViewState(boxViews: BoxView[]) {
           accessDirect: undefined,
           accessSecondary: undefined
         })
+      );
+    },
+    withTag(tag: string) {
+      return $views.mapItems(item =>
+        item.pipe(map(item => (item.tags.includes(tag) ? item : undefined)))
       );
     },
     $views: $views.asObservableList()
