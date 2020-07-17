@@ -12,8 +12,8 @@ gulp.task('sass', () =>
     .pipe(gulp.dest(assetsPath + 'style/'))
 )
 
-gulp.task('watch', ['sass'], () =>
+gulp.task('watch', gulp.series('sass', () =>
   gulp.watch(staticSrcPath + 'style/**/*.scss', ['sass'])
-)
+))
 
-gulp.task('default', ['sass'])
+gulp.task('default', gulp.series('sass'))
