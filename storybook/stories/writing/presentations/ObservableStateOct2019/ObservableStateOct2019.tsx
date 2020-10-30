@@ -27,7 +27,7 @@ const theme = createTheme(
     quaternary: "#CECECE"
   },
   {
-    primary: "Montserrat",
+    primary: "Montserrat, Inter, Roboto, system-ui, sans-serif",
     secondary: "Helvetica"
   }
 );
