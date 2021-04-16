@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Debug Clipboard Paste</title>
+    <style>
+      html {
+        font-family: system-ui, sans-serif;
+      }
+      body {
+        margin: 5vw;
+      }
+      #target {
+        padding: 2rem;
+        background: whitesmoke;
+      }
+      #target {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='50px' width='120px'><text x='0' y='15' fill='red' font-size='20'>Paste Here</text></svg>");
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Debug Clipboard paste</h1>
+    <p>
+      Debug the data from your current clipboard.
+      <br />
+      Read more about the API at
+      <a
+        href="https://www.w3.org/TR/clipboard-apis/#dom-clipboardevent-clipboarddata"
+        >W3 Clipboard API and events</a
+      >.
+    </p>
+    <div id="target" contenteditable></div>
+    <pre
+      id="debug"
+      style="max-width: 90vw; word-break: break-word; white-space: pre-line"
+    >
+Paste info will appear here
+</pre
+    >
+    <a href="https://codepen.io/colelawrence/pen/RwoQBXJ">Like on Codepen</a>
+    <script>
+      // @ts-check
+      document.getElementById("target").onpaste = printPaste;
+
+      const debugElt = document.getElementById("debug");
+      /** @param event {ClipboardEvent} */
+      function printPaste(event) {
+        const clip = event.clipboardData;
+        console.log("Debug Clipboard paste", clip);
+        debugElt.textContent = "";
+        for (const t of clip.types) {
+          console.log(t);
+          if (t === "Files") {
+            // https://w3c.github.io/FileAPI/#dfn-file
+            const filesArr = Array.from(clip.files);
+            console.log(...filesArr);
+            debugElt.textContent += `${t} (${clip.files.length})\n${filesArr
+              .map(
+                (file, idx) =>
+                  ` [${idx}]: ` +
+                  JSON.stringify(
+                    {
+                      name: file.name,
+                      type: file.type,
+                      lastModified: file.lastModified,
+                      size: file.size,
+                    },
+                    null,
+                    2
+                  )
+              )
+              .join("\n")}\n\n`;
+          } else {
+            const data = clip.getData(t);
+            console.log(data);
+            debugElt.textContent += `${t}\n${data}\n\n`;
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
