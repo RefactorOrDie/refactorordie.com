@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CRBug Nested Dedicated Workers</title>
+    <style>
+      html {
+        font-family: systemui;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>CRBug Nested Dedicated Workers issue</h1>
+    <a href="./bug.png">Screenshot of what I see in DevTools for this page.</a>
+    <pre>
+// this html file
+const worker = new Worker("worker.js", {
+  type: "module"
+})
+    </pre>
+    <pre>
+// <a href="./worker.js">worker.js</a>
+const startMark = "w";
+performance.mark(startMark);
+console.info("worker.js executed");
+const w = new Worker("./subworker.js", { type: "module" });
+console.info("worker.js constructed subworker");
+performance.measure("worker.js", startMark);
+    </pre>
+    <pre>
+// <a href="./subworker.js">subworker.js</a>
+const startMark = "sw";
+performance.mark(startMark);
+console.info("subworker.js executed");
+performance.measure("subworker.js", startMark);
+    </pre>
+    <p>
+      Observe that we get a user timing for "worker.js", we do not get a user
+      timing for "subworker.js". We get logs for both "worker.js executed" and
+      "subworker.js executed".
+    </p>
+    <script>
+      const worker = new Worker("worker.js", {
+        type: "module",
+      });
+    </script>
+  </body>
+</html>
