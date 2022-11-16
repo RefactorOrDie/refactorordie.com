@@ -62,7 +62,7 @@ As well, grammar is important to me because incorrect grammar is very distractin
 
 > I've added a simple parameter switch to enable Grammarly on the blog, which will change the entire blog page into a [`contenteditable`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/contenteditable).
 When you do this, it will signal to the Grammarly web extension that it should check the grammar of the page.
-[Try it](?grammarly)
+[Try adding ?grammarly to this page](?grammarly).
 ```javascript
 if (location.search.includes("grammarly")) {
   for (const item of document.getElementsByClassName("written")) {
