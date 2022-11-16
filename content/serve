@@ -1,4 +1,5 @@
 #!/bin/bash
+set -ex
 cd ..
 hugo serve -w -D
 cd ./content

@@ -16,22 +16,12 @@
 	{{ $secureCSS := $baseCSS | resources.Minify | resources.Fingerprint "md5" }}
 	<link rel="stylesheet" href="{{ $secureCSS.Permalink }}" type="text/css">
 	<link rel="stylesheet" href="/syntax.css" type="text/css">
-	{{ if .RSSLink -}}
-	<link href="{{ .RSSLink }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}">{{- end }}
-	{{ .Hugo.Generator }}
-	<script>
-		(function(f, a, t, h, o, m){
-			a[h]=a[h]||function(){
-				(a[h].q=a[h].q||[]).push(arguments)
-			};
-			o=f.createElement('script'),
-			m=f.getElementsByTagName('script')[0];
-			o.async=1; o.src=t; o.id='fathom-script';
-			m.parentNode.insertBefore(o,m)
-		})(document, window, 'https://count.refactorordie.com/tracker.js', 'fathom');
-		fathom('set', 'siteId', 'NALFU');
-		fathom('trackPageview');
-	</script>
+	{{ range .AlternativeOutputFormats -}}
+    {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+	{{ end -}}
+	{{ hugo.Generator }}
+{{ $countJs := resources.Get "script/count.min.js"}}
+<script>{{ $countJs }}</script>
 <style>body { opacity: 0 }</style>
 <noscript><style>body { opacity: 1 }</style></noscript>
 </head>

@@ -1,5 +1,13 @@
 #!/bin/bash
-read YYYY MM DD <<<$(date +'%Y %m %d')
+set -ex
+if [ -z "$1" ]
+then
+echo "Please provide title slug";
+exit 1;
+fi
+
+read -r YYYY MM DD <<<$(date +'%Y %m %d')
+
 cd ..
-hugo new --kind post-bundle content/posts/$YYYY-$MM/$1 --editor code
+hugo new --kind post-bundle "content/posts/$YYYY-$MM/$1" --editor code
 cd ./content
