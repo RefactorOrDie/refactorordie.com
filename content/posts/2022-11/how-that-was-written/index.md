@@ -6,6 +6,7 @@ draft: false
 ---
 
 TLDR;
+
  * I think having a background programming makes me feel like I need to be super thoughtful of every word and punctuation I use,  because that's what's required for the code to compile, and for the code to be understandable.
  * I'm trying out using dictation to get the ideas onto the page.
 
