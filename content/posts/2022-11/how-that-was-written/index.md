@@ -2,7 +2,7 @@
 title: "Start writing using dictation"
 date: 2022-11-16T06:02:32-05:00
 type: "post"
-draft: false
+draft: true
 ---
 
 TLDR;
