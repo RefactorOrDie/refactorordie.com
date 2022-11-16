@@ -8,7 +8,7 @@ draft: false
 TLDR;
 
  * I think having a background in programming makes me feel like I need to be super thoughtful of every word and punctuation I use  because that's what's required for *code* to compile and be understandable.
- * I'm trying out using dictation to get the ideas onto the page.
+ * Using dictation enables me to get ideas onto the page without interrogating every character (which I believe is a strong habit formed from coding).
 
 
 ## I think of myself as a good communicator but just an okay writer.
