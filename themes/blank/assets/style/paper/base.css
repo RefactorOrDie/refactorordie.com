@@ -8,13 +8,6 @@ body {
   hyphens: auto;
 }
 
-.page-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-top: 0;
-  margin-bottom: 0.75em;
-}
-
 h1, h2, h3 {
   letter-spacing: -0.01em;
   line-height: 1.2;
@@ -55,23 +48,6 @@ figcaption {
   border: none;
 }
 
-body {
-  color: #1d1d1d;
-}
-body .btn {
-  color: rgba(40, 40, 40, 0.3);
-}
-body .btn svg {
-  fill: rgba(40, 40, 40, 0.3);
-}
-body .page-title h1 {
-  color: #1d1d1d;
-}
-
-::selection {
-  background: #9fdda9;
-}
-
 @media only print {
   body, html, .page {
     background: white !important;
@@ -106,6 +82,23 @@ body, html {
 @page {
   margin: 1in;
 }
+.page-title {
+  margin-top: 0;
+  margin-bottom: 0.75em;
+}
+.page-title h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 0;
+}
+.page-title .byline {
+  color: rgba(135, 131, 120, 0.5);
+}
+.page-title .byline *:hover {
+  color: black;
+}
+
 footer {
   margin-top: 4rem;
 }
@@ -167,23 +160,6 @@ ul.task-list {
   padding: 0 1em;
 }
 
-body {
-  color: #1d1d1d;
-}
-body .btn {
-  color: rgba(40, 40, 40, 0.3);
-}
-body .btn svg {
-  fill: rgba(40, 40, 40, 0.3);
-}
-body .page-title h1 {
-  color: #1d1d1d;
-}
-
-::selection {
-  background: #9fdda9;
-}
-
 .home-page .home-btn:not(:focus) {
   visibility: hidden;
 }
@@ -217,23 +193,6 @@ h1 > a, h2 > a, h3 > a, h4 > a {
   border: none !important;
 }
 
-body {
-  color: #1d1d1d;
-}
-body .btn {
-  color: rgba(40, 40, 40, 0.3);
-}
-body .btn svg {
-  fill: rgba(40, 40, 40, 0.3);
-}
-body .page-title h1 {
-  color: #1d1d1d;
-}
-
-::selection {
-  background: #9fdda9;
-}
-
 pre span.o {
   color: #30336d;
   font-weight: 600;
@@ -252,4 +211,21 @@ pre span.k, pre span.kd {
 .language-lua span.kr {
   color: #30336d;
   font-weight: 600;
+}
+
+body {
+  color: #1d1d1d;
+}
+body .btn {
+  color: rgba(40, 40, 40, 0.3);
+}
+body .btn svg {
+  fill: rgba(40, 40, 40, 0.3);
+}
+body .page-title h1 {
+  color: #1d1d1d;
+}
+
+::selection {
+  background: #9fdda9;
 }

@@ -7,3 +7,21 @@
 // @import 'menu';
 @import 'colors';
 @import 'pygments';
+
+body {
+  color: $color-body-black;
+
+  .btn {
+    color: $color-subsubhead-black;
+
+    svg {
+      fill: $color-subsubhead-black;
+    }
+  }
+
+  .page-title h1 {
+    color: $color-body-black;
+  }
+}
+
+::selection { background: rgb(159, 221, 169); }

@@ -6,3 +6,7 @@ theme = "blank"
 PygmentsCodeFences = true
 pygmentsuseclasses = true
 ignoreFiles = [ "new-post$", "serve$" ]
+
+[author]
+name = "Cole Lawrence"
+email = "cole@colelawrence.com"

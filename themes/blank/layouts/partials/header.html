@@ -29,7 +29,16 @@
 <body style="transition: .4s ease opacity;">
 	<div id="page" class="page">
 		<header>
-			<a href="/" class="btn site-link" title="Refactor or die articles">Refactor or die</a>
-			<h1 class="page-title">{{ .Title }}</h1>
+			<div>
+				<a href="/" class="btn site-link" title="Refactor or die articles">Refactor or die</a>
+			</div>
+			<div class="page-title">
+				<h1>{{ .Title }}</h1>
+				{{ if eq .Type "post" -}}
+				<div class="byline">
+					<byline>{{ .Site.Author.name }}</byline> <span>•</span> <time>{{ .Date.Format "Jan 02, 2006" }}</time> <span>•</span> <span id="wordcount"> {{ .WordCount }} Words </span>
+				</div>
+				{{- end }}
+			</div>
 		</header>
 		<main>

@@ -1,7 +1,7 @@
 {{ partial "header.html" . }}
 <div class="home-page">
 	{{ range (where .Site.Pages "Type" "index") }}
-		<article>
+		<article class="written">
 			{{ .Content }}
 		</article>
 	{{ end }}

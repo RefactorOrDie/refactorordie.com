@@ -3,21 +3,3 @@
 $color-body-black: $color-body-black;
 $color-subhead-black: $color-subhead-black;
 $color-highlight: $color-highlight;
-
-body {
-  color: $color-body-black;
-
-  .btn {
-    color: $color-subsubhead-black;
-
-    svg {
-      fill: $color-subsubhead-black;
-    }
-  }
-
-  .page-title h1 {
-    color: $color-body-black;
-  }
-}
-
-::selection { background: rgb(159, 221, 169); }
