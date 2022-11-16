@@ -10,7 +10,7 @@ jobs:
       - run: apk update && apk add git
       - checkout
       - run: curl -L https://github.com/bep/s3deploy/releases/download/v2.0.1/s3deploy_2.0.1_Linux-64bit.tar.gz | tar xvz
-      - run: curl -L https://github.com/gohugoio/hugo/releases/download/v0.56.0/hugo_0.56.0_Linux-64bit.tar.gz | tar xvz
+      - run: curl -L https://github.com/gohugoio/hugo/releases/download/v0.105.0/hugo_0.105.0_Linux-64bit.tar.gz | tar xvz
       - run: HUGO_ENV=production ./hugo -v -d $HUGO_BUILD_DIR
       - run:
           name: Run commands to see results on std-out in the circleci web gui log
