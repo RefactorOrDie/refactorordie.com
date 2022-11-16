@@ -20,8 +20,9 @@
     {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
 	{{ end -}}
 	{{ hugo.Generator }}
-{{ $countJs := resources.Get "script/count.min.js"}}
-<script>{{ $countJs }}</script>
+{{ with resources.Get "script/count.min.js" -}}
+<script>{{ .Content | safeJS }}</script>
+{{- end }}
 <style>body { opacity: 0 }</style>
 <noscript><style>body { opacity: 1 }</style></noscript>
 </head>
