@@ -28,10 +28,6 @@ p {
   text-decoration: none;
 }
 
-.written p {
-  text-align: justify;
-}
-
 figure {
   margin: 1.25em 0;
   page-break-inside: avoid;
@@ -165,7 +161,7 @@ ul.task-list {
 }
 
 a, a:visited {
-  color: #1756f6;
+  color: dodgerblue;
   text-decoration: inherit;
 }
 
