@@ -3,10 +3,10 @@ body {
   font-size: 18px;
   line-height: 143.75%;
 
-  -webkit-hyphens: auto;
-  -moz-hyphens: auto;
-  -ms-hyphens: auto;
-  hyphens: auto;
+  // -webkit-hyphens: auto;
+  // -moz-hyphens: auto;
+  // -ms-hyphens: auto;
+  // hyphens: auto;
 }
 
 h1, h2, h3 {
@@ -31,6 +31,10 @@ p {
 
 .image a {
   text-decoration: none;
+}
+
+.written p {
+  text-align: justify;
 }
 
 figure {
