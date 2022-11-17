@@ -117,7 +117,7 @@ code {
 }
 
 code {
-  color: #eb5757;
+  color: #5756ff;
 }
 
 .code, pre {
@@ -166,7 +166,7 @@ ul.task-list {
 }
 
 a, a:visited {
-  color: dodgerblue;
+  color: #1557d3;
   text-decoration: inherit;
 }
 
@@ -191,6 +191,12 @@ a:hover,
 
 h1 > a, h2 > a, h3 > a, h4 > a {
   border: none !important;
+}
+
+.twitter-link svg {
+  color: #1d1d1d;
+  width: 32px;
+  height: 32px;
 }
 
 pre span.o {
