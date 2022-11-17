@@ -2,6 +2,7 @@
 title: "Start writing using dictation"
 date: 2022-11-16T06:02:32-05:00
 type: "post"
+keywords: [writing, blog, meta, dialog, dictation, writers-block]
 draft: false
 ---
 
@@ -59,9 +60,9 @@ As well, grammar is important to me because incorrect grammar is very distractin
 
 > I've added a simple parameter switch to enable Grammarly on the blog, which will change the entire blog page into a [`contenteditable`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/contenteditable).
 When you do this, it will signal to the Grammarly web extension that it should check the grammar of the page.
-[Try adding ?grammarly to this page](?grammarly).
+[Try adding ?check-grammar to this page](?check-grammar).
 ```javascript
-if (location.search.includes("grammarly")) {
+if (location.search.includes("check-grammar")) {
   for (const item of document.getElementsByClassName("written")) {
     item.contentEditable = "true"
   }

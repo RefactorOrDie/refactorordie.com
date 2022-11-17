@@ -2,6 +2,7 @@
 title: "How to Write"
 date: 2019-04-14T19:46:53-04:00
 type: "post"
+keywords: [writing, blog, meta]
 draft: true
 ---
 

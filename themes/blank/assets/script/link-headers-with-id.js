@@ -27,10 +27,7 @@
       title: label,
     });
     a.setAttribute("aria-label", label);
-    for (const headingChildNode of headingElt.childNodes) {
-      headingElt.removeChild(headingChildNode)
-      a.appendChild(headingChildNode);
-    }
+    a.append(...headingElt.childNodes);
     prepend(headingElt, a);
   }
 })(document);

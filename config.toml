@@ -5,10 +5,23 @@ publishDir = "public"
 theme = "blank"
 PygmentsCodeFences = true
 pygmentsuseclasses = true
-ignoreFiles = [ "new-post$", "serve$" ]
-[markup.goldmark.renderer]
-  unsafe = true # Allow HTML in md files
+ignoreFiles = ["new-post$", "serve$"]
 
 [author]
 name = "Cole Lawrence"
 email = "cole@colelawrence.com"
+
+[markup.goldmark.renderer]
+unsafe = true # Allow HTML in md files
+enableInlineShortcodes = true
+
+[related]
+includeNewer = false
+threshold = 80
+toLower = false
+[[related.indices]]
+name = 'keywords'
+weight = 100
+[[related.indices]]
+name = 'date'
+weight = 10

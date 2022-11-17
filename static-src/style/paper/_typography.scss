@@ -40,6 +40,12 @@ p {
 figure {
   margin: 1.25em 0;
   page-break-inside: avoid;
+
+  img {
+    border-radius: 6px;
+    box-shadow: 0 10px 30px rgba(128,128,128,0.2);
+    border: 1px solid rgba(128,128,128,0.2);
+  }
 }
 
 figcaption {

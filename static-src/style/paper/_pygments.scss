@@ -22,7 +22,7 @@ pre {
   // bright blue #2196f3
   span.o { color: $c4; font-weight: $w2 }
   span.c1 { color: $d2 }
-  span.p { color: $d1 }
+  span.p, span.nt { color: $d1 }
   span.k, span.kd { color: $c3; font-weight: $w1; }
 }
 

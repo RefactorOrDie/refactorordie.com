@@ -32,6 +32,11 @@ figure {
   margin: 1.25em 0;
   page-break-inside: avoid;
 }
+figure img {
+  border-radius: 6px;
+  box-shadow: 0 10px 30px rgba(128, 128, 128, 0.2);
+  border: 1px solid rgba(128, 128, 128, 0.2);
+}
 
 figcaption {
   opacity: 0.5;
@@ -172,7 +177,6 @@ a, a:visited {
 
 [id] > a {
   background: inherit;
-  transition: all 0.2s ease-in-out;
   padding-left: 1em;
   margin-left: -1em;
   padding-right: 0.5em;
@@ -196,7 +200,7 @@ pre span.o {
 pre span.c1 {
   color: #9f9d23;
 }
-pre span.p {
+pre span.p, pre span.nt {
   color: #6b691f;
 }
 pre span.k, pre span.kd {

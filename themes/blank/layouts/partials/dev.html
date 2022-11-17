@@ -1,0 +1,6 @@
+{{ if site.BuildDrafts }}
+<details>
+  <summary>{{ . }}</summary>
+  {{ transform.Highlight (. | jsonify (dict "indent" "  ") | strings.ReplaceRE `[\n\r]+\s*([\]\}\{}])` " $1") "json" }}
+</details>
+{{ end }}
