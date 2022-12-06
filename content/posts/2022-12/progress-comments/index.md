@@ -105,3 +105,9 @@ function sum(a, b) {
 In this example, the progress comment includes a confidence score, a list of known risks and constraints, and a list of next steps and improvements. It also includes a reference to the documentation comments, which explain the technical details and the functional requirements of the code.
 
 In conclusion, progress comments are a simple and effective strategy for managing technical debt and improving code quality. They require contributor humility, and they provide valuable information to other programmers who work on the same code in the future. By using progress comments, programmers can collaborate more effectively, and they can help prevent technical debt from growing when we need to move on to other feature development.
+
+### Shared on
+
+ * [/r/programming](https://www.reddit.com/r/programming/comments/ze8i2y/progress_comments_as_proactive_documentation_re/)
+ * [ycombinator](https://news.ycombinator.com/item?id=33880858)
+ * [Mastodon](https://hachyderm.io/@colel/109467308373777962)
