@@ -19,6 +19,8 @@ Documentation comments are beneficial when a project becomes large and complex a
 
 I'd like to present the following hypothetical retroactive documentation exercise. I hope that this process feels familiar. Later, I will use this as a contrast to how proactive documentation can make this same process much easier.
 
+{{< meta-block >}}
+
 To help programmers manage technical debt and improve their code, I propose the following exercise:
 
 1. Choose a piece of code that you wrote many months ago and that you think might be hard to understand or maintain.
@@ -53,6 +55,8 @@ function sum(a, b) {
 ```
 
 The documentation comments in the "after" version explain what the function does, what the parameters are, and what the return value is. They also specify the data type of the parameters and the return value using the standard [JSDoc](https://jsdoc.app/) format.
+
+{{< /meta-block >}}
 
 One limitation of a retroactive documentation comment exercise is that it relies on the knowledge and understanding of the original programmer who wrote the code. If the original programmer is unavailable, or if the original programmer has forgotten the details of the code or constraints, then the documentation comments may not provide enough information to other programmers who need to modify or extend the code. In this case, the programmers may need to spend additional time and effort to communicate with each other or to reverse-engineer the code to understand the business logic behind it.
 

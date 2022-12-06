@@ -8,6 +8,13 @@
 @import 'colors';
 @import 'pygments';
 
+.meta-block {
+  background: whitesmoke;
+  padding: 0.5rem 1rem;
+  margin: 1rem -1rem;
+  border-radius: 6px;
+}
+
 body {
   color: $color-body-black;
 

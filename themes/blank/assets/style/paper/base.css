@@ -121,7 +121,7 @@ code {
 }
 
 .code, pre {
-  padding: 1.5em 1em;
+  padding: 1rem;
   scroll-behavior: smooth;
   overflow-x: auto;
 }
@@ -217,6 +217,13 @@ pre span.k, pre span.kd {
 .language-lua span.kr {
   color: #30336d;
   font-weight: 600;
+}
+
+.meta-block {
+  background: whitesmoke;
+  padding: 0.5rem 1rem;
+  margin: 1rem -1rem;
+  border-radius: 6px;
 }
 
 body {
