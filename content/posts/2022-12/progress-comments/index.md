@@ -69,6 +69,8 @@ A progress comment is a simple and effective strategy for managing technical deb
 A progress comment includes the following information about any interesting code:
 
 1. A confidence in the "doneness" of the code. This is a score from -1 to 10, where -1 means "I wish this code wasn't written at all", 0 might mean "I am very unsure about whether this is the right way to model this problem", counting up to 5 which might mean "This is reasonably well designed and we've seen many features built on this functionality that all worked out pretty well", from there, any number higher is very unlikely to exist in your codebase unless you are particularly arrogant.
+   - What matters here is communicating the intent to the rest of the team; the exact point value doesn’t matter so much as the practice of communicating some score with a shared meaning on the team.
+   - A number without a comment should raise eyebrows; either the number is low and has associated risks and future considerations, or it is high, and that confidence better be justified.
 
 2. A list of known risks and constraints. This is a collection of bullet points that describe the assumptions, estimations, dependencies, or other factors that may affect the behavior or the performance of the code. Use concise and clear language to explain the risks and constraints and provide enough details to help other programmers understand the context and the implications of the code.
 
